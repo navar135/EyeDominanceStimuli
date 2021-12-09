@@ -124,10 +124,10 @@ var nextButton;
 var nextMouse;
 var findScreenEdgeClock;
 var instruct;
-var slider;
 var screenEdgePx;
 var skip_checkEdge;
 var targetTri;
+var slider;
 var nextPoly1;
 var nextButton1;
 var nextMouse1;
@@ -321,26 +321,26 @@ async function experimentInit() {
     depth: 0.0 
   });
   
-  slider = new visual.Slider({
-    win: psychoJS.window, name: 'slider',
-    size: [10000.0, 20], pos: [(- 5000), 0], units: 'pix',
-    labels: undefined, ticks: [(- 1), 0.5, 0],
-    granularity: 0.0, style: ["SLIDER", "LABELS_45", "TRIANGLE_MARKER"],
-    color: new util.Color('LightGray'), markerColor: new util.Color('Red'), lineColor: new util.Color('White'), 
-    fontFamily: 'Open Sans', bold: true, italic: false, depth: -1, 
-    flip: false,
-  });
-  
   screenEdgePx = 0.0;
   skip_checkEdge = false;
   
   targetTri = new visual.ShapeStim ({
     win: psychoJS.window, name: 'targetTri', units : 'norm', 
-    vertices: [[-[0.09, 0.15][0]/2.0, -[0.09, 0.15][1]/2.0], [+[0.09, 0.15][0]/2.0, -[0.09, 0.15][1]/2.0], [0, [0.09, 0.15][1]/2.0]],
-    ori: 0, pos: [(- 0.95), 0],
+    vertices: [[-[0.05, 0.15][0]/2.0, -[0.05, 0.15][1]/2.0], [+[0.05, 0.15][0]/2.0, -[0.05, 0.15][1]/2.0], [0, [0.05, 0.15][1]/2.0]],
+    ori: 0, pos: [(- 0.95), (- 0.03)],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), 1]),
     fillColor: new util.Color([(- 1), (- 1), 1]),
-    opacity: 1, depth: -3, interpolate: true,
+    opacity: 1, depth: -2, interpolate: true,
+  });
+  
+  slider = new visual.Slider({
+    win: psychoJS.window, name: 'slider',
+    size: [10000.0, 20], pos: [(- 5000), 0], units: 'pix',
+    labels: undefined, ticks: [(- 1), 0.5, 0],
+    granularity: 0.0, style: ["SLIDER", "LABELS_45", "TRIANGLE_MARKER"],
+    color: new util.Color('White'), markerColor: new util.Color('Red'), lineColor: new util.Color('White'), 
+    fontFamily: 'Open Sans', bold: true, italic: false, depth: -3, 
+    flip: false,
   });
   
   nextPoly1 = new visual.Rect ({
@@ -1160,17 +1160,17 @@ function findScreenEdgeRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
-    slider.reset()
     slider.markerPos = 0;
     
+    slider.reset()
     // setup some python lists for storing info about the nextMouse1
     nextMouse1.clicked_name = [];
     gotValidClick = false; // until a click is received
     // keep track of which components have finished
     findScreenEdgeComponents = [];
     findScreenEdgeComponents.push(instruct);
-    findScreenEdgeComponents.push(slider);
     findScreenEdgeComponents.push(targetTri);
+    findScreenEdgeComponents.push(slider);
     findScreenEdgeComponents.push(nextPoly1);
     findScreenEdgeComponents.push(nextButton1);
     findScreenEdgeComponents.push(nextMouse1);
@@ -1201,16 +1201,6 @@ function findScreenEdgeRoutineEachFrame() {
     }
 
     
-    // *slider* updates
-    if (t >= 0.0 && slider.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      slider.tStart = t;  // (not accounting for frame time here)
-      slider.frameNStart = frameN;  // exact frame index
-      
-      slider.setAutoDraw(true);
-    }
-
-    
     // *targetTri* updates
     if (t >= 0.0 && targetTri.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -1218,6 +1208,16 @@ function findScreenEdgeRoutineEachFrame() {
       targetTri.frameNStart = frameN;  // exact frame index
       
       targetTri.setAutoDraw(true);
+    }
+
+    
+    // *slider* updates
+    if (t >= 0.0 && slider.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      slider.tStart = t;  // (not accounting for frame time here)
+      slider.frameNStart = frameN;  // exact frame index
+      
+      slider.setAutoDraw(true);
     }
 
     
@@ -1309,7 +1309,6 @@ function findScreenEdgeRoutineEnd() {
         thisComponent.setAutoDraw(false);
       }
     }
-    psychoJS.experiment.addData('slider.response', slider.getRating());
     screenEdgeNorm = slider.getRating();
     screenEdgePx = (10000 * screenEdgeNorm);
     if ((screenEdgeNorm < 0)) {
@@ -1319,6 +1318,7 @@ function findScreenEdgeRoutineEnd() {
     thisExp.addData("screenEdgeNorm", screenEdgeNorm);
     thisExp.addData("screenEdgePx", screenEdgePx);
     
+    psychoJS.experiment.addData('slider.response', slider.getRating());
     // store data for psychoJS.experiment (ExperimentHandler)
     // the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 11:05:16 2021
+    on Thu Dec  9 11:09:57 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -175,7 +175,7 @@ slider = visual.Slider(win=win, name='slider',
     startValue=None, size=(10000.0, 20), pos=(-5000, 0), units=None,
     labels=None, ticks=(-1, 0.5, 0), granularity=0.0,
     style='slider', styleTweaks=('labels45', 'triangleMarker'), opacity=None,
-    color='LightGray', fillColor='Red', borderColor='White', colorSpace='rgb',
+    color='White', fillColor='Red', borderColor='White', colorSpace='rgb',
     font='Open Sans', labelHeight=0.05,
     flip=False, depth=-1, readOnly=False)
 screenEdgePx = 0.0
@@ -186,8 +186,8 @@ skip_checkEdge = False
 # until you click on the slider bar
 targetTri = visual.ShapeStim(
     win=win, name='targetTri',units='norm', 
-    size=(0.09, 0.15), vertices='triangle',
-    ori=0, pos=(-.95, 0),
+    size=(0.07, 0.12), vertices='triangle',
+    ori=0, pos=(-2, 0),
     lineWidth=1,     colorSpace='rgb',  lineColor=[-1,-1,1], fillColor=[-1,-1,1],
     opacity=1, depth=-3.0, interpolate=True)
 nextPoly1 = visual.Rect(
