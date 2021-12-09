@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 11:09:57 2021
+    on Thu Dec  9 14:29:50 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -171,24 +171,25 @@ instruct = visual.TextStim(win=win, name='instruct',
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
-slider = visual.Slider(win=win, name='slider',
-    startValue=None, size=(10000.0, 20), pos=(-5000, 0), units=None,
-    labels=None, ticks=(-1, 0.5, 0), granularity=0.0,
-    style='slider', styleTweaks=('labels45', 'triangleMarker'), opacity=None,
-    color='White', fillColor='Red', borderColor='White', colorSpace='rgb',
-    font='Open Sans', labelHeight=0.05,
-    flip=False, depth=-1, readOnly=False)
 screenEdgePx = 0.0
 skip_checkEdge = False
-
+#set variables for moving the triangle horizontally
+xPos = -300
+posChange = 1
 # note that this code has to go below the slider
 # in builder or else the marker doesn't show
 # until you click on the slider bar
-targetTri = visual.ShapeStim(
+moveTri = visual.Line(
+    win=win, name='moveTri',units='pix', 
+    start=(-(30,50)[0]/2.0, 0), end=(+(30,50)[0]/2.0, 0),
+    ori=90, pos=[0,0],
+    lineWidth=3,     colorSpace='rgb',  lineColor='red', fillColor='red',
+    opacity=1, depth=-2.0, interpolate=True)
+targetTri = visual.Line(
     win=win, name='targetTri',units='norm', 
-    size=(0.07, 0.12), vertices='triangle',
-    ori=0, pos=(-2, 0),
-    lineWidth=1,     colorSpace='rgb',  lineColor=[-1,-1,1], fillColor=[-1,-1,1],
+    start=(-(0.05, 0.15)[0]/2.0, 0), end=(+(0.05, 0.15)[0]/2.0, 0),
+    ori=90, pos=(-.95, -.03),
+    lineWidth=3,     colorSpace='rgb',  lineColor=[-1,-1,1], fillColor=[-1,-1,1],
     opacity=1, depth=-3.0, interpolate=True)
 nextPoly1 = visual.Rect(
     win=win, name='nextPoly1',units='norm', 
@@ -206,6 +207,13 @@ nextButton1 = visual.TextStim(win=win, name='nextButton1',
 nextMouse1 = event.Mouse(win=win)
 x, y = [None, None]
 nextMouse1.mouseClock = core.Clock()
+text = visual.TextStim(win=win, name='text',
+    text='',
+    font='Open Sans',
+    units='norm', pos=(.2, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-7.0);
 
 # Initialize components for Routine "checkScreenEdge"
 checkScreenEdgeClock = core.Clock()
@@ -693,15 +701,16 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     # ------Prepare to start Routine "findScreenEdge"-------
     continueRoutine = True
     # update component parameters for each repeat
-    slider.reset()
-    slider.markerPos=0
+    #slider.markerPos=0
+    
+    
     
     
     # setup some python lists for storing info about the nextMouse1
     nextMouse1.clicked_name = []
     gotValidClick = False  # until a click is received
     # keep track of which components have finished
-    findScreenEdgeComponents = [instruct, slider, targetTri, nextPoly1, nextButton1, nextMouse1]
+    findScreenEdgeComponents = [instruct, moveTri, targetTri, nextPoly1, nextButton1, nextMouse1, text]
     for thisComponent in findScreenEdgeComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -732,15 +741,29 @@ for thisScreenEdgeLoop in screenEdgeLoop:
             instruct.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(instruct, 'tStartRefresh')  # time at next scr refresh
             instruct.setAutoDraw(True)
+        keys=event.getKeys()
+        #calculate the pixels to move based on keypresses
+        if xPos > -500:
+            posChange = 10
+        else:
+            posChange = 1
+        if len(keys):
+            if 'right' in keys:
+                xPos = xPos + posChange
+            elif 'left' in keys:
+                xPos = xPos - posChange 
         
-        # *slider* updates
-        if slider.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        
+        # *moveTri* updates
+        if moveTri.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            slider.frameNStart = frameN  # exact frame index
-            slider.tStart = t  # local t and not account for scr refresh
-            slider.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(slider, 'tStartRefresh')  # time at next scr refresh
-            slider.setAutoDraw(True)
+            moveTri.frameNStart = frameN  # exact frame index
+            moveTri.tStart = t  # local t and not account for scr refresh
+            moveTri.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(moveTri, 'tStartRefresh')  # time at next scr refresh
+            moveTri.setAutoDraw(True)
+        if moveTri.status == STARTED:  # only update if drawing
+            moveTri.setPos((xPos, 40), log=False)
         
         # *targetTri* updates
         if targetTri.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -799,6 +822,17 @@ for thisScreenEdgeLoop in screenEdgeLoop:
                     if gotValidClick:  # abort routine on response
                         continueRoutine = False
         
+        # *text* updates
+        if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            text.frameNStart = frameN  # exact frame index
+            text.tStart = t  # local t and not account for scr refresh
+            text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+            text.setAutoDraw(True)
+        if text.status == STARTED:  # only update if drawing
+            text.setText(xPos, log=False)
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -822,22 +856,26 @@ for thisScreenEdgeLoop in screenEdgeLoop:
             thisComponent.setAutoDraw(False)
     screenEdgeLoop.addData('instruct.started', instruct.tStartRefresh)
     screenEdgeLoop.addData('instruct.stopped', instruct.tStopRefresh)
-    screenEdgeLoop.addData('slider.response', slider.getRating())
-    screenEdgeNorm = slider.getRating()
-    screenEdgePx = 10000*screenEdgeNorm
-    
-    if screenEdgeNorm<0:
+    #screenEdgeNorm = slider.getRating()
+    screenEdgeNorm = xPos
+    #screenEdgePx = 10000*screenEdgeNorm
+    screenEdgePx =screenEdgeNorm
+    if screenEdgeNorm<(-400):
         skip_checkEdge = True
         screenEdgeLoop.finished = True
         
     thisExp.addData('screenEdgeNorm', screenEdgeNorm)
     thisExp.addData('screenEdgePx', screenEdgePx)
     
+    screenEdgeLoop.addData('moveTri.started', moveTri.tStartRefresh)
+    screenEdgeLoop.addData('moveTri.stopped', moveTri.tStopRefresh)
     screenEdgeLoop.addData('targetTri.started', targetTri.tStartRefresh)
     screenEdgeLoop.addData('targetTri.stopped', targetTri.tStopRefresh)
     screenEdgeLoop.addData('nextPoly1.started', nextPoly1.tStartRefresh)
     screenEdgeLoop.addData('nextPoly1.stopped', nextPoly1.tStopRefresh)
     # store data for screenEdgeLoop (TrialHandler)
+    screenEdgeLoop.addData('text.started', text.tStartRefresh)
+    screenEdgeLoop.addData('text.stopped', text.tStopRefresh)
     # the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     

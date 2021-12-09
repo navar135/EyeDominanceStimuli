@@ -118,11 +118,14 @@ var findScreenEdgeClock;
 var instruct;
 var screenEdgePx;
 var skip_checkEdge;
+var xPos;
+var posChange;
+var moveTri;
 var targetTri;
-var slider;
 var nextPoly1;
 var nextButton1;
 var nextMouse1;
+var text;
 var checkScreenEdgeClock;
 var instructPls;
 var tryAgainPoly;
@@ -315,24 +318,25 @@ async function experimentInit() {
   
   screenEdgePx = 0.0;
   skip_checkEdge = false;
+  xPos = (- 300);
+  posChange = 1;
   
-  targetTri = new visual.ShapeStim ({
-    win: psychoJS.window, name: 'targetTri', units : 'norm', 
-    vertices: [[-[0.05, 0.15][0]/2.0, -[0.05, 0.15][1]/2.0], [+[0.05, 0.15][0]/2.0, -[0.05, 0.15][1]/2.0], [0, [0.05, 0.15][1]/2.0]],
-    ori: 0, pos: [(- 0.95), (- 0.03)],
-    lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), 1]),
-    fillColor: new util.Color([(- 1), (- 1), 1]),
+  moveTri = new visual.ShapeStim ({
+    win: psychoJS.window, name: 'moveTri', units : 'pix', 
+    vertices: [[-[30, 50][0]/2.0, 0], [+[30, 50][0]/2.0, 0]],
+    ori: 90, pos: [0, 0],
+    lineWidth: 3, lineColor: new util.Color('red'),
+    fillColor: new util.Color('red'),
     opacity: 1, depth: -2, interpolate: true,
   });
   
-  slider = new visual.Slider({
-    win: psychoJS.window, name: 'slider',
-    size: [10000.0, 20], pos: [(- 5000), 0], units: 'pix',
-    labels: undefined, ticks: [(- 1), 0.5, 0],
-    granularity: 0.0, style: ["SLIDER", "LABELS_45", "TRIANGLE_MARKER"],
-    color: new util.Color('White'), markerColor: new util.Color('Red'), lineColor: new util.Color('White'), 
-    fontFamily: 'Open Sans', bold: true, italic: false, depth: -3, 
-    flip: false,
+  targetTri = new visual.ShapeStim ({
+    win: psychoJS.window, name: 'targetTri', units : 'norm', 
+    vertices: [[-[0.05, 0.15][0]/2.0, 0], [+[0.05, 0.15][0]/2.0, 0]],
+    ori: 90, pos: [(- 0.95), (- 0.03)],
+    lineWidth: 3, lineColor: new util.Color([(- 1), (- 1), 1]),
+    fillColor: new util.Color([(- 1), (- 1), 1]),
+    opacity: 1, depth: -3, interpolate: true,
   });
   
   nextPoly1 = new visual.Rect ({
@@ -359,6 +363,17 @@ async function experimentInit() {
     win: psychoJS.window,
   });
   nextMouse1.mouseClock = new util.Clock();
+  text = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text',
+    text: '',
+    font: 'Open Sans',
+    units: 'norm', 
+    pos: [0.2, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -7.0 
+  });
+  
   // Initialize components for Routine "checkScreenEdge"
   checkScreenEdgeClock = new util.Clock();
   instructPls = new visual.TextStim({
@@ -775,7 +790,7 @@ function findScreenResolRoutineEachFrame() {
     }
     _pj = {};
     _pj_snippets(_pj);
-    keys = event.getKeys();
+    keys = psychoJS.eventManager.getKeys();
     if (keys.length) {
         if (_pj.in_es6("up", keys)) {
             x_pix = (x_pix + pxChange);
@@ -1158,20 +1173,19 @@ function findScreenEdgeRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
-    slider.markerPos = 0;
-    
-    slider.reset()
+    /* Syntax Error: Fix Python code */
     // setup some python lists for storing info about the nextMouse1
     nextMouse1.clicked_name = [];
     gotValidClick = false; // until a click is received
     // keep track of which components have finished
     findScreenEdgeComponents = [];
     findScreenEdgeComponents.push(instruct);
+    findScreenEdgeComponents.push(moveTri);
     findScreenEdgeComponents.push(targetTri);
-    findScreenEdgeComponents.push(slider);
     findScreenEdgeComponents.push(nextPoly1);
     findScreenEdgeComponents.push(nextButton1);
     findScreenEdgeComponents.push(nextMouse1);
+    findScreenEdgeComponents.push(text);
     
     findScreenEdgeComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1199,6 +1213,54 @@ function findScreenEdgeRoutineEachFrame() {
       instruct.setAutoDraw(true);
     }
 
+    var _pj;
+    function _pj_snippets(container) {
+        function in_es6(left, right) {
+            if (((right instanceof Array) || ((typeof right) === "string"))) {
+                return (right.indexOf(left) > (- 1));
+            } else {
+                if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {
+                    return right.has(left);
+                } else {
+                    return (left in right);
+                }
+            }
+        }
+        container["in_es6"] = in_es6;
+        return container;
+    }
+    _pj = {};
+    _pj_snippets(_pj);
+    keys = psychoJS.eventManager.getKeys();
+    if ((xPos > (- 500))) {
+        posChange = 10;
+    } else {
+        posChange = 1;
+    }
+    if (keys.length) {
+        if (_pj.in_es6("right", keys)) {
+            xPos = (xPos + posChange);
+        } else {
+            if (_pj.in_es6("left", keys)) {
+                xPos = (xPos - posChange);
+            }
+        }
+    }
+    
+    
+    // *moveTri* updates
+    if (t >= 0.0 && moveTri.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      moveTri.tStart = t;  // (not accounting for frame time here)
+      moveTri.frameNStart = frameN;  // exact frame index
+      
+      moveTri.setAutoDraw(true);
+    }
+
+    
+    if (moveTri.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      moveTri.setPos([xPos, 40], false);
+    }
     
     // *targetTri* updates
     if (t >= 0.0 && targetTri.status === PsychoJS.Status.NOT_STARTED) {
@@ -1207,16 +1269,6 @@ function findScreenEdgeRoutineEachFrame() {
       targetTri.frameNStart = frameN;  // exact frame index
       
       targetTri.setAutoDraw(true);
-    }
-
-    
-    // *slider* updates
-    if (t >= 0.0 && slider.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      slider.tStart = t;  // (not accounting for frame time here)
-      slider.frameNStart = frameN;  // exact frame index
-      
-      slider.setAutoDraw(true);
     }
 
     
@@ -1272,6 +1324,20 @@ function findScreenEdgeRoutineEachFrame() {
         }
       }
     }
+    
+    // *text* updates
+    if (t >= 0.0 && text.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text.tStart = t;  // (not accounting for frame time here)
+      text.frameNStart = frameN;  // exact frame index
+      
+      text.setAutoDraw(true);
+    }
+
+    
+    if (text.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      text.setText(xPos, false);
+    }
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1308,16 +1374,15 @@ function findScreenEdgeRoutineEnd() {
         thisComponent.setAutoDraw(false);
       }
     });
-    screenEdgeNorm = slider.getRating();
-    screenEdgePx = (10000 * screenEdgeNorm);
-    if ((screenEdgeNorm < 0)) {
+    screenEdgeNorm = xPos;
+    screenEdgePx = screenEdgeNorm;
+    if ((screenEdgeNorm < (- 400))) {
         skip_checkEdge = true;
         screenEdgeLoop.finished = true;
     }
-    thisExp.addData("screenEdgeNorm", screenEdgeNorm);
-    thisExp.addData("screenEdgePx", screenEdgePx);
+    psychoJS.experiment.addData("screenEdgeNorm", screenEdgeNorm);
+    psychoJS.experiment.addData("screenEdgePx", screenEdgePx);
     
-    psychoJS.experiment.addData('slider.response', slider.getRating());
     // store data for psychoJS.experiment (ExperimentHandler)
     // the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
