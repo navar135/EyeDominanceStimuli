@@ -72,11 +72,43 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
-    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
+    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
+    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
+    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
+    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
+    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
+    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
+    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
     {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
     {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
-    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'}
+    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
+    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
+    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
+    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
+    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
+    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
+    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
+    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
+    {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
+    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
+    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
+    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
+    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
+    {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
+    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
+    {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
+    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
+    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
+    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
+    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'}
   ]
 });
 
@@ -195,6 +227,7 @@ var direction;
 var driftLs;
 var driftrows;
 var blockCount;
+var whichCSV_2;
 var gratingContrastClock;
 var brightInst;
 var keyPressInst;
@@ -722,6 +755,17 @@ async function experimentInit() {
     font: 'Arial',
     units: 'norm', 
     pos: [0, (- 0.3)], height: 0.04,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -4.0 
+  });
+  
+  whichCSV_2 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'whichCSV_2',
+    text: '',
+    font: 'Arial',
+    units: 'norm', 
+    pos: [0, (- 0.35)], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
     depth: -4.0 
   });
@@ -2829,11 +2873,13 @@ function instContrastRoutineBegin(snapshot) {
     contB = 0.7;
     
     blockCount.setText(txtVar);
+    whichCSV_2.setText(fileCSV);
     // keep track of which components have finished
     instContrastComponents = [];
     instContrastComponents.push(instructions);
     instContrastComponents.push(key_start);
     instContrastComponents.push(blockCount);
+    instContrastComponents.push(whichCSV_2);
     
     for (const thisComponent of instContrastComponents)
       if ('status' in thisComponent)
@@ -2892,6 +2938,16 @@ function instContrastRoutineEachFrame() {
       blockCount.frameNStart = frameN;  // exact frame index
       
       blockCount.setAutoDraw(true);
+    }
+
+    
+    // *whichCSV_2* updates
+    if (t >= 0.0 && whichCSV_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      whichCSV_2.tStart = t;  // (not accounting for frame time here)
+      whichCSV_2.frameNStart = frameN;  // exact frame index
+      
+      whichCSV_2.setAutoDraw(true);
     }
 
     // check for quit (typically the Esc key)
