@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 10:04:21 2021
+    on Thu Dec  9 10:20:47 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -172,10 +172,10 @@ instruct = visual.TextStim(win=win, name='instruct',
     languageStyle='LTR',
     depth=0.0);
 slider = visual.Slider(win=win, name='slider',
-    startValue=None, size=(3.2, 0.07), pos=(-1.4, .07), units=None,
-    labels=None, ticks=(-1,-.5,0), granularity=0.0,
-    style='slider', styleTweaks=('labels45', 'triangleMarker'), opacity=None,
-    color='white', fillColor='Red', borderColor='white', colorSpace='rgb',
+    startValue=None, size=(3.0, 0.1), pos=(-1.4, 0.07), units=None,
+    labels=None, ticks=(-1, 0.5, 0), granularity=0.0,
+    style='slider', styleTweaks=('triangleMarker',), opacity=None,
+    color='LightGray', fillColor='Red', borderColor='White', colorSpace='rgb',
     font='Open Sans', labelHeight=0.05,
     flip=False, depth=-1, readOnly=False)
 screenEdgePx = 0.0
@@ -347,6 +347,19 @@ tryAgainButton1 = visual.TextStim(win=win, name='tryAgainButton1',
 tryAgainMouse1 = event.Mouse(win=win)
 x, y = [None, None]
 tryAgainMouse1.mouseClock = core.Clock()
+
+# Initialize components for Routine "goodJob_prepForExp"
+goodJob_prepForExpClock = core.Clock()
+instruct2 = visual.TextStim(win=win, name='instruct2',
+    text='Great job! \n\n** Please keep this distance from your screen until the very end! ** \n\nYou can uncover/open your right eye now. \nMake sure you are wearing the colored glasses, and prepare for the next block. \n\nPress the spacebar to continue to the main experiment. ',
+    font='Arial',
+    pos=(0, 0), height=0.03, wrapWidth=1.5, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0);
+keyToMoveOn = keyboard.Keyboard()
+contrastRange = []
+contR=1.0
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -1447,6 +1460,123 @@ for thisOuterLoop in outerLoop:
     
 # completed 20.0 repeats of 'outerLoop'
 
+
+# ------Prepare to start Routine "goodJob_prepForExp"-------
+continueRoutine = True
+# update component parameters for each repeat
+keyToMoveOn.keys = []
+keyToMoveOn.rt = []
+_keyToMoveOn_allKeys = []
+imgSizeCm = 2 * dist2screen * tan(.5*desiredVisAngl)
+#set at beginning of routine since this is calculated in prev routines
+constSize=imgSizeCm*pxPerCm
+
+
+#the first session should measure eye dominance and
+#allow for some practice trials of the experiment
+if expInfo['session'] =='practice':
+    eyeDom = 0 #run BR to define which eye will be tested
+    binRivRun = 0 # skip BR at end of actual exp 
+    #current numbers will make practice last 2 min tot
+    trialReps = 30 #have 10 trials in each block of the actual experiment
+    blockReps = 1 # only run 3 blocks
+    finalTrialDur =3 #shorten the amount of time between trials
+    contR = 0 #DELETE after checking
+    contB=1 #DELETE after
+    #contrast variables
+    contrastTrials =5 # run contrast 5 times 
+    contCounter = 0 #dont skip
+    skipContrast = 0 #don't skip
+    
+else: 
+    eyeDom = 0 #skip BR measurement
+    binRivRun = 1 # run BR at end of actual exp 
+    #current numbers will make the  task last ~30min
+    trialReps = 30 # have 30 trials in each block ~4-5min
+    blockReps = 6 
+    finalTrialDur =10 #at most 10s 
+    contrastTrials = 0 #skip contrast 
+    skipContrast = 0#skip contrast 
+# keep track of which components have finished
+goodJob_prepForExpComponents = [instruct2, keyToMoveOn]
+for thisComponent in goodJob_prepForExpComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+goodJob_prepForExpClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "goodJob_prepForExp"-------
+while continueRoutine:
+    # get current time
+    t = goodJob_prepForExpClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=goodJob_prepForExpClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *instruct2* updates
+    if instruct2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        instruct2.frameNStart = frameN  # exact frame index
+        instruct2.tStart = t  # local t and not account for scr refresh
+        instruct2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(instruct2, 'tStartRefresh')  # time at next scr refresh
+        instruct2.setAutoDraw(True)
+    
+    # *keyToMoveOn* updates
+    waitOnFlip = False
+    if keyToMoveOn.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        keyToMoveOn.frameNStart = frameN  # exact frame index
+        keyToMoveOn.tStart = t  # local t and not account for scr refresh
+        keyToMoveOn.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(keyToMoveOn, 'tStartRefresh')  # time at next scr refresh
+        keyToMoveOn.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(keyToMoveOn.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(keyToMoveOn.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if keyToMoveOn.status == STARTED and not waitOnFlip:
+        theseKeys = keyToMoveOn.getKeys(keyList=['space'], waitRelease=False)
+        _keyToMoveOn_allKeys.extend(theseKeys)
+        if len(_keyToMoveOn_allKeys):
+            keyToMoveOn.keys = _keyToMoveOn_allKeys[-1].name  # just the last key pressed
+            keyToMoveOn.rt = _keyToMoveOn_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in goodJob_prepForExpComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "goodJob_prepForExp"-------
+for thisComponent in goodJob_prepForExpComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('instruct2.started', instruct2.tStartRefresh)
+thisExp.addData('instruct2.stopped', instruct2.tStopRefresh)
+# the Routine "goodJob_prepForExp" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
