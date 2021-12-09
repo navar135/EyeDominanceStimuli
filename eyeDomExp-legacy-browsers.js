@@ -64,7 +64,11 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'}
+    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
+    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'}
   ]
 });
 
@@ -770,13 +774,13 @@ async function experimentInit() {
   if ((expInfo["eye tested"] === "right")) {
       placeB = [150, 0];
       placeR = [(- 150), 0];
-      labelB = [0.25, (- 0.1)];
-      labelR = [(- 0.25), (- 0.1)];
+      labelB = [0.2, (- 0.1)];
+      labelR = [(- 0.2), (- 0.1)];
   } else {
       placeB = [(- 150), 0];
       placeR = [150, 0];
-      labelB = [(- 0.25), (- 0.1)];
-      labelR = [0.25, (- 0.1)];
+      labelB = [(- 0.2), (- 0.1)];
+      labelR = [0.2, (- 0.1)];
   }
   
   radialLabel = new visual.TextStim({
@@ -785,7 +789,7 @@ async function experimentInit() {
     text: 'Radial grating',
     font: 'Arial',
     units: 'height', 
-    pos: [0, 0], height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.015,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
     depth: -7.0 
   });
@@ -796,7 +800,7 @@ async function experimentInit() {
     text: 'Bull’s eye grating',
     font: 'Arial',
     units: 'height', 
-    pos: [0, 0], height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.015,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
     depth: -8.0 
   });
