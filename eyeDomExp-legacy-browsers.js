@@ -17,7 +17,7 @@ const psychoJS = new PsychoJS({
 psychoJS.openWindow({
   fullscr: false,
   color: new util.Color('black'),
-  units: 'norm',
+  units: 'pix',
   waitBlanking: true
 });
 // schedule the experiment:
@@ -307,9 +307,9 @@ async function experimentInit() {
   
   slider = new visual.Slider({
     win: psychoJS.window, name: 'slider',
-    size: [3.0, 0.1], pos: [(- 1.4), 0.07], units: 'norm',
+    size: [10000.0, 20], pos: [(- 5000), 0], units: 'pix',
     labels: undefined, ticks: [(- 1), 0.5, 0],
-    granularity: 0.0, style: ["SLIDER", "TRIANGLE_MARKER"],
+    granularity: 0.0, style: ["SLIDER", "LABELS_45", "TRIANGLE_MARKER"],
     color: new util.Color('LightGray'), markerColor: new util.Color('Red'), lineColor: new util.Color('White'), 
     fontFamily: 'Open Sans', bold: true, italic: false, depth: -1, 
     flip: false,
@@ -1264,7 +1264,6 @@ function findScreenEdgeRoutineEnd() {
       }
     });
     psychoJS.experiment.addData('slider.response', slider.getRating());
-    psychoJS.experiment.addData('slider.rt', slider.getRT());
     screenEdgeNorm = slider.getRating();
     screenEdgePx = (10000 * screenEdgeNorm);
     if ((screenEdgeNorm < 0)) {

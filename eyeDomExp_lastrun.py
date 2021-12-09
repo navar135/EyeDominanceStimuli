@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 10:20:47 2021
+    on Thu Dec  9 10:51:49 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -69,7 +69,7 @@ win = visual.Window(
     winType='pyglet', allowGUI=True, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True, 
-    units='norm')
+    units='pix')
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -172,9 +172,9 @@ instruct = visual.TextStim(win=win, name='instruct',
     languageStyle='LTR',
     depth=0.0);
 slider = visual.Slider(win=win, name='slider',
-    startValue=None, size=(3.0, 0.1), pos=(-1.4, 0.07), units=None,
+    startValue=None, size=(10000.0, 20), pos=(-5000, 0), units=None,
     labels=None, ticks=(-1, 0.5, 0), granularity=0.0,
-    style='slider', styleTweaks=('triangleMarker',), opacity=None,
+    style='slider', styleTweaks=('labels45', 'triangleMarker'), opacity=None,
     color='LightGray', fillColor='Red', borderColor='White', colorSpace='rgb',
     font='Open Sans', labelHeight=0.05,
     flip=False, depth=-1, readOnly=False)
@@ -796,7 +796,6 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     screenEdgeLoop.addData('instruct.started', instruct.tStartRefresh)
     screenEdgeLoop.addData('instruct.stopped', instruct.tStopRefresh)
     screenEdgeLoop.addData('slider.response', slider.getRating())
-    screenEdgeLoop.addData('slider.rt', slider.getRT())
     screenEdgeNorm = slider.getRating()
     screenEdgePx = 10000*screenEdgeNorm
     
