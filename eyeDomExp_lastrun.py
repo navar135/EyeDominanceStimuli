@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 14:29:50 2021
+    on Thu Dec  9 14:51:42 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -181,15 +181,15 @@ posChange = 1
 # until you click on the slider bar
 moveTri = visual.Line(
     win=win, name='moveTri',units='pix', 
-    start=(-(30,50)[0]/2.0, 0), end=(+(30,50)[0]/2.0, 0),
+    start=(-(30,70)[0]/2.0, 0), end=(+(30,70)[0]/2.0, 0),
     ori=90, pos=[0,0],
     lineWidth=3,     colorSpace='rgb',  lineColor='red', fillColor='red',
     opacity=1, depth=-2.0, interpolate=True)
 targetTri = visual.Line(
     win=win, name='targetTri',units='norm', 
-    start=(-(0.05, 0.15)[0]/2.0, 0), end=(+(0.05, 0.15)[0]/2.0, 0),
-    ori=90, pos=(-.95, -.03),
-    lineWidth=3,     colorSpace='rgb',  lineColor=[-1,-1,1], fillColor=[-1,-1,1],
+    start=(-(0.05, 0.25)[0]/2.0, 0), end=(+(0.05, 0.25)[0]/2.0, 0),
+    ori=90, pos=(-.95, -.01),
+    lineWidth=5,     colorSpace='rgb',  lineColor=[-1,-1,1], fillColor=[-1,-1,1],
     opacity=1, depth=-3.0, interpolate=True)
 nextPoly1 = visual.Rect(
     win=win, name='nextPoly1',units='norm', 
@@ -214,6 +214,12 @@ text = visual.TextStim(win=win, name='text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-7.0);
+line = visual.Line(
+    win=win, name='line',units='norm', 
+    start=(-(1, 0.05)[0]/2.0, 0), end=(+(1, 0.05)[0]/2.0, 0),
+    ori=0, pos=(-.6,.05),
+    lineWidth=5,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=1, depth=-8.0, interpolate=True)
 
 # Initialize components for Routine "checkScreenEdge"
 checkScreenEdgeClock = core.Clock()
@@ -710,7 +716,7 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     nextMouse1.clicked_name = []
     gotValidClick = False  # until a click is received
     # keep track of which components have finished
-    findScreenEdgeComponents = [instruct, moveTri, targetTri, nextPoly1, nextButton1, nextMouse1, text]
+    findScreenEdgeComponents = [instruct, moveTri, targetTri, nextPoly1, nextButton1, nextMouse1, text, line]
     for thisComponent in findScreenEdgeComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -745,8 +751,10 @@ for thisScreenEdgeLoop in screenEdgeLoop:
         #calculate the pixels to move based on keypresses
         if xPos > -500:
             posChange = 10
+        elif (xPos < -500) and (xPos > -610):
+            posChange = 5
         else:
-            posChange = 1
+            posChange = 2
         if len(keys):
             if 'right' in keys:
                 xPos = xPos + posChange
@@ -763,7 +771,7 @@ for thisScreenEdgeLoop in screenEdgeLoop:
             win.timeOnFlip(moveTri, 'tStartRefresh')  # time at next scr refresh
             moveTri.setAutoDraw(True)
         if moveTri.status == STARTED:  # only update if drawing
-            moveTri.setPos((xPos, 40), log=False)
+            moveTri.setPos((xPos, 35), log=False)
         
         # *targetTri* updates
         if targetTri.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -833,6 +841,15 @@ for thisScreenEdgeLoop in screenEdgeLoop:
         if text.status == STARTED:  # only update if drawing
             text.setText(xPos, log=False)
         
+        # *line* updates
+        if line.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            line.frameNStart = frameN  # exact frame index
+            line.tStart = t  # local t and not account for scr refresh
+            line.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(line, 'tStartRefresh')  # time at next scr refresh
+            line.setAutoDraw(True)
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -876,6 +893,8 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     # store data for screenEdgeLoop (TrialHandler)
     screenEdgeLoop.addData('text.started', text.tStartRefresh)
     screenEdgeLoop.addData('text.stopped', text.tStopRefresh)
+    screenEdgeLoop.addData('line.started', line.tStartRefresh)
+    screenEdgeLoop.addData('line.stopped', line.tStopRefresh)
     # the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     

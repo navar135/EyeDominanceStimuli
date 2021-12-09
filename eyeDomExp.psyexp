@@ -40,7 +40,7 @@
     <Param name="elTrackEyes" updates="None" val="RIGHT_EYE" valType="str"/>
     <Param name="elTrackingMode" updates="None" val="PUPIL_CR_TRACKING" valType="str"/>
     <Param name="expName" updates="None" val="eyeDomExp" valType="str"/>
-    <Param name="exportHTML" updates="None" val="on Save" valType="str"/>
+    <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
     <Param name="eyetracker" updates="None" val="None" valType="str"/>
     <Param name="gpAddress" updates="None" val="127.0.0.1" valType="str"/>
     <Param name="gpPort" updates="None" val="4242" valType="num"/>
@@ -427,8 +427,8 @@
         <Param name="Begin JS Routine" updates="constant" val="/* Syntax Error: Fix Python code */" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="#slider.markerPos=0&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="keys=event.getKeys()&amp;#10;#calculate the pixels to move based on keypresses&amp;#10;if xPos &gt; -500:&amp;#10;    posChange = 10&amp;#10;else:&amp;#10;    posChange = 1&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        xPos = xPos + posChange&amp;#10;    elif 'left' in keys:&amp;#10;        xPos = xPos - posChange &amp;#10;" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if ((xPos &gt; (- 500))) {&amp;#10;    posChange = 10;&amp;#10;} else {&amp;#10;    posChange = 1;&amp;#10;}&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        xPos = (xPos + posChange);&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            xPos = (xPos - posChange);&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="keys=event.getKeys()&amp;#10;#calculate the pixels to move based on keypresses&amp;#10;if xPos &gt; -500:&amp;#10;    posChange = 10&amp;#10;elif (xPos &lt; -500) and (xPos &gt; -610):&amp;#10;    posChange = 5&amp;#10;else:&amp;#10;    posChange = 2&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        xPos = xPos + posChange&amp;#10;    elif 'left' in keys:&amp;#10;        xPos = xPos - posChange &amp;#10;" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if ((xPos &gt; (- 500))) {&amp;#10;    posChange = 10;&amp;#10;} else {&amp;#10;    if (((xPos &lt; (- 500)) &amp;&amp; (xPos &gt; (- 610)))) {&amp;#10;        posChange = 5;&amp;#10;    } else {&amp;#10;        posChange = 2;&amp;#10;    }&amp;#10;}&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        xPos = (xPos + posChange);&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            xPos = (xPos - posChange);&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="screenEdgeNorm = xPos;&amp;#10;screenEdgePx = screenEdgeNorm;&amp;#10;if ((screenEdgeNorm &lt; (- 400))) {&amp;#10;    skip_checkEdge = true;&amp;#10;    screenEdgeLoop.finished = true;&amp;#10;}&amp;#10;psychoJS.experiment.addData(&quot;screenEdgeNorm&quot;, screenEdgeNorm);&amp;#10;psychoJS.experiment.addData(&quot;screenEdgePx&quot;, screenEdgePx);&amp;#10;" valType="extendedCode"/>
@@ -451,10 +451,10 @@
         <Param name="name" updates="None" val="moveTri" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="90" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(xPos, 40)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(xPos, 35)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="line" valType="str"/>
-        <Param name="size" updates="constant" val="(30,50)" valType="code"/>
+        <Param name="size" updates="constant" val="(30,70)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -474,15 +474,15 @@
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
         <Param name="lineColor" updates="constant" val="$[-1,-1,1]" valType="str"/>
         <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="lineWidth" updates="constant" val="3" valType="code"/>
+        <Param name="lineWidth" updates="constant" val="5" valType="code"/>
         <Param name="nVertices" updates="constant" val="3" valType="int"/>
         <Param name="name" updates="None" val="targetTri" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="90" valType="code"/>
-        <Param name="pos" updates="constant" val="(-.95, -.03)" valType="code"/>
+        <Param name="pos" updates="constant" val="(-.95, -.01)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="line" valType="str"/>
-        <Param name="size" updates="constant" val="(0.05, 0.15)" valType="code"/>
+        <Param name="size" updates="constant" val="(0.05, 0.25)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -492,42 +492,6 @@
         <Param name="units" updates="None" val="norm" valType="str"/>
         <Param name="vertices" updates="constant" val="" valType="list"/>
       </PolygonComponent>
-      <SliderComponent name="slider">
-        <Param name="borderColor" updates="constant" val="White" valType="color"/>
-        <Param name="color" updates="constant" val="White" valType="color"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="True" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="Red" valType="color"/>
-        <Param name="flip" updates="constant" val="False" valType="bool"/>
-        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
-        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
-        <Param name="granularity" updates="constant" val="0" valType="num"/>
-        <Param name="initVal" updates="None" val="" valType="code"/>
-        <Param name="labels" updates="constant" val="" valType="list"/>
-        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
-        <Param name="name" updates="None" val="slider" valType="code"/>
-        <Param name="opacity" updates="constant" val="" valType="num"/>
-        <Param name="ori" updates="constant" val="0" valType="num"/>
-        <Param name="pos" updates="constant" val="(-5000, 0)" valType="list"/>
-        <Param name="readOnly" updates="constant" val="False" valType="bool"/>
-        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
-        <Param name="size" updates="constant" val="(10000.0, 20)" valType="list"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="condition" valType="str"/>
-        <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="storeHistory" updates="constant" val="False" valType="bool"/>
-        <Param name="storeRating" updates="constant" val="True" valType="bool"/>
-        <Param name="storeRatingTime" updates="constant" val="False" valType="bool"/>
-        <Param name="styleTweaks" updates="constant" val="('labels45', 'triangleMarker')" valType="list"/>
-        <Param name="styles" updates="constant" val="slider" valType="str"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="ticks" updates="constant" val="(-1, 0.5, 0)" valType="list"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-      </SliderComponent>
       <PolygonComponent name="nextPoly1">
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
@@ -624,6 +588,34 @@
         <Param name="units" updates="None" val="norm" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <PolygonComponent name="line">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="white" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="white" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="5" valType="code"/>
+        <Param name="nVertices" updates="constant" val="3" valType="int"/>
+        <Param name="name" updates="None" val="line" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(-.6,.05)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="line" valType="str"/>
+        <Param name="size" updates="constant" val="(1, 0.05)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="norm" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="checkScreenEdge">
       <CodeComponent name="checkEdgCode">
