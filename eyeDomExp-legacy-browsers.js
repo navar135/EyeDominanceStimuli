@@ -120,13 +120,13 @@ var screenEdgePx;
 var skip_checkEdge;
 var xPos;
 var posChange;
+var line;
 var moveTri;
 var targetTri;
 var nextPoly1;
 var nextButton1;
 var nextMouse1;
 var text;
-var line;
 var checkScreenEdgeClock;
 var instructPls;
 var tryAgainPoly;
@@ -309,7 +309,7 @@ async function experimentInit() {
   instruct = new visual.TextStim({
     win: psychoJS.window,
     name: 'instruct',
-    text: 'Click and slide the red circle so that it lines up with the blue line. \n\nOnce they are aligned click “Next”.\n\n',
+    text: 'Use the left and right arrow keys to move the red vertical line so that it lines up with the blue line. \n\nOnce they are aligned click “Next”.\n\n',
     font: 'Arial',
     units: 'norm', 
     pos: [0, 0.7], height: 0.05,  wrapWidth: undefined, ori: 0,
@@ -321,6 +321,15 @@ async function experimentInit() {
   skip_checkEdge = false;
   xPos = (- 300);
   posChange = 1;
+  
+  line = new visual.ShapeStim ({
+    win: psychoJS.window, name: 'line', units : 'norm', 
+    vertices: [[-[1, 0.05][0]/2.0, 0], [+[1, 0.05][0]/2.0, 0]],
+    ori: 0, pos: [(- 0.7), 0.01],
+    lineWidth: 5, lineColor: new util.Color('white'),
+    fillColor: new util.Color('white'),
+    opacity: 1, depth: -3, interpolate: true,
+  });
   
   moveTri = new visual.ShapeStim ({
     win: psychoJS.window, name: 'moveTri', units : 'pix', 
@@ -337,7 +346,7 @@ async function experimentInit() {
     ori: 90, pos: [(- 0.95), (- 0.01)],
     lineWidth: 5, lineColor: new util.Color([(- 1), (- 1), 1]),
     fillColor: new util.Color([(- 1), (- 1), 1]),
-    opacity: 1, depth: -3, interpolate: true,
+    opacity: 1, depth: -4, interpolate: true,
   });
   
   nextPoly1 = new visual.Rect ({
@@ -346,7 +355,7 @@ async function experimentInit() {
     ori: 0, pos: [0.8, (- 0.8)],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([1, 0, 0]),
-    opacity: 1, depth: -4, interpolate: true,
+    opacity: 1, depth: -5, interpolate: true,
   });
   
   nextButton1 = new visual.TextStim({
@@ -357,7 +366,7 @@ async function experimentInit() {
     units: 'norm', 
     pos: [0.8, (- 0.8)], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
-    depth: -5.0 
+    depth: -6.0 
   });
   
   nextMouse1 = new core.Mouse({
@@ -372,16 +381,7 @@ async function experimentInit() {
     units: 'norm', 
     pos: [0.2, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
-    depth: -7.0 
-  });
-  
-  line = new visual.ShapeStim ({
-    win: psychoJS.window, name: 'line', units : 'norm', 
-    vertices: [[-[1, 0.05][0]/2.0, 0], [+[1, 0.05][0]/2.0, 0]],
-    ori: 0, pos: [(- 0.7), 0.01],
-    lineWidth: 5, lineColor: new util.Color('white'),
-    fillColor: new util.Color('white'),
-    opacity: 1, depth: -3, interpolate: true,
+    depth: -8.0 
   });
   
   // Initialize components for Routine "checkScreenEdge"
@@ -389,7 +389,7 @@ async function experimentInit() {
   instructPls = new visual.TextStim({
     win: psychoJS.window,
     name: 'instructPls',
-    text: 'Please move the red triangle to line up with the blue arrow before continuing. \n',
+    text: 'Please move the red line to line up with the blue line before continuing. \n',
     font: 'Arial',
     units: 'norm', 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0,
@@ -1190,13 +1190,13 @@ function findScreenEdgeRoutineBegin(snapshot) {
     // keep track of which components have finished
     findScreenEdgeComponents = [];
     findScreenEdgeComponents.push(instruct);
+    findScreenEdgeComponents.push(line);
     findScreenEdgeComponents.push(moveTri);
     findScreenEdgeComponents.push(targetTri);
     findScreenEdgeComponents.push(nextPoly1);
     findScreenEdgeComponents.push(nextButton1);
     findScreenEdgeComponents.push(nextMouse1);
     findScreenEdgeComponents.push(text);
-    findScreenEdgeComponents.push(line);
     
     findScreenEdgeComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1262,6 +1262,16 @@ function findScreenEdgeRoutineEachFrame() {
         }
     }
     
+    
+    // *line* updates
+    if (t >= 0.0 && line.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      line.tStart = t;  // (not accounting for frame time here)
+      line.frameNStart = frameN;  // exact frame index
+      
+      line.setAutoDraw(true);
+    }
+
     
     // *moveTri* updates
     if (t >= 0.0 && moveTri.status === PsychoJS.Status.NOT_STARTED) {
@@ -1353,16 +1363,6 @@ function findScreenEdgeRoutineEachFrame() {
     if (text.status === PsychoJS.Status.STARTED){ // only update if being drawn
       text.setText(xPos, false);
     }
-    
-    // *line* updates
-    if (t >= 0.0 && line.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      line.tStart = t;  // (not accounting for frame time here)
-      line.frameNStart = frameN;  // exact frame index
-      
-      line.setAutoDraw(true);
-    }
-
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1401,11 +1401,10 @@ function findScreenEdgeRoutineEnd() {
     });
     screenEdgeNorm = xPos;
     screenEdgePx = screenEdgeNorm;
-    if ((screenEdgeNorm < (- 400))) {
+    if ((screenEdgePx < xPos)) {
         skip_checkEdge = true;
         screenEdgeLoop.finished = true;
     }
-    psychoJS.experiment.addData("screenEdgeNorm", screenEdgeNorm);
     psychoJS.experiment.addData("screenEdgePx", screenEdgePx);
     
     // store data for psychoJS.experiment (ExperimentHandler)
