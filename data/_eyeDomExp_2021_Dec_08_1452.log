@@ -1,0 +1,160 @@
+1.6695 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+8.1775 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([-1, -1, -1]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x7fdde7b01ac8>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x7fdde6333c50>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 225.0], screen=0, size=array([2880, 1800]), stencilBits=0, stereo=False, units='norm', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+8.1777 	EXP 	window1: mouseVisible = True
+8.1778 	EXP 	window1: recordFrameIntervals = False
+8.3433 	EXP 	window1: recordFrameIntervals = True
+8.5267 	EXP 	window1: recordFrameIntervals = False
+9.7765 	EXP 	Created warningESC = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='warningESC', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='norm', win=Window(...), wrapWidth=1)
+9.8700 	EXP 	Created instructTop = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='instructTop', opacity=1, ori=0, pos=array([0. , 0.7]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1.5)
+9.8866 	EXP 	Created instructBottom = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='instructBottom', opacity=1, ori=0, pos=array([ 0. , -0.6]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1)
+9.9563 	EXP 	Created cardImage = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, image='images/bankImage.png', interpolate=True, mask=None, maskParams=None, name='cardImage', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), texRes=512, units='pix', win=Window(...))
+9.9607 	EXP 	Created line_R_vert = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-5.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='line_R_vert', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+9.9621 	EXP 	Created line_L_vert = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-6.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='line_L_vert', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+9.9633 	EXP 	Created line_T_horiz = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-7.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='line_T_horiz', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+9.9647 	EXP 	Created line_B_horiz = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-8.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='line_B_horiz', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+9.9670 	EXP 	Created nextPoly = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-9.0, fillColor=array([1, 0, 0]), fillColorSpace='rgb', fillRGB=array([1, 0, 0]), interpolate=True, lineColor=array([-1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([-1, -1, -1]), lineWidth=2, name='nextPoly', opacity=1, ori=0.0, pos=array([ 0.8, -0.8]), size=array([0.12, 0.06]), units='norm', vertices=ndarray(...), win=Window(...))
+9.9688 	EXP 	Created nextButton = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([-1., -1., -1.]), colorSpace='rgb', contrast=1.0, depth=-10.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='nextButton', opacity=1, ori=0, pos=array([ 0.8, -0.8]), rgb=UNKNOWN, text='', units='norm', win=Window(...), wrapWidth=1)
+9.9690 	EXP 	window1: mouseVisible = True
+9.9760 	EXP 	Created instruct = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='instruct', opacity=1, ori=0, pos=array([0. , 0.7]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1)
+9.9982 	EXP 	window1: mouseVisible = True
+10.0099 	EXP 	Created slider = Slider(__class__=<class 'psychopy.visual.slider.Slider'>, autoDraw=False, autoLog=True, borderColor=None, color=None, colorSpace='rgb', depth=-1, fillColor=None, flip=False, font='Open Sans', granularity=0.0, labelHeight=0.05, labelWrapWidth=None, labels=None, name='slider', opacity=None, pos=(-1.4, 0.07), readOnly=False, self=UNKNOWN, size=(3.2, 0.07), startValue=None, style=method-wrapper(...), styleTweaks=method-wrapper(...), ticks=array([-1. , -0.5,  0. ]), units='norm', win=Window(...))
+10.0194 	EXP 	Created targetTri = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-3.0, fillColor=array([-1, -1,  1]), fillColorSpace='rgb', fillRGB=array([-1, -1,  1]), interpolate=True, lineColor=array([-1., -1.,  1.]), lineColorSpace='rgb', lineRGB=array([-1, -1,  1]), lineWidth=1, name='targetTri', opacity=1, ori=0.0, pos=array([-0.95,  0.  ]), size=array([0.09, 0.15]), units='norm', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.0208 	EXP 	Created nextPoly1 = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-4.0, fillColor=array([1, 0, 0]), fillColorSpace='rgb', fillRGB=array([1, 0, 0]), interpolate=True, lineColor=array([-1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([-1, -1, -1]), lineWidth=1, name='nextPoly1', opacity=1, ori=0.0, pos=array([ 0.8, -0.8]), size=array([0.12, 0.06]), units='norm', vertices=ndarray(...), win=Window(...))
+10.0222 	EXP 	Created nextButton1 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([-1., -1., -1.]), colorSpace='rgb', contrast=1.0, depth=-5.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='nextButton1', opacity=1, ori=0, pos=array([ 0.8, -0.8]), rgb=UNKNOWN, text='', units='norm', win=Window(...), wrapWidth=1)
+10.0223 	EXP 	window1: mouseVisible = True
+10.0235 	EXP 	Created sequence: random, trialTypes=1, nReps=50, seed=None
+10.0245 	EXP 	New trial (rep=0, index=0): None
+10.0789 	EXP 	slider: autoLog = True
+10.0789 	EXP 	slider: markerPos = None
+10.0789 	EXP 	slider: rating = None
+10.0789 	EXP 	slider: markerPos = None
+10.0789 	EXP 	slider: contrast = 1.0
+10.0789 	EXP 	slider: autoLog = True
+10.0789 	EXP 	slider: styleTweaks = []
+10.0789 	EXP 	slider: style = 'slider'
+10.0789 	EXP 	slider: styleTweaks = ['labels45', 'triangleMarker']
+10.0789 	EXP 	warningESC: text = ''
+10.0789 	EXP 	warningESC: autoDraw = False
+10.0789 	EXP 	nextButton: text = 'Next'
+10.0789 	EXP 	instructTop: autoDraw = True
+10.0789 	EXP 	instructBottom: autoDraw = True
+10.0789 	EXP 	cardImage: autoDraw = True
+10.0789 	EXP 	line_R_vert: autoDraw = True
+10.0789 	EXP 	line_L_vert: autoDraw = True
+10.0789 	EXP 	line_T_horiz: autoDraw = True
+10.0789 	EXP 	line_B_horiz: autoDraw = True
+10.0789 	EXP 	nextPoly: autoDraw = True
+10.0789 	EXP 	nextButton: autoDraw = True
+11.5234 	DATA 	Mouse: Left button down, pos=(1308,88)
+11.5630 	EXP 	instructTop: autoDraw = False
+11.5630 	EXP 	instructBottom: autoDraw = False
+11.5630 	EXP 	cardImage: autoDraw = False
+11.5630 	EXP 	line_R_vert: autoDraw = False
+11.5630 	EXP 	line_L_vert: autoDraw = False
+11.5630 	EXP 	line_T_horiz: autoDraw = False
+11.5630 	EXP 	line_B_horiz: autoDraw = False
+11.5630 	EXP 	nextPoly: autoDraw = False
+11.5630 	EXP 	nextButton: autoDraw = False
+11.5630 	EXP 	slider: markerPos = None
+11.5630 	EXP 	slider: markerPos = None
+11.5630 	EXP 	slider: rating = None
+11.5630 	EXP 	slider: markerPos = 0
+11.5630 	EXP 	instruct: autoDraw = True
+11.5630 	EXP 	slider: autoDraw = True
+11.5630 	EXP 	targetTri: autoDraw = True
+11.5630 	EXP 	nextPoly1: autoDraw = True
+11.5630 	EXP 	nextButton1: autoDraw = True
+11.6038 	DATA 	Mouse:  Left button up, pos=(1308,88)
+12.9779 	DATA 	Mouse: Left button down, pos=(857,506)
+13.6122 	DATA 	Mouse:  Left button up, pos=(338,506)
+14.4720 	DATA 	Mouse: Left button down, pos=(873,499)
+15.4094 	EXP 	slider: markerPos = -0.375
+15.4333 	EXP 	slider: markerPos = -0.375
+15.4576 	EXP 	slider: markerPos = -0.3754340277777778
+15.4741 	EXP 	slider: markerPos = -0.3754340277777778
+15.4974 	EXP 	slider: markerPos = -0.3754340277777778
+15.5179 	EXP 	slider: markerPos = -0.3754340277777778
+15.5380 	EXP 	slider: markerPos = -0.3754340277777778
+15.5571 	EXP 	slider: markerPos = -0.3754340277777778
+15.5781 	EXP 	slider: markerPos = -0.3754340277777778
+15.5982 	EXP 	slider: markerPos = -0.375
+15.6244 	EXP 	slider: markerPos = -0.375
+15.6426 	EXP 	slider: markerPos = -0.375
+15.6767 	EXP 	slider: markerPos = -0.375
+15.6996 	EXP 	slider: markerPos = -0.375
+15.7219 	EXP 	slider: markerPos = -0.3745659722222223
+15.7424 	EXP 	slider: markerPos = -0.3745659722222223
+15.7642 	EXP 	slider: markerPos = -0.3745659722222223
+15.7854 	EXP 	slider: markerPos = -0.3745659722222223
+15.8050 	EXP 	slider: markerPos = -0.3745659722222223
+15.8267 	EXP 	slider: markerPos = -0.3741319444444444
+15.8471 	EXP 	slider: markerPos = -0.37369791666666674
+15.8721 	EXP 	slider: markerPos = -0.37239583333333337
+15.8939 	EXP 	slider: markerPos = -0.36979166666666674
+15.9131 	EXP 	slider: markerPos = -0.3671875
+15.9334 	EXP 	slider: markerPos = -0.36545138888888895
+15.9563 	EXP 	slider: markerPos = -0.36328125
+15.9765 	EXP 	slider: markerPos = -0.36197916666666674
+15.9985 	EXP 	slider: markerPos = -0.36111111111111116
+16.0228 	EXP 	slider: markerPos = -0.3602430555555556
+16.0434 	EXP 	slider: markerPos = -0.359375
+16.0612 	EXP 	slider: markerPos = -0.3589409722222222
+16.0829 	EXP 	slider: markerPos = -0.3585069444444444
+16.1042 	EXP 	slider: markerPos = -0.35807291666666674
+16.1276 	EXP 	slider: markerPos = -0.35807291666666674
+16.1473 	EXP 	slider: markerPos = -0.35807291666666674
+16.1672 	EXP 	slider: markerPos = -0.35807291666666674
+16.1910 	EXP 	slider: markerPos = -0.35807291666666674
+16.2112 	EXP 	slider: markerPos = -0.35807291666666674
+16.2311 	EXP 	slider: markerPos = -0.35807291666666674
+16.2510 	EXP 	slider: markerPos = -0.35807291666666674
+16.2703 	EXP 	slider: markerPos = -0.35807291666666674
+16.2933 	EXP 	slider: markerPos = -0.35807291666666674
+16.3103 	EXP 	slider: markerPos = -0.35807291666666674
+16.3312 	EXP 	slider: markerPos = -0.35807291666666674
+16.3505 	EXP 	slider: markerPos = -0.35807291666666674
+16.3707 	EXP 	slider: markerPos = -0.35807291666666674
+16.3905 	EXP 	slider: markerPos = -0.35807291666666674
+16.4123 	EXP 	slider: markerPos = -0.35807291666666674
+16.4319 	EXP 	slider: markerPos = -0.35807291666666674
+16.4518 	EXP 	slider: markerPos = -0.35807291666666674
+16.4711 	EXP 	slider: markerPos = -0.35807291666666674
+16.4933 	EXP 	slider: markerPos = -0.35807291666666674
+16.5106 	EXP 	slider: markerPos = -0.35807291666666674
+16.5302 	EXP 	slider: markerPos = -0.35807291666666674
+16.5497 	EXP 	slider: markerPos = -0.35807291666666674
+16.5737 	EXP 	slider: markerPos = -0.3585069444444444
+16.5915 	EXP 	slider: markerPos = -0.3585069444444444
+16.6108 	EXP 	slider: markerPos = -0.3585069444444444
+16.6299 	EXP 	slider: markerPos = -0.3585069444444444
+16.6511 	EXP 	slider: markerPos = -0.3585069444444444
+16.6747 	EXP 	slider: markerPos = -0.3585069444444444
+16.6921 	EXP 	slider: markerPos = -0.3585069444444444
+16.7162 	EXP 	slider: markerPos = -0.3589409722222222
+16.7395 	EXP 	slider: markerPos = -0.3589409722222222
+16.7558 	EXP 	slider: markerPos = -0.3589409722222222
+16.7771 	EXP 	slider: markerPos = -0.3589409722222222
+16.7928 	EXP 	slider: markerPos = -0.3589409722222222
+16.8137 	EXP 	slider: markerPos = -0.3589409722222222
+16.8315 	EXP 	slider: markerPos = -0.3589409722222222
+16.8499 	EXP 	slider: markerPos = -0.3589409722222222
+16.8689 	EXP 	slider: markerPos = -0.3589409722222222
+16.8872 	EXP 	slider: markerPos = -0.3589409722222222
+16.9069 	EXP 	slider: markerPos = -0.3589409722222222
+16.9261 	EXP 	slider: markerPos = -0.3589409722222222
+16.9464 	EXP 	slider: markerPos = -0.3589409722222222
+16.9652 	EXP 	slider: markerPos = -0.3589409722222222
+16.9887 	EXP 	slider: markerPos = -0.3589409722222222
+17.0089 	EXP 	slider: markerPos = -0.3589409722222222
+17.0276 	EXP 	slider: markerPos = -0.3589409722222222
+17.0369 	DATA 	Mouse:  Left button up, pos=(37,495)
+17.0463 	EXP 	slider: markerPos = -0.3589409722222222
+17.0680 	EXP 	slider: markerPos = -0.3589409722222222
+17.0680 	EXP 	slider: rating = -0.3589409722222222
+18.2242 	DATA 	Mouse: Left button down, pos=(1316,89)
+18.2399 	EXP 	instruct: autoDraw = False
+18.2399 	EXP 	slider: autoDraw = False
+18.2399 	EXP 	targetTri: autoDraw = False
+18.2399 	EXP 	nextPoly1: autoDraw = False
+18.2399 	EXP 	nextButton1: autoDraw = False
+18.2534 	EXP 	window1: mouseVisible = True

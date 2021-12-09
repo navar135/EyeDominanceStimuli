@@ -17,7 +17,7 @@ const psychoJS = new PsychoJS({
 psychoJS.openWindow({
   fullscr: false,
   color: new util.Color('black'),
-  units: 'height',
+  units: 'norm',
   waitBlanking: true
 });
 // schedule the experiment:
@@ -36,9 +36,10 @@ flowScheduler.add(experimentInit);
 flowScheduler.add(contWarningRoutineBegin());
 flowScheduler.add(contWarningRoutineEachFrame());
 flowScheduler.add(contWarningRoutineEnd());
-flowScheduler.add(findScreenResolRoutineBegin());
-flowScheduler.add(findScreenResolRoutineEachFrame());
-flowScheduler.add(findScreenResolRoutineEnd());
+const screenEdgeLoopLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(screenEdgeLoopLoopBegin(screenEdgeLoopLoopScheduler));
+flowScheduler.add(screenEdgeLoopLoopScheduler);
+flowScheduler.add(screenEdgeLoopLoopEnd);
 flowScheduler.add(quitPsychoJS, '', true);
 
 // quit if user presses Cancel in dialog box:
@@ -102,6 +103,15 @@ var line_B_horiz;
 var nextPoly;
 var nextButton;
 var nextMouse;
+var findScreenEdgeClock;
+var instruct;
+var slider;
+var screenEdgePx;
+var skip_checkEdge;
+var targetTri;
+var nextPoly1;
+var nextButton1;
+var nextMouse1;
 var globalClock;
 var routineTimer;
 async function experimentInit() {
@@ -236,6 +246,65 @@ async function experimentInit() {
     win: psychoJS.window,
   });
   nextMouse.mouseClock = new util.Clock();
+  // Initialize components for Routine "findScreenEdge"
+  findScreenEdgeClock = new util.Clock();
+  instruct = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'instruct',
+    text: 'Click and slide the red circle so that it lines up with the blue line. \n\nOnce they are aligned click “Next”.\n\n',
+    font: 'Arial',
+    units: 'norm', 
+    pos: [0, 0.7], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: 0.0 
+  });
+  
+  slider = new visual.Slider({
+    win: psychoJS.window, name: 'slider',
+    size: [3.2, 0.07], pos: [(- 1.4), 0.07], units: 'norm',
+    labels: undefined, ticks: [(- 1), (- 0.5), 0],
+    granularity: 0.0, style: ["SLIDER", "LABELS_45", "TRIANGLE_MARKER"],
+    color: new util.Color('white'), markerColor: new util.Color('Red'), lineColor: new util.Color('white'), 
+    fontFamily: 'Open Sans', bold: true, italic: false, depth: -1, 
+    flip: false,
+  });
+  
+  screenEdgePx = 0.0;
+  skip_checkEdge = false;
+  
+  targetTri = new visual.ShapeStim ({
+    win: psychoJS.window, name: 'targetTri', units : 'norm', 
+    vertices: [[-[0.09, 0.15][0]/2.0, -[0.09, 0.15][1]/2.0], [+[0.09, 0.15][0]/2.0, -[0.09, 0.15][1]/2.0], [0, [0.09, 0.15][1]/2.0]],
+    ori: 0, pos: [(- 0.95), 0],
+    lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), 1]),
+    fillColor: new util.Color([(- 1), (- 1), 1]),
+    opacity: 1, depth: -3, interpolate: true,
+  });
+  
+  nextPoly1 = new visual.Rect ({
+    win: psychoJS.window, name: 'nextPoly1', units : 'norm', 
+    width: [0.12, 0.06][0], height: [0.12, 0.06][1],
+    ori: 0, pos: [0.8, (- 0.8)],
+    lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
+    fillColor: new util.Color([1, 0, 0]),
+    opacity: 1, depth: -4, interpolate: true,
+  });
+  
+  nextButton1 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'nextButton1',
+    text: '',
+    font: 'Arial',
+    units: 'norm', 
+    pos: [0.8, (- 0.8)], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('black'),  opacity: 1,
+    depth: -5.0 
+  });
+  
+  nextMouse1 = new core.Mouse({
+    win: psychoJS.window,
+  });
+  nextMouse1.mouseClock = new util.Clock();
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
   routineTimer = new util.CountdownTimer();  // to track time remaining of each (non-slip) routine
@@ -338,6 +407,49 @@ function contWarningRoutineEnd() {
     
     return Scheduler.Event.NEXT;
   };
+}
+
+
+var screenEdgeLoop;
+var currentLoop;
+function screenEdgeLoopLoopBegin(screenEdgeLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    screenEdgeLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 50, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'screenEdgeLoop'
+    });
+    psychoJS.experiment.addLoop(screenEdgeLoop); // add the loop to the experiment
+    currentLoop = screenEdgeLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    screenEdgeLoop.forEach(function() {
+      const snapshot = screenEdgeLoop.getSnapshot();
+    
+      screenEdgeLoopLoopScheduler.add(importConditions(snapshot));
+      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineBegin(snapshot));
+      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineEachFrame());
+      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineEnd());
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineBegin(snapshot));
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEachFrame());
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEnd());
+      screenEdgeLoopLoopScheduler.add(endLoopIteration(screenEdgeLoopLoopScheduler, snapshot));
+    });
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function screenEdgeLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(screenEdgeLoop);
+
+  return Scheduler.Event.NEXT;
 }
 
 
@@ -609,6 +721,187 @@ function findScreenResolRoutineEnd() {
 }
 
 
+var findScreenEdgeComponents;
+function findScreenEdgeRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //------Prepare to start Routine 'findScreenEdge'-------
+    t = 0;
+    findScreenEdgeClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    slider.reset()
+    slider.markerPos = 0;
+    
+    // setup some python lists for storing info about the nextMouse1
+    nextMouse1.clicked_name = [];
+    gotValidClick = false; // until a click is received
+    // keep track of which components have finished
+    findScreenEdgeComponents = [];
+    findScreenEdgeComponents.push(instruct);
+    findScreenEdgeComponents.push(slider);
+    findScreenEdgeComponents.push(targetTri);
+    findScreenEdgeComponents.push(nextPoly1);
+    findScreenEdgeComponents.push(nextButton1);
+    findScreenEdgeComponents.push(nextMouse1);
+    
+    findScreenEdgeComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function findScreenEdgeRoutineEachFrame() {
+  return async function () {
+    //------Loop for each frame of Routine 'findScreenEdge'-------
+    // get current time
+    t = findScreenEdgeClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *instruct* updates
+    if (t >= 0.0 && instruct.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      instruct.tStart = t;  // (not accounting for frame time here)
+      instruct.frameNStart = frameN;  // exact frame index
+      
+      instruct.setAutoDraw(true);
+    }
+
+    
+    // *slider* updates
+    if (t >= 0.0 && slider.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      slider.tStart = t;  // (not accounting for frame time here)
+      slider.frameNStart = frameN;  // exact frame index
+      
+      slider.setAutoDraw(true);
+    }
+
+    
+    // *targetTri* updates
+    if (t >= 0.0 && targetTri.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      targetTri.tStart = t;  // (not accounting for frame time here)
+      targetTri.frameNStart = frameN;  // exact frame index
+      
+      targetTri.setAutoDraw(true);
+    }
+
+    
+    // *nextPoly1* updates
+    if (t >= 0.0 && nextPoly1.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      nextPoly1.tStart = t;  // (not accounting for frame time here)
+      nextPoly1.frameNStart = frameN;  // exact frame index
+      
+      nextPoly1.setAutoDraw(true);
+    }
+
+    
+    // *nextButton1* updates
+    if (t >= 0.0 && nextButton1.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      nextButton1.tStart = t;  // (not accounting for frame time here)
+      nextButton1.frameNStart = frameN;  // exact frame index
+      
+      nextButton1.setAutoDraw(true);
+    }
+
+    
+    if (nextButton1.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      nextButton1.setText('Next', false);
+    }
+    // *nextMouse1* updates
+    if (t >= 0.0 && nextMouse1.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      nextMouse1.tStart = t;  // (not accounting for frame time here)
+      nextMouse1.frameNStart = frameN;  // exact frame index
+      
+      nextMouse1.status = PsychoJS.Status.STARTED;
+      nextMouse1.mouseClock.reset();
+      prevButtonState = nextMouse1.getPressed();  // if button is down already this ISN'T a new click
+      }
+    if (nextMouse1.status === PsychoJS.Status.STARTED) {  // only update if started and not finished!
+      _mouseButtons = nextMouse1.getPressed();
+      if (!_mouseButtons.every( (e,i,) => (e == prevButtonState[i]) )) { // button state changed?
+        prevButtonState = _mouseButtons;
+        if (_mouseButtons.reduce( (e, acc) => (e+acc) ) > 0) { // state changed to a new click
+          // check if the mouse was inside our 'clickable' objects
+          gotValidClick = false;
+          for (const obj of [nextButton1]) {
+            if (obj.contains(nextMouse1)) {
+              gotValidClick = true;
+              nextMouse1.clicked_name.push(obj.name)
+            }
+          }
+          if (gotValidClick === true) { // abort routine on response
+            continueRoutine = false;
+          }
+        }
+      }
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    findScreenEdgeComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+var screenEdgeNorm;
+function findScreenEdgeRoutineEnd() {
+  return async function () {
+    //------Ending Routine 'findScreenEdge'-------
+    findScreenEdgeComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    psychoJS.experiment.addData('slider.response', slider.getRating());
+    psychoJS.experiment.addData('slider.rt', slider.getRT());
+    screenEdgeNorm = slider.getRating();
+    screenEdgePx = (10000 * screenEdgeNorm);
+    if ((screenEdgeNorm < 0)) {
+        skip_checkEdge = true;
+        screenEdgeLoop.finished = true;
+    }
+    thisExp.addData("screenEdgeNorm", screenEdgeNorm);
+    thisExp.addData("screenEdgePx", screenEdgePx);
+    
+    // store data for psychoJS.experiment (ExperimentHandler)
+    // the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
 function endLoopIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
   return async function () {
@@ -645,6 +938,10 @@ async function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
+  
+  
   
   
   
