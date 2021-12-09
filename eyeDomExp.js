@@ -44,6 +44,9 @@ flowScheduler.add(experimentInit);
 flowScheduler.add(contWarningRoutineBegin());
 flowScheduler.add(contWarningRoutineEachFrame());
 flowScheduler.add(contWarningRoutineEnd());
+flowScheduler.add(findScreenResolRoutineBegin());
+flowScheduler.add(findScreenResolRoutineEachFrame());
+flowScheduler.add(findScreenResolRoutineEnd());
 const screenEdgeLoopLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(screenEdgeLoopLoopBegin(screenEdgeLoopLoopScheduler));
 flowScheduler.add(screenEdgeLoopLoopScheduler);
@@ -128,6 +131,11 @@ var targetTri;
 var nextPoly1;
 var nextButton1;
 var nextMouse1;
+var checkScreenEdgeClock;
+var instructPls;
+var tryAgainPoly;
+var tryAgainButton;
+var tryAgainMouse;
 var startBlindSpotClock;
 var num_repeat;
 var dot2square_dist;
@@ -176,7 +184,7 @@ async function experimentInit() {
     name: 'warningESC',
     text: '',
     font: 'Arial',
-    units: undefined, 
+    units: 'norm', 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
     depth: -1.0 
@@ -359,6 +367,43 @@ async function experimentInit() {
     win: psychoJS.window,
   });
   nextMouse1.mouseClock = new util.Clock();
+  // Initialize components for Routine "checkScreenEdge"
+  checkScreenEdgeClock = new util.Clock();
+  instructPls = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'instructPls',
+    text: 'Please move the red triangle to line up with the blue arrow before continuing. \n',
+    font: 'Arial',
+    units: 'norm', 
+    pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -1.0 
+  });
+  
+  tryAgainPoly = new visual.Rect ({
+    win: psychoJS.window, name: 'tryAgainPoly', units : 'norm', 
+    width: [0.15, 0.08][0], height: [0.15, 0.08][1],
+    ori: 0, pos: [0.8, (- 0.8)],
+    lineWidth: 2, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
+    fillColor: new util.Color([1, 0, 0]),
+    opacity: 1, depth: -2, interpolate: true,
+  });
+  
+  tryAgainButton = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'tryAgainButton',
+    text: '',
+    font: 'Arial',
+    units: 'norm', 
+    pos: [0.8, (- 0.8)], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('black'),  opacity: 1,
+    depth: -3.0 
+  });
+  
+  tryAgainMouse = new core.Mouse({
+    win: psychoJS.window,
+  });
+  tryAgainMouse.mouseClock = new util.Clock();
   // Initialize components for Routine "startBlindSpot"
   startBlindSpotClock = new util.Clock();
   num_repeat = 3;
@@ -555,7 +600,7 @@ async function experimentInit() {
     name: 'instruct2',
     text: 'Great job! \n\n** Please keep this distance from your screen until the very end! ** \n\nYou can uncover/open your right eye now. \nMake sure you are wearing the colored glasses, and prepare for the next block. \n\nPress the spacebar to continue to the main experiment. ',
     font: 'Arial',
-    units: undefined, 
+    units: 'norm', 
     pos: [0, 0], height: 0.03,  wrapWidth: 1.5, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
@@ -667,173 +712,6 @@ function contWarningRoutineEnd() {
     
     return Scheduler.Event.NEXT;
   };
-}
-
-
-var screenEdgeLoop;
-var currentLoop;
-function screenEdgeLoopLoopBegin(screenEdgeLoopLoopScheduler, snapshot) {
-  return async function() {
-    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
-    
-    // set up handler to look after randomisation of conditions etc
-    screenEdgeLoop = new TrialHandler({
-      psychoJS: psychoJS,
-      nReps: 50, method: TrialHandler.Method.RANDOM,
-      extraInfo: expInfo, originPath: undefined,
-      trialList: undefined,
-      seed: undefined, name: 'screenEdgeLoop'
-    });
-    psychoJS.experiment.addLoop(screenEdgeLoop); // add the loop to the experiment
-    currentLoop = screenEdgeLoop;  // we're now the current loop
-    
-    // Schedule all the trials in the trialList:
-    for (const thisScreenEdgeLoop of screenEdgeLoop) {
-      const snapshot = screenEdgeLoop.getSnapshot();
-      screenEdgeLoopLoopScheduler.add(importConditions(snapshot));
-      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineBegin(snapshot));
-      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineEachFrame());
-      screenEdgeLoopLoopScheduler.add(findScreenResolRoutineEnd());
-      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineBegin(snapshot));
-      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEachFrame());
-      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEnd());
-      screenEdgeLoopLoopScheduler.add(endLoopIteration(screenEdgeLoopLoopScheduler, snapshot));
-    }
-    
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
-async function screenEdgeLoopLoopEnd() {
-  psychoJS.experiment.removeLoop(screenEdgeLoop);
-
-  return Scheduler.Event.NEXT;
-}
-
-
-var outerLoop;
-function outerLoopLoopBegin(outerLoopLoopScheduler, snapshot) {
-  return async function() {
-    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
-    
-    // set up handler to look after randomisation of conditions etc
-    outerLoop = new TrialHandler({
-      psychoJS: psychoJS,
-      nReps: 20, method: TrialHandler.Method.RANDOM,
-      extraInfo: expInfo, originPath: undefined,
-      trialList: undefined,
-      seed: undefined, name: 'outerLoop'
-    });
-    psychoJS.experiment.addLoop(outerLoop); // add the loop to the experiment
-    currentLoop = outerLoop;  // we're now the current loop
-    
-    // Schedule all the trials in the trialList:
-    for (const thisOuterLoop of outerLoop) {
-      const snapshot = outerLoop.getSnapshot();
-      outerLoopLoopScheduler.add(importConditions(snapshot));
-      const midLoopLoopScheduler = new Scheduler(psychoJS);
-      outerLoopLoopScheduler.add(midLoopLoopBegin(midLoopLoopScheduler, snapshot));
-      outerLoopLoopScheduler.add(midLoopLoopScheduler);
-      outerLoopLoopScheduler.add(midLoopLoopEnd);
-      outerLoopLoopScheduler.add(warningRoutineBegin(snapshot));
-      outerLoopLoopScheduler.add(warningRoutineEachFrame());
-      outerLoopLoopScheduler.add(warningRoutineEnd());
-      outerLoopLoopScheduler.add(endLoopIteration(outerLoopLoopScheduler, snapshot));
-    }
-    
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
-var midLoop;
-function midLoopLoopBegin(midLoopLoopScheduler, snapshot) {
-  return async function() {
-    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
-    
-    // set up handler to look after randomisation of conditions etc
-    midLoop = new TrialHandler({
-      psychoJS: psychoJS,
-      nReps: 50, method: TrialHandler.Method.RANDOM,
-      extraInfo: expInfo, originPath: undefined,
-      trialList: undefined,
-      seed: undefined, name: 'midLoop'
-    });
-    psychoJS.experiment.addLoop(midLoop); // add the loop to the experiment
-    currentLoop = midLoop;  // we're now the current loop
-    
-    // Schedule all the trials in the trialList:
-    for (const thisMidLoop of midLoop) {
-      const snapshot = midLoop.getSnapshot();
-      midLoopLoopScheduler.add(importConditions(snapshot));
-      midLoopLoopScheduler.add(startBlindSpotRoutineBegin(snapshot));
-      midLoopLoopScheduler.add(startBlindSpotRoutineEachFrame());
-      midLoopLoopScheduler.add(startBlindSpotRoutineEnd());
-      const inLoopLoopScheduler = new Scheduler(psychoJS);
-      midLoopLoopScheduler.add(inLoopLoopBegin(inLoopLoopScheduler, snapshot));
-      midLoopLoopScheduler.add(inLoopLoopScheduler);
-      midLoopLoopScheduler.add(inLoopLoopEnd);
-      midLoopLoopScheduler.add(endLoopIteration(midLoopLoopScheduler, snapshot));
-    }
-    
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
-var inLoop;
-function inLoopLoopBegin(inLoopLoopScheduler, snapshot) {
-  return async function() {
-    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
-    
-    // set up handler to look after randomisation of conditions etc
-    inLoop = new TrialHandler({
-      psychoJS: psychoJS,
-      nReps: num_repeat, method: TrialHandler.Method.SEQUENTIAL,
-      extraInfo: expInfo, originPath: undefined,
-      trialList: undefined,
-      seed: undefined, name: 'inLoop'
-    });
-    psychoJS.experiment.addLoop(inLoop); // add the loop to the experiment
-    currentLoop = inLoop;  // we're now the current loop
-    
-    // Schedule all the trials in the trialList:
-    for (const thisInLoop of inLoop) {
-      const snapshot = inLoop.getSnapshot();
-      inLoopLoopScheduler.add(importConditions(snapshot));
-      inLoopLoopScheduler.add(findBlindSpotRoutineBegin(snapshot));
-      inLoopLoopScheduler.add(findBlindSpotRoutineEachFrame());
-      inLoopLoopScheduler.add(findBlindSpotRoutineEnd());
-      inLoopLoopScheduler.add(checkForRestartRoutineBegin(snapshot));
-      inLoopLoopScheduler.add(checkForRestartRoutineEachFrame());
-      inLoopLoopScheduler.add(checkForRestartRoutineEnd());
-      inLoopLoopScheduler.add(endLoopIteration(inLoopLoopScheduler, snapshot));
-    }
-    
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
-async function inLoopLoopEnd() {
-  psychoJS.experiment.removeLoop(inLoop);
-
-  return Scheduler.Event.NEXT;
-}
-
-
-async function midLoopLoopEnd() {
-  psychoJS.experiment.removeLoop(midLoop);
-
-  return Scheduler.Event.NEXT;
-}
-
-
-async function outerLoopLoopEnd() {
-  psychoJS.experiment.removeLoop(outerLoop);
-
-  return Scheduler.Event.NEXT;
 }
 
 
@@ -1104,6 +982,173 @@ function findScreenResolRoutineEnd() {
 }
 
 
+var screenEdgeLoop;
+var currentLoop;
+function screenEdgeLoopLoopBegin(screenEdgeLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    screenEdgeLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 50, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'screenEdgeLoop'
+    });
+    psychoJS.experiment.addLoop(screenEdgeLoop); // add the loop to the experiment
+    currentLoop = screenEdgeLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisScreenEdgeLoop of screenEdgeLoop) {
+      const snapshot = screenEdgeLoop.getSnapshot();
+      screenEdgeLoopLoopScheduler.add(importConditions(snapshot));
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineBegin(snapshot));
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEachFrame());
+      screenEdgeLoopLoopScheduler.add(findScreenEdgeRoutineEnd());
+      screenEdgeLoopLoopScheduler.add(checkScreenEdgeRoutineBegin(snapshot));
+      screenEdgeLoopLoopScheduler.add(checkScreenEdgeRoutineEachFrame());
+      screenEdgeLoopLoopScheduler.add(checkScreenEdgeRoutineEnd());
+      screenEdgeLoopLoopScheduler.add(endLoopIteration(screenEdgeLoopLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function screenEdgeLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(screenEdgeLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var outerLoop;
+function outerLoopLoopBegin(outerLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    outerLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 20, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'outerLoop'
+    });
+    psychoJS.experiment.addLoop(outerLoop); // add the loop to the experiment
+    currentLoop = outerLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisOuterLoop of outerLoop) {
+      const snapshot = outerLoop.getSnapshot();
+      outerLoopLoopScheduler.add(importConditions(snapshot));
+      const midLoopLoopScheduler = new Scheduler(psychoJS);
+      outerLoopLoopScheduler.add(midLoopLoopBegin(midLoopLoopScheduler, snapshot));
+      outerLoopLoopScheduler.add(midLoopLoopScheduler);
+      outerLoopLoopScheduler.add(midLoopLoopEnd);
+      outerLoopLoopScheduler.add(warningRoutineBegin(snapshot));
+      outerLoopLoopScheduler.add(warningRoutineEachFrame());
+      outerLoopLoopScheduler.add(warningRoutineEnd());
+      outerLoopLoopScheduler.add(endLoopIteration(outerLoopLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var midLoop;
+function midLoopLoopBegin(midLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    midLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 50, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'midLoop'
+    });
+    psychoJS.experiment.addLoop(midLoop); // add the loop to the experiment
+    currentLoop = midLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisMidLoop of midLoop) {
+      const snapshot = midLoop.getSnapshot();
+      midLoopLoopScheduler.add(importConditions(snapshot));
+      midLoopLoopScheduler.add(startBlindSpotRoutineBegin(snapshot));
+      midLoopLoopScheduler.add(startBlindSpotRoutineEachFrame());
+      midLoopLoopScheduler.add(startBlindSpotRoutineEnd());
+      const inLoopLoopScheduler = new Scheduler(psychoJS);
+      midLoopLoopScheduler.add(inLoopLoopBegin(inLoopLoopScheduler, snapshot));
+      midLoopLoopScheduler.add(inLoopLoopScheduler);
+      midLoopLoopScheduler.add(inLoopLoopEnd);
+      midLoopLoopScheduler.add(endLoopIteration(midLoopLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var inLoop;
+function inLoopLoopBegin(inLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    inLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: num_repeat, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'inLoop'
+    });
+    psychoJS.experiment.addLoop(inLoop); // add the loop to the experiment
+    currentLoop = inLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisInLoop of inLoop) {
+      const snapshot = inLoop.getSnapshot();
+      inLoopLoopScheduler.add(importConditions(snapshot));
+      inLoopLoopScheduler.add(findBlindSpotRoutineBegin(snapshot));
+      inLoopLoopScheduler.add(findBlindSpotRoutineEachFrame());
+      inLoopLoopScheduler.add(findBlindSpotRoutineEnd());
+      inLoopLoopScheduler.add(checkForRestartRoutineBegin(snapshot));
+      inLoopLoopScheduler.add(checkForRestartRoutineEachFrame());
+      inLoopLoopScheduler.add(checkForRestartRoutineEnd());
+      inLoopLoopScheduler.add(endLoopIteration(inLoopLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function inLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(inLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+async function midLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(midLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+async function outerLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(outerLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
 var findScreenEdgeComponents;
 function findScreenEdgeRoutineBegin(snapshot) {
   return async function () {
@@ -1276,6 +1321,153 @@ function findScreenEdgeRoutineEnd() {
     
     // store data for psychoJS.experiment (ExperimentHandler)
     // the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+var checkScreenEdgeComponents;
+function checkScreenEdgeRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //------Prepare to start Routine 'checkScreenEdge'-------
+    t = 0;
+    checkScreenEdgeClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    // setup some python lists for storing info about the tryAgainMouse
+    tryAgainMouse.clicked_name = [];
+    gotValidClick = false; // until a click is received
+    // keep track of which components have finished
+    checkScreenEdgeComponents = [];
+    checkScreenEdgeComponents.push(instructPls);
+    checkScreenEdgeComponents.push(tryAgainPoly);
+    checkScreenEdgeComponents.push(tryAgainButton);
+    checkScreenEdgeComponents.push(tryAgainMouse);
+    
+    for (const thisComponent of checkScreenEdgeComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function checkScreenEdgeRoutineEachFrame() {
+  return async function () {
+    //------Loop for each frame of Routine 'checkScreenEdge'-------
+    // get current time
+    t = checkScreenEdgeClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    if ((skip_checkEdge === true)) {
+        continueRoutine = false;
+    }
+    
+    
+    // *instructPls* updates
+    if (t >= 0.0 && instructPls.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      instructPls.tStart = t;  // (not accounting for frame time here)
+      instructPls.frameNStart = frameN;  // exact frame index
+      
+      instructPls.setAutoDraw(true);
+    }
+
+    
+    // *tryAgainPoly* updates
+    if (t >= 0.0 && tryAgainPoly.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      tryAgainPoly.tStart = t;  // (not accounting for frame time here)
+      tryAgainPoly.frameNStart = frameN;  // exact frame index
+      
+      tryAgainPoly.setAutoDraw(true);
+    }
+
+    
+    // *tryAgainButton* updates
+    if (t >= 0.0 && tryAgainButton.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      tryAgainButton.tStart = t;  // (not accounting for frame time here)
+      tryAgainButton.frameNStart = frameN;  // exact frame index
+      
+      tryAgainButton.setAutoDraw(true);
+    }
+
+    
+    if (tryAgainButton.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      tryAgainButton.setText('Try again', false);
+    }
+    // *tryAgainMouse* updates
+    if (t >= 0.0 && tryAgainMouse.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      tryAgainMouse.tStart = t;  // (not accounting for frame time here)
+      tryAgainMouse.frameNStart = frameN;  // exact frame index
+      
+      tryAgainMouse.status = PsychoJS.Status.STARTED;
+      tryAgainMouse.mouseClock.reset();
+      prevButtonState = tryAgainMouse.getPressed();  // if button is down already this ISN'T a new click
+      }
+    if (tryAgainMouse.status === PsychoJS.Status.STARTED) {  // only update if started and not finished!
+      _mouseButtons = tryAgainMouse.getPressed();
+      if (!_mouseButtons.every( (e,i,) => (e == prevButtonState[i]) )) { // button state changed?
+        prevButtonState = _mouseButtons;
+        if (_mouseButtons.reduce( (e, acc) => (e+acc) ) > 0) { // state changed to a new click
+          // check if the mouse was inside our 'clickable' objects
+          gotValidClick = false;
+          for (const obj of [tryAgainButton]) {
+            if (obj.contains(tryAgainMouse)) {
+              gotValidClick = true;
+              tryAgainMouse.clicked_name.push(obj.name)
+            }
+          }
+          if (gotValidClick === true) { // abort routine on response
+            continueRoutine = false;
+          }
+        }
+      }
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of checkScreenEdgeComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function checkScreenEdgeRoutineEnd() {
+  return async function () {
+    //------Ending Routine 'checkScreenEdge'-------
+    for (const thisComponent of checkScreenEdgeComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    // store data for psychoJS.experiment (ExperimentHandler)
+    // the Routine "checkScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     return Scheduler.Event.NEXT;

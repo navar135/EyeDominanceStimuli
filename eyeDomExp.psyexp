@@ -94,7 +94,7 @@
         <Param name="stopVal" updates="constant" val="" valType="num"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
         <Param name="text" updates="set every repeat" val="$txtVar" valType="str"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="units" updates="None" val="norm" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
     </Routine>
@@ -571,42 +571,6 @@
         <Param name="syncScreenRefresh" updates="None" val="False" valType="bool"/>
         <Param name="timeRelativeTo" updates="constant" val="mouse onset" valType="str"/>
       </MouseComponent>
-      <SliderComponent name="sliderOld">
-        <Param name="borderColor" updates="constant" val="White" valType="color"/>
-        <Param name="color" updates="constant" val="LightGray" valType="str"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="True" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="Red" valType="color"/>
-        <Param name="flip" updates="constant" val="False" valType="bool"/>
-        <Param name="font" updates="constant" val="HelveticaBold" valType="str"/>
-        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
-        <Param name="granularity" updates="constant" val="0" valType="code"/>
-        <Param name="initVal" updates="None" val="" valType="code"/>
-        <Param name="labels" updates="constant" val="" valType="list"/>
-        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
-        <Param name="name" updates="None" val="sliderOld" valType="code"/>
-        <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(-5000, 0)" valType="code"/>
-        <Param name="readOnly" updates="constant" val="False" valType="bool"/>
-        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
-        <Param name="size" updates="constant" val="(10000.0, 20)" valType="code"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="condition" valType="str"/>
-        <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="storeHistory" updates="constant" val="False" valType="bool"/>
-        <Param name="storeRating" updates="constant" val="True" valType="bool"/>
-        <Param name="storeRatingTime" updates="constant" val="False" valType="bool"/>
-        <Param name="styleTweaks" updates="constant" val="('labels45', 'triangleMarker')" valType="list"/>
-        <Param name="styles" updates="constant" val="['rating', 'triangleMarker']" valType="fixedList"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="ticks" updates="constant" val="(-1, -.5, 0)" valType="list"/>
-        <Param name="units" updates="None" val="pix" valType="str"/>
-      </SliderComponent>
     </Routine>
     <Routine name="checkScreenEdge">
       <CodeComponent name="checkEdgCode">
@@ -1339,7 +1303,7 @@
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
         <Param name="text" updates="constant" val="Great job! &amp;#10;&amp;#10;** Please keep this distance from your screen until the very end! ** &amp;#10;&amp;#10;You can uncover/open your right eye now. &amp;#10;Make sure you are wearing the colored glasses, and prepare for the next block. &amp;#10;&amp;#10;Press the spacebar to continue to the main experiment. " valType="extendedStr"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="units" updates="None" val="norm" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="1.5" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="keyToMoveOn">
@@ -1502,6 +1466,7 @@
   </Routines>
   <Flow>
     <Routine name="contWarning"/>
+    <Routine name="findScreenResol"/>
     <LoopInitiator loopType="TrialHandler" name="screenEdgeLoop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -1513,8 +1478,8 @@
       <Param name="name" updates="None" val="screenEdgeLoop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
-    <Routine name="findScreenResol"/>
     <Routine name="findScreenEdge"/>
+    <Routine name="checkScreenEdge"/>
     <LoopTerminator name="screenEdgeLoop"/>
     <LoopInitiator loopType="TrialHandler" name="outerLoop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>

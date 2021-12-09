@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Thu Dec  9 10:51:49 2021
+    on Thu Dec  9 11:05:16 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -88,7 +88,7 @@ contWarningClock = core.Clock()
 warningESC = visual.TextStim(win=win, name='warningESC',
     text='',
     font='Arial',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    units='norm', pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
@@ -206,6 +206,32 @@ nextButton1 = visual.TextStim(win=win, name='nextButton1',
 nextMouse1 = event.Mouse(win=win)
 x, y = [None, None]
 nextMouse1.mouseClock = core.Clock()
+
+# Initialize components for Routine "checkScreenEdge"
+checkScreenEdgeClock = core.Clock()
+instructPls = visual.TextStim(win=win, name='instructPls',
+    text='Please move the red triangle to line up with the blue arrow before continuing. \n',
+    font='Arial',
+    units='norm', pos=(0, 0), height=0.07, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
+tryAgainPoly = visual.Rect(
+    win=win, name='tryAgainPoly',units='norm', 
+    width=(0.15, 0.08)[0], height=(0.15, 0.08)[1],
+    ori=0, pos=(0.8, -0.8),
+    lineWidth=2,     colorSpace='rgb',  lineColor=[-1,-1,-1], fillColor=[1,0,0],
+    opacity=1, depth=-2.0, interpolate=True)
+tryAgainButton = visual.TextStim(win=win, name='tryAgainButton',
+    text='',
+    font='Arial',
+    units='norm', pos=(.8, -.8), height=0.05, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-3.0);
+tryAgainMouse = event.Mouse(win=win)
+x, y = [None, None]
+tryAgainMouse.mouseClock = core.Clock()
 
 # Initialize components for Routine "startBlindSpot"
 startBlindSpotClock = core.Clock()
@@ -353,7 +379,7 @@ goodJob_prepForExpClock = core.Clock()
 instruct2 = visual.TextStim(win=win, name='instruct2',
     text='Great job! \n\n** Please keep this distance from your screen until the very end! ** \n\nYou can uncover/open your right eye now. \nMake sure you are wearing the colored glasses, and prepare for the next block. \n\nPress the spacebar to continue to the main experiment. ',
     font='Arial',
-    pos=(0, 0), height=0.03, wrapWidth=1.5, ori=0, 
+    units='norm', pos=(0, 0), height=0.03, wrapWidth=1.5, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
@@ -435,6 +461,216 @@ thisExp.addData('warningESC.stopped', warningESC.tStopRefresh)
 # the Routine "contWarning" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
+# ------Prepare to start Routine "findScreenResol"-------
+continueRoutine = True
+# update component parameters for each repeat
+nextButton.setText('Next')
+# setup some python lists for storing info about the nextMouse
+nextMouse.clicked_name = []
+gotValidClick = False  # until a click is received
+# keep track of which components have finished
+findScreenResolComponents = [instructTop, instructBottom, cardImage, line_R_vert, line_L_vert, line_T_horiz, line_B_horiz, nextPoly, nextButton, nextMouse]
+for thisComponent in findScreenResolComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+findScreenResolClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "findScreenResol"-------
+while continueRoutine:
+    # get current time
+    t = findScreenResolClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=findScreenResolClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    keys=event.getKeys()
+    #calculate the pixels per cm from the actual size of the card
+    if len(keys):
+        if 'up' in keys:
+            x_pix = x_pix + pxChange
+        elif 'down' in keys:
+            x_pix = x_pix - pxChange
+        pxPerCm = x_pix/8.56     # divide num of pixels 
+                                               # wide by the size in cm
+                                               # of standard card to get
+                                               # resolution (px/cm)
+    
+    
+    # *instructTop* updates
+    if instructTop.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        instructTop.frameNStart = frameN  # exact frame index
+        instructTop.tStart = t  # local t and not account for scr refresh
+        instructTop.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(instructTop, 'tStartRefresh')  # time at next scr refresh
+        instructTop.setAutoDraw(True)
+    
+    # *instructBottom* updates
+    if instructBottom.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        instructBottom.frameNStart = frameN  # exact frame index
+        instructBottom.tStart = t  # local t and not account for scr refresh
+        instructBottom.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(instructBottom, 'tStartRefresh')  # time at next scr refresh
+        instructBottom.setAutoDraw(True)
+    
+    # *cardImage* updates
+    if cardImage.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        cardImage.frameNStart = frameN  # exact frame index
+        cardImage.tStart = t  # local t and not account for scr refresh
+        cardImage.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(cardImage, 'tStartRefresh')  # time at next scr refresh
+        cardImage.setAutoDraw(True)
+    if cardImage.status == STARTED:  # only update if drawing
+        cardImage.setSize((x_pix, x_pix * 0.6265625), log=False)
+    
+    # *line_R_vert* updates
+    if line_R_vert.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        line_R_vert.frameNStart = frameN  # exact frame index
+        line_R_vert.tStart = t  # local t and not account for scr refresh
+        line_R_vert.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(line_R_vert, 'tStartRefresh')  # time at next scr refresh
+        line_R_vert.setAutoDraw(True)
+    if line_R_vert.status == STARTED:  # only update if drawing
+        line_R_vert.setPos((x_pix/2, 0), log=False)
+        line_R_vert.setSize((1, (x_pix * 0.6304906542)+80), log=False)
+    
+    # *line_L_vert* updates
+    if line_L_vert.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        line_L_vert.frameNStart = frameN  # exact frame index
+        line_L_vert.tStart = t  # local t and not account for scr refresh
+        line_L_vert.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(line_L_vert, 'tStartRefresh')  # time at next scr refresh
+        line_L_vert.setAutoDraw(True)
+    if line_L_vert.status == STARTED:  # only update if drawing
+        line_L_vert.setPos((-x_pix/2, 0), log=False)
+        line_L_vert.setSize((1, (x_pix * 0.6304906542)+80), log=False)
+    
+    # *line_T_horiz* updates
+    if line_T_horiz.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        line_T_horiz.frameNStart = frameN  # exact frame index
+        line_T_horiz.tStart = t  # local t and not account for scr refresh
+        line_T_horiz.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(line_T_horiz, 'tStartRefresh')  # time at next scr refresh
+        line_T_horiz.setAutoDraw(True)
+    if line_T_horiz.status == STARTED:  # only update if drawing
+        line_T_horiz.setPos((0, (x_pix * 0.6304906542)/2), log=False)
+        line_T_horiz.setSize((x_pix +80, 1), log=False)
+    
+    # *line_B_horiz* updates
+    if line_B_horiz.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        line_B_horiz.frameNStart = frameN  # exact frame index
+        line_B_horiz.tStart = t  # local t and not account for scr refresh
+        line_B_horiz.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(line_B_horiz, 'tStartRefresh')  # time at next scr refresh
+        line_B_horiz.setAutoDraw(True)
+    if line_B_horiz.status == STARTED:  # only update if drawing
+        line_B_horiz.setPos((0, -(x_pix * 0.6304906542)/2), log=False)
+        line_B_horiz.setSize((x_pix +80, 1), log=False)
+    
+    # *nextPoly* updates
+    if nextPoly.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nextPoly.frameNStart = frameN  # exact frame index
+        nextPoly.tStart = t  # local t and not account for scr refresh
+        nextPoly.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nextPoly, 'tStartRefresh')  # time at next scr refresh
+        nextPoly.setAutoDraw(True)
+    
+    # *nextButton* updates
+    if nextButton.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nextButton.frameNStart = frameN  # exact frame index
+        nextButton.tStart = t  # local t and not account for scr refresh
+        nextButton.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nextButton, 'tStartRefresh')  # time at next scr refresh
+        nextButton.setAutoDraw(True)
+    # *nextMouse* updates
+    if nextMouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nextMouse.frameNStart = frameN  # exact frame index
+        nextMouse.tStart = t  # local t and not account for scr refresh
+        nextMouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nextMouse, 'tStartRefresh')  # time at next scr refresh
+        nextMouse.status = STARTED
+        nextMouse.mouseClock.reset()
+        prevButtonState = nextMouse.getPressed()  # if button is down already this ISN'T a new click
+    if nextMouse.status == STARTED:  # only update if started and not finished!
+        buttons = nextMouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                try:
+                    iter(nextButton)
+                    clickableList = nextButton
+                except:
+                    clickableList = [nextButton]
+                for obj in clickableList:
+                    if obj.contains(nextMouse):
+                        gotValidClick = True
+                        nextMouse.clicked_name.append(obj.name)
+                if gotValidClick:  # abort routine on response
+                    continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in findScreenResolComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "findScreenResol"-------
+for thisComponent in findScreenResolComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('px per cm', pxPerCm)
+
+thisExp.addData('instructTop.started', instructTop.tStartRefresh)
+thisExp.addData('instructTop.stopped', instructTop.tStopRefresh)
+thisExp.addData('instructBottom.started', instructBottom.tStartRefresh)
+thisExp.addData('instructBottom.stopped', instructBottom.tStopRefresh)
+thisExp.addData('line_R_vert.started', line_R_vert.tStartRefresh)
+thisExp.addData('line_R_vert.stopped', line_R_vert.tStopRefresh)
+thisExp.addData('line_L_vert.started', line_L_vert.tStartRefresh)
+thisExp.addData('line_L_vert.stopped', line_L_vert.tStopRefresh)
+thisExp.addData('line_T_horiz.started', line_T_horiz.tStartRefresh)
+thisExp.addData('line_T_horiz.stopped', line_T_horiz.tStopRefresh)
+thisExp.addData('line_B_horiz.started', line_B_horiz.tStartRefresh)
+thisExp.addData('line_B_horiz.stopped', line_B_horiz.tStopRefresh)
+thisExp.addData('nextPoly.started', nextPoly.tStartRefresh)
+thisExp.addData('nextPoly.stopped', nextPoly.tStopRefresh)
+# store data for thisExp (ExperimentHandler)
+thisExp.addData('nextMouse.started', nextMouse.tStart)
+thisExp.addData('nextMouse.stopped', nextMouse.tStop)
+thisExp.nextEntry()
+# the Routine "findScreenResol" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
 # set up handler to look after randomisation of conditions etc
 screenEdgeLoop = data.TrialHandler(nReps=50.0, method='random', 
     extraInfo=expInfo, originPath=-1,
@@ -453,215 +689,6 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     if thisScreenEdgeLoop != None:
         for paramName in thisScreenEdgeLoop:
             exec('{} = thisScreenEdgeLoop[paramName]'.format(paramName))
-    
-    # ------Prepare to start Routine "findScreenResol"-------
-    continueRoutine = True
-    # update component parameters for each repeat
-    nextButton.setText('Next')
-    # setup some python lists for storing info about the nextMouse
-    nextMouse.clicked_name = []
-    gotValidClick = False  # until a click is received
-    # keep track of which components have finished
-    findScreenResolComponents = [instructTop, instructBottom, cardImage, line_R_vert, line_L_vert, line_T_horiz, line_B_horiz, nextPoly, nextButton, nextMouse]
-    for thisComponent in findScreenResolComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    findScreenResolClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-    frameN = -1
-    
-    # -------Run Routine "findScreenResol"-------
-    while continueRoutine:
-        # get current time
-        t = findScreenResolClock.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=findScreenResolClock)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        keys=event.getKeys()
-        #calculate the pixels per cm from the actual size of the card
-        if len(keys):
-            if 'up' in keys:
-                x_pix = x_pix + pxChange
-            elif 'down' in keys:
-                x_pix = x_pix - pxChange
-            pxPerCm = x_pix/8.56     # divide num of pixels 
-                                                   # wide by the size in cm
-                                                   # of standard card to get
-                                                   # resolution (px/cm)
-        
-        
-        # *instructTop* updates
-        if instructTop.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            instructTop.frameNStart = frameN  # exact frame index
-            instructTop.tStart = t  # local t and not account for scr refresh
-            instructTop.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(instructTop, 'tStartRefresh')  # time at next scr refresh
-            instructTop.setAutoDraw(True)
-        
-        # *instructBottom* updates
-        if instructBottom.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            instructBottom.frameNStart = frameN  # exact frame index
-            instructBottom.tStart = t  # local t and not account for scr refresh
-            instructBottom.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(instructBottom, 'tStartRefresh')  # time at next scr refresh
-            instructBottom.setAutoDraw(True)
-        
-        # *cardImage* updates
-        if cardImage.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            cardImage.frameNStart = frameN  # exact frame index
-            cardImage.tStart = t  # local t and not account for scr refresh
-            cardImage.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(cardImage, 'tStartRefresh')  # time at next scr refresh
-            cardImage.setAutoDraw(True)
-        if cardImage.status == STARTED:  # only update if drawing
-            cardImage.setSize((x_pix, x_pix * 0.6265625), log=False)
-        
-        # *line_R_vert* updates
-        if line_R_vert.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            line_R_vert.frameNStart = frameN  # exact frame index
-            line_R_vert.tStart = t  # local t and not account for scr refresh
-            line_R_vert.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(line_R_vert, 'tStartRefresh')  # time at next scr refresh
-            line_R_vert.setAutoDraw(True)
-        if line_R_vert.status == STARTED:  # only update if drawing
-            line_R_vert.setPos((x_pix/2, 0), log=False)
-            line_R_vert.setSize((1, (x_pix * 0.6304906542)+80), log=False)
-        
-        # *line_L_vert* updates
-        if line_L_vert.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            line_L_vert.frameNStart = frameN  # exact frame index
-            line_L_vert.tStart = t  # local t and not account for scr refresh
-            line_L_vert.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(line_L_vert, 'tStartRefresh')  # time at next scr refresh
-            line_L_vert.setAutoDraw(True)
-        if line_L_vert.status == STARTED:  # only update if drawing
-            line_L_vert.setPos((-x_pix/2, 0), log=False)
-            line_L_vert.setSize((1, (x_pix * 0.6304906542)+80), log=False)
-        
-        # *line_T_horiz* updates
-        if line_T_horiz.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            line_T_horiz.frameNStart = frameN  # exact frame index
-            line_T_horiz.tStart = t  # local t and not account for scr refresh
-            line_T_horiz.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(line_T_horiz, 'tStartRefresh')  # time at next scr refresh
-            line_T_horiz.setAutoDraw(True)
-        if line_T_horiz.status == STARTED:  # only update if drawing
-            line_T_horiz.setPos((0, (x_pix * 0.6304906542)/2), log=False)
-            line_T_horiz.setSize((x_pix +80, 1), log=False)
-        
-        # *line_B_horiz* updates
-        if line_B_horiz.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            line_B_horiz.frameNStart = frameN  # exact frame index
-            line_B_horiz.tStart = t  # local t and not account for scr refresh
-            line_B_horiz.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(line_B_horiz, 'tStartRefresh')  # time at next scr refresh
-            line_B_horiz.setAutoDraw(True)
-        if line_B_horiz.status == STARTED:  # only update if drawing
-            line_B_horiz.setPos((0, -(x_pix * 0.6304906542)/2), log=False)
-            line_B_horiz.setSize((x_pix +80, 1), log=False)
-        
-        # *nextPoly* updates
-        if nextPoly.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            nextPoly.frameNStart = frameN  # exact frame index
-            nextPoly.tStart = t  # local t and not account for scr refresh
-            nextPoly.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(nextPoly, 'tStartRefresh')  # time at next scr refresh
-            nextPoly.setAutoDraw(True)
-        
-        # *nextButton* updates
-        if nextButton.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            nextButton.frameNStart = frameN  # exact frame index
-            nextButton.tStart = t  # local t and not account for scr refresh
-            nextButton.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(nextButton, 'tStartRefresh')  # time at next scr refresh
-            nextButton.setAutoDraw(True)
-        # *nextMouse* updates
-        if nextMouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            nextMouse.frameNStart = frameN  # exact frame index
-            nextMouse.tStart = t  # local t and not account for scr refresh
-            nextMouse.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(nextMouse, 'tStartRefresh')  # time at next scr refresh
-            nextMouse.status = STARTED
-            nextMouse.mouseClock.reset()
-            prevButtonState = nextMouse.getPressed()  # if button is down already this ISN'T a new click
-        if nextMouse.status == STARTED:  # only update if started and not finished!
-            buttons = nextMouse.getPressed()
-            if buttons != prevButtonState:  # button state changed?
-                prevButtonState = buttons
-                if sum(buttons) > 0:  # state changed to a new click
-                    # check if the mouse was inside our 'clickable' objects
-                    gotValidClick = False
-                    try:
-                        iter(nextButton)
-                        clickableList = nextButton
-                    except:
-                        clickableList = [nextButton]
-                    for obj in clickableList:
-                        if obj.contains(nextMouse):
-                            gotValidClick = True
-                            nextMouse.clicked_name.append(obj.name)
-                    if gotValidClick:  # abort routine on response
-                        continueRoutine = False
-        
-        # check for quit (typically the Esc key)
-        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-            core.quit()
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in findScreenResolComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # -------Ending Routine "findScreenResol"-------
-    for thisComponent in findScreenResolComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('px per cm', pxPerCm)
-    
-    screenEdgeLoop.addData('instructTop.started', instructTop.tStartRefresh)
-    screenEdgeLoop.addData('instructTop.stopped', instructTop.tStopRefresh)
-    screenEdgeLoop.addData('instructBottom.started', instructBottom.tStartRefresh)
-    screenEdgeLoop.addData('instructBottom.stopped', instructBottom.tStopRefresh)
-    screenEdgeLoop.addData('line_R_vert.started', line_R_vert.tStartRefresh)
-    screenEdgeLoop.addData('line_R_vert.stopped', line_R_vert.tStopRefresh)
-    screenEdgeLoop.addData('line_L_vert.started', line_L_vert.tStartRefresh)
-    screenEdgeLoop.addData('line_L_vert.stopped', line_L_vert.tStopRefresh)
-    screenEdgeLoop.addData('line_T_horiz.started', line_T_horiz.tStartRefresh)
-    screenEdgeLoop.addData('line_T_horiz.stopped', line_T_horiz.tStopRefresh)
-    screenEdgeLoop.addData('line_B_horiz.started', line_B_horiz.tStartRefresh)
-    screenEdgeLoop.addData('line_B_horiz.stopped', line_B_horiz.tStopRefresh)
-    screenEdgeLoop.addData('nextPoly.started', nextPoly.tStartRefresh)
-    screenEdgeLoop.addData('nextPoly.stopped', nextPoly.tStopRefresh)
-    # store data for screenEdgeLoop (TrialHandler)
-    screenEdgeLoop.addData('nextMouse.started', nextMouse.tStart)
-    screenEdgeLoop.addData('nextMouse.stopped', nextMouse.tStop)
-    # the Routine "findScreenResol" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
     
     # ------Prepare to start Routine "findScreenEdge"-------
     continueRoutine = True
@@ -812,6 +839,135 @@ for thisScreenEdgeLoop in screenEdgeLoop:
     screenEdgeLoop.addData('nextPoly1.stopped', nextPoly1.tStopRefresh)
     # store data for screenEdgeLoop (TrialHandler)
     # the Routine "findScreenEdge" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # ------Prepare to start Routine "checkScreenEdge"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    # setup some python lists for storing info about the tryAgainMouse
+    tryAgainMouse.clicked_name = []
+    gotValidClick = False  # until a click is received
+    # keep track of which components have finished
+    checkScreenEdgeComponents = [instructPls, tryAgainPoly, tryAgainButton, tryAgainMouse]
+    for thisComponent in checkScreenEdgeComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    checkScreenEdgeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "checkScreenEdge"-------
+    while continueRoutine:
+        # get current time
+        t = checkScreenEdgeClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=checkScreenEdgeClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        if skip_checkEdge==True:
+            continueRoutine = False
+        
+        # if spacebar is hit locally before moving triangle
+        # you get a crash, but if online, you get a screen
+        # asking you to align the red arrow to the blue
+        
+        # also slider looks like trash locally, but good 
+        # online which is where it matters
+        
+        # *instructPls* updates
+        if instructPls.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            instructPls.frameNStart = frameN  # exact frame index
+            instructPls.tStart = t  # local t and not account for scr refresh
+            instructPls.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(instructPls, 'tStartRefresh')  # time at next scr refresh
+            instructPls.setAutoDraw(True)
+        
+        # *tryAgainPoly* updates
+        if tryAgainPoly.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            tryAgainPoly.frameNStart = frameN  # exact frame index
+            tryAgainPoly.tStart = t  # local t and not account for scr refresh
+            tryAgainPoly.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(tryAgainPoly, 'tStartRefresh')  # time at next scr refresh
+            tryAgainPoly.setAutoDraw(True)
+        
+        # *tryAgainButton* updates
+        if tryAgainButton.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            tryAgainButton.frameNStart = frameN  # exact frame index
+            tryAgainButton.tStart = t  # local t and not account for scr refresh
+            tryAgainButton.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(tryAgainButton, 'tStartRefresh')  # time at next scr refresh
+            tryAgainButton.setAutoDraw(True)
+        if tryAgainButton.status == STARTED:  # only update if drawing
+            tryAgainButton.setText('Try again', log=False)
+        # *tryAgainMouse* updates
+        if tryAgainMouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            tryAgainMouse.frameNStart = frameN  # exact frame index
+            tryAgainMouse.tStart = t  # local t and not account for scr refresh
+            tryAgainMouse.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(tryAgainMouse, 'tStartRefresh')  # time at next scr refresh
+            tryAgainMouse.status = STARTED
+            tryAgainMouse.mouseClock.reset()
+            prevButtonState = tryAgainMouse.getPressed()  # if button is down already this ISN'T a new click
+        if tryAgainMouse.status == STARTED:  # only update if started and not finished!
+            buttons = tryAgainMouse.getPressed()
+            if buttons != prevButtonState:  # button state changed?
+                prevButtonState = buttons
+                if sum(buttons) > 0:  # state changed to a new click
+                    # check if the mouse was inside our 'clickable' objects
+                    gotValidClick = False
+                    try:
+                        iter(tryAgainButton)
+                        clickableList = tryAgainButton
+                    except:
+                        clickableList = [tryAgainButton]
+                    for obj in clickableList:
+                        if obj.contains(tryAgainMouse):
+                            gotValidClick = True
+                            tryAgainMouse.clicked_name.append(obj.name)
+                    if gotValidClick:  # abort routine on response
+                        continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in checkScreenEdgeComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "checkScreenEdge"-------
+    for thisComponent in checkScreenEdgeComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    screenEdgeLoop.addData('instructPls.started', instructPls.tStartRefresh)
+    screenEdgeLoop.addData('instructPls.stopped', instructPls.tStopRefresh)
+    screenEdgeLoop.addData('tryAgainPoly.started', tryAgainPoly.tStartRefresh)
+    screenEdgeLoop.addData('tryAgainPoly.stopped', tryAgainPoly.tStopRefresh)
+    screenEdgeLoop.addData('tryAgainButton.started', tryAgainButton.tStartRefresh)
+    screenEdgeLoop.addData('tryAgainButton.stopped', tryAgainButton.tStopRefresh)
+    # store data for screenEdgeLoop (TrialHandler)
+    screenEdgeLoop.addData('tryAgainMouse.started', tryAgainMouse.tStart)
+    screenEdgeLoop.addData('tryAgainMouse.stopped', tryAgainMouse.tStop)
+    # the Routine "checkScreenEdge" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     thisExp.nextEntry()
     
