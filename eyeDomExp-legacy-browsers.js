@@ -2996,7 +2996,6 @@ var binRivRun;
 var trialReps;
 var blockReps;
 var finalTrialDur;
-var contB;
 var contrastTrials;
 var contCounter;
 var skipContrast;
@@ -3023,8 +3022,6 @@ function goodJob_prepForExpRoutineBegin(snapshot) {
         trialReps = 30;
         blockReps = 1;
         finalTrialDur = 3;
-        contR = 0.5;
-        contB = 0.5;
         contrastTrials = 5;
         contCounter = 1;
         skipContrast = 1;
@@ -3139,6 +3136,7 @@ function goodJob_prepForExpRoutineEnd() {
 
 var _key_start_allKeys;
 var contStrCounter;
+var contB;
 var instContrastComponents;
 function instContrastRoutineBegin(snapshot) {
   return async function () {
@@ -3814,8 +3812,8 @@ function finalContRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     contB = (tempCont / 5);
-    txtContB = Math.round(contB, 2).toString();
-    txtVar = ("Your contrast number is " + txtContB);
+    txtContB = Math.round(contB, 2);
+    txtVar = ("Your contrast number is " + txtContB.toString());
     psychoJS.experiment.addData("contrastRange", contrastRange);
     
     displayContNum.setText(txtVar);
