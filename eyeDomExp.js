@@ -62,6 +62,10 @@ const contAveragingLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(contAveragingLoopBegin(contAveragingLoopScheduler));
 flowScheduler.add(contAveragingLoopScheduler);
 flowScheduler.add(contAveragingLoopEnd);
+const defineEyeLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(defineEyeLoopBegin(defineEyeLoopScheduler));
+flowScheduler.add(defineEyeLoopScheduler);
+flowScheduler.add(defineEyeLoopEnd);
 flowScheduler.add(quitPsychoJS, '', true);
 
 // quit if user presses Cancel in dialog box:
@@ -71,44 +75,44 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
-    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
-    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
-    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
-    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
     {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
-    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
-    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
-    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
-    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
-    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
-    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
-    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
-    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
-    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
-    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
-    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
-    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
-    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
-    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
     {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
-    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
-    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
-    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
-    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
-    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
+    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
     {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
-    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
     {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
-    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
-    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
-    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
     {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
+    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
+    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
+    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
+    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
+    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
+    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
+    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
+    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
     {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
-    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
+    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
+    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
+    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
+    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
+    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
+    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
     {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
-    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'}
+    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
+    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
+    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
+    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
+    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
+    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
+    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
+    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'}
   ]
 });
 
@@ -253,6 +257,19 @@ var finalContClock;
 var instContNum;
 var displayContNum;
 var key_resp_2;
+var binRivInst_sess1Clock;
+var warning_2;
+var describeBR;
+var key_resp_3;
+var radialEye_2;
+var bullseye_2;
+var binRivClock;
+var reminder;
+var key_resp_BR;
+var border_4;
+var radialEye_BR;
+var bullsEye_BR;
+var fixation_5;
 var globalClock;
 var routineTimer;
 async function experimentInit() {
@@ -767,7 +784,7 @@ async function experimentInit() {
     units: 'norm', 
     pos: [0, (- 0.35)], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
-    depth: -4.0 
+    depth: -5.0 
   });
   
   // Initialize components for Routine "gratingContrast"
@@ -921,6 +938,103 @@ async function experimentInit() {
   });
   
   key_resp_2 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  // Initialize components for Routine "binRivInst_sess1"
+  binRivInst_sess1Clock = new util.Clock();
+  warning_2 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'warning_2',
+    text: 'STOP: PLEASE READ THE INSTRUCTIONS FOR THIS PART',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0, 0.4], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color('red'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  describeBR = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'describeBR',
+    text: 'Both gratings will be presented simultaneously. They will both continuously drift (example below). Your task is to report which grating you see at any given time, The grating you perceive will switch back and forth rapidly. Press the appropriate key everytime you notice ONE of the gratings or if you see a mix of the two gratings. Press the key as soon as you notice a change. \n\nPress ‘left’ if you see the radial grating\nPress ‘right’ if you see the bulls eye grating\nPress ‘down’ if you see a mixture of the two gratings\n\nPlease take a minute to look at the gratings below so you can experience the perceived switching of the gratings before moving onto the actual task\n\nTo begin the task press ‘space’',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0, 0], height: 0.03,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -1.0 
+  });
+  
+  key_resp_3 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  radialEye_2 = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'radialEye_2', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, (- 200)], size : [80, 80],
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -3.0 
+  });
+  bullseye_2 = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'bullseye_2', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, (- 200)], size : [80, 80],
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -4.0 
+  });
+  // Initialize components for Routine "binRiv"
+  binRivClock = new util.Clock();
+  reminder = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'reminder',
+    text: 'Remember: \n‘left’ = radial\n‘right’ = bull’s eye\n‘down’ = mix',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0.3, 0.3], height: 0.03,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: 0.0 
+  });
+  
+  key_resp_BR = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  border_4 = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'border_4', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : 1.0,
+    color : new util.Color([1, 1, 1]), opacity : 1,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -2.0 
+  });
+  radialEye_BR = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'radialEye_BR', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : 1.0,
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -3.0 
+  });
+  bullsEye_BR = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'bullsEye_BR', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : 1.0,
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -4.0 
+  });
+  fixation_5 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'fixation_5',
+    text: '+',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0, 0], height: 0.025,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -5.0 
+  });
   
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
@@ -1625,6 +1739,164 @@ async function contTrialsLoopEnd() {
 
 async function contAveragingLoopEnd() {
   psychoJS.experiment.removeLoop(contAveraging);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var defineEye;
+function defineEyeLoopBegin(defineEyeLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    defineEye = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: eyeDom, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'defineEye'
+    });
+    psychoJS.experiment.addLoop(defineEye); // add the loop to the experiment
+    currentLoop = defineEye;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisDefineEye of defineEye) {
+      const snapshot = defineEye.getSnapshot();
+      defineEyeLoopScheduler.add(importConditions(snapshot));
+      const instBR_drift_sess1LoopScheduler = new Scheduler(psychoJS);
+      defineEyeLoopScheduler.add(instBR_drift_sess1LoopBegin(instBR_drift_sess1LoopScheduler, snapshot));
+      defineEyeLoopScheduler.add(instBR_drift_sess1LoopScheduler);
+      defineEyeLoopScheduler.add(instBR_drift_sess1LoopEnd);
+      const binRiv_trials_sess1LoopScheduler = new Scheduler(psychoJS);
+      defineEyeLoopScheduler.add(binRiv_trials_sess1LoopBegin(binRiv_trials_sess1LoopScheduler, snapshot));
+      defineEyeLoopScheduler.add(binRiv_trials_sess1LoopScheduler);
+      defineEyeLoopScheduler.add(binRiv_trials_sess1LoopEnd);
+      defineEyeLoopScheduler.add(endLoopIteration(defineEyeLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var instBR_drift_sess1;
+function instBR_drift_sess1LoopBegin(instBR_drift_sess1LoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    instBR_drift_sess1 = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 1000, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: TrialHandler.importConditions(psychoJS.serverManager, fileCSV, ':8'),
+      seed: undefined, name: 'instBR_drift_sess1'
+    });
+    psychoJS.experiment.addLoop(instBR_drift_sess1); // add the loop to the experiment
+    currentLoop = instBR_drift_sess1;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisInstBR_drift_sess1 of instBR_drift_sess1) {
+      const snapshot = instBR_drift_sess1.getSnapshot();
+      instBR_drift_sess1LoopScheduler.add(importConditions(snapshot));
+      instBR_drift_sess1LoopScheduler.add(binRivInst_sess1RoutineBegin(snapshot));
+      instBR_drift_sess1LoopScheduler.add(binRivInst_sess1RoutineEachFrame());
+      instBR_drift_sess1LoopScheduler.add(binRivInst_sess1RoutineEnd());
+      instBR_drift_sess1LoopScheduler.add(endLoopIteration(instBR_drift_sess1LoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function instBR_drift_sess1LoopEnd() {
+  psychoJS.experiment.removeLoop(instBR_drift_sess1);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var binRiv_trials_sess1;
+function binRiv_trials_sess1LoopBegin(binRiv_trials_sess1LoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    binRiv_trials_sess1 = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 5, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'binRiv_trials_sess1'
+    });
+    psychoJS.experiment.addLoop(binRiv_trials_sess1); // add the loop to the experiment
+    currentLoop = binRiv_trials_sess1;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisBinRiv_trials_sess1 of binRiv_trials_sess1) {
+      const snapshot = binRiv_trials_sess1.getSnapshot();
+      binRiv_trials_sess1LoopScheduler.add(importConditions(snapshot));
+      const drift_BR_sess1LoopScheduler = new Scheduler(psychoJS);
+      binRiv_trials_sess1LoopScheduler.add(drift_BR_sess1LoopBegin(drift_BR_sess1LoopScheduler, snapshot));
+      binRiv_trials_sess1LoopScheduler.add(drift_BR_sess1LoopScheduler);
+      binRiv_trials_sess1LoopScheduler.add(drift_BR_sess1LoopEnd);
+      binRiv_trials_sess1LoopScheduler.add(endLoopIteration(binRiv_trials_sess1LoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var drift_BR_sess1;
+function drift_BR_sess1LoopBegin(drift_BR_sess1LoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    drift_BR_sess1 = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 6, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: TrialHandler.importConditions(psychoJS.serverManager, fileCSV, driftrows),
+      seed: undefined, name: 'drift_BR_sess1'
+    });
+    psychoJS.experiment.addLoop(drift_BR_sess1); // add the loop to the experiment
+    currentLoop = drift_BR_sess1;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisDrift_BR_sess1 of drift_BR_sess1) {
+      const snapshot = drift_BR_sess1.getSnapshot();
+      drift_BR_sess1LoopScheduler.add(importConditions(snapshot));
+      drift_BR_sess1LoopScheduler.add(binRivRoutineBegin(snapshot));
+      drift_BR_sess1LoopScheduler.add(binRivRoutineEachFrame());
+      drift_BR_sess1LoopScheduler.add(binRivRoutineEnd());
+      drift_BR_sess1LoopScheduler.add(endLoopIteration(drift_BR_sess1LoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function drift_BR_sess1LoopEnd() {
+  psychoJS.experiment.removeLoop(drift_BR_sess1);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+async function binRiv_trials_sess1LoopEnd() {
+  psychoJS.experiment.removeLoop(binRiv_trials_sess1);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+async function defineEyeLoopEnd() {
+  psychoJS.experiment.removeLoop(defineEye);
 
   return Scheduler.Event.NEXT;
 }
@@ -3641,6 +3913,368 @@ function finalContRoutineEnd() {
 }
 
 
+var _key_resp_3_allKeys;
+var binRivInst_sess1Components;
+function binRivInst_sess1RoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //------Prepare to start Routine 'binRivInst_sess1'-------
+    t = 0;
+    binRivInst_sess1Clock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    routineTimer.add(0.125000);
+    // update component parameters for each repeat
+    key_resp_3.keys = undefined;
+    key_resp_3.rt = undefined;
+    _key_resp_3_allKeys = [];
+    radialEye_2.setOpacity(contR);
+    radialEye_2.setImage(image_radialEye);
+    bullseye_2.setOpacity(contB);
+    bullseye_2.setImage(image_bullsEye);
+    // keep track of which components have finished
+    binRivInst_sess1Components = [];
+    binRivInst_sess1Components.push(warning_2);
+    binRivInst_sess1Components.push(describeBR);
+    binRivInst_sess1Components.push(key_resp_3);
+    binRivInst_sess1Components.push(radialEye_2);
+    binRivInst_sess1Components.push(bullseye_2);
+    
+    for (const thisComponent of binRivInst_sess1Components)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var frameRemains;
+function binRivInst_sess1RoutineEachFrame() {
+  return async function () {
+    //------Loop for each frame of Routine 'binRivInst_sess1'-------
+    // get current time
+    t = binRivInst_sess1Clock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *warning_2* updates
+    if (t >= 0.0 && warning_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      warning_2.tStart = t;  // (not accounting for frame time here)
+      warning_2.frameNStart = frameN;  // exact frame index
+      
+      warning_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (warning_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      warning_2.setAutoDraw(false);
+    }
+    
+    // *describeBR* updates
+    if (t >= 0.0 && describeBR.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      describeBR.tStart = t;  // (not accounting for frame time here)
+      describeBR.frameNStart = frameN;  // exact frame index
+      
+      describeBR.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (describeBR.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      describeBR.setAutoDraw(false);
+    }
+    
+    // *key_resp_3* updates
+    if (t >= 0.0 && key_resp_3.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_3.tStart = t;  // (not accounting for frame time here)
+      key_resp_3.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_3.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_3.start(); }); // start on screen flip
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (key_resp_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      key_resp_3.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (key_resp_3.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_3.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_3_allKeys = _key_resp_3_allKeys.concat(theseKeys);
+      if (_key_resp_3_allKeys.length > 0) {
+        key_resp_3.keys = _key_resp_3_allKeys[_key_resp_3_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_3.rt = _key_resp_3_allKeys[_key_resp_3_allKeys.length - 1].rt;
+      }
+    }
+    
+    
+    // *radialEye_2* updates
+    if (t >= 0.0 && radialEye_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      radialEye_2.tStart = t;  // (not accounting for frame time here)
+      radialEye_2.frameNStart = frameN;  // exact frame index
+      
+      radialEye_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (radialEye_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      radialEye_2.setAutoDraw(false);
+    }
+    
+    // *bullseye_2* updates
+    if (t >= 0.0 && bullseye_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      bullseye_2.tStart = t;  // (not accounting for frame time here)
+      bullseye_2.frameNStart = frameN;  // exact frame index
+      
+      bullseye_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (bullseye_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      bullseye_2.setAutoDraw(false);
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of binRivInst_sess1Components)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine && routineTimer.getTime() > 0) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function binRivInst_sess1RoutineEnd() {
+  return async function () {
+    //------Ending Routine 'binRivInst_sess1'-------
+    for (const thisComponent of binRivInst_sess1Components) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    key_resp_3.stop();
+    if ((key_resp_3.keys === "space")) {
+        instBR_drift_sess1.finished = true;
+    }
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+var _key_resp_BR_allKeys;
+var binRivComponents;
+function binRivRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //------Prepare to start Routine 'binRiv'-------
+    t = 0;
+    binRivClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    routineTimer.add(0.125000);
+    // update component parameters for each repeat
+    key_resp_BR.keys = undefined;
+    key_resp_BR.rt = undefined;
+    _key_resp_BR_allKeys = [];
+    border_4.setSize([brd, brd]);
+    border_4.setImage(checkBorder);
+    radialEye_BR.setOpacity(contR);
+    radialEye_BR.setSize([maxVal, maxVal]);
+    radialEye_BR.setImage(image_radialEye);
+    bullsEye_BR.setOpacity(contB);
+    bullsEye_BR.setSize([maxVal, maxVal]);
+    bullsEye_BR.setImage(image_bullsEye);
+    fixation_5.setColor(new util.Color('white'));
+    // keep track of which components have finished
+    binRivComponents = [];
+    binRivComponents.push(reminder);
+    binRivComponents.push(key_resp_BR);
+    binRivComponents.push(border_4);
+    binRivComponents.push(radialEye_BR);
+    binRivComponents.push(bullsEye_BR);
+    binRivComponents.push(fixation_5);
+    
+    for (const thisComponent of binRivComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function binRivRoutineEachFrame() {
+  return async function () {
+    //------Loop for each frame of Routine 'binRiv'-------
+    // get current time
+    t = binRivClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *reminder* updates
+    if (t >= 0.0 && reminder.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      reminder.tStart = t;  // (not accounting for frame time here)
+      reminder.frameNStart = frameN;  // exact frame index
+      
+      reminder.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (reminder.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      reminder.setAutoDraw(false);
+    }
+    
+    // *key_resp_BR* updates
+    if (t >= 0.0 && key_resp_BR.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_BR.tStart = t;  // (not accounting for frame time here)
+      key_resp_BR.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_BR.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_BR.start(); }); // start on screen flip
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (key_resp_BR.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      key_resp_BR.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (key_resp_BR.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_BR.getKeys({keyList: ['down', 'right', 'left'], waitRelease: false});
+      _key_resp_BR_allKeys = _key_resp_BR_allKeys.concat(theseKeys);
+      if (_key_resp_BR_allKeys.length > 0) {
+        key_resp_BR.keys = _key_resp_BR_allKeys.map((key) => key.name);  // storing all keys
+        key_resp_BR.rt = _key_resp_BR_allKeys.map((key) => key.rt);
+      }
+    }
+    
+    
+    // *border_4* updates
+    if (t >= 0.0 && border_4.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      border_4.tStart = t;  // (not accounting for frame time here)
+      border_4.frameNStart = frameN;  // exact frame index
+      
+      border_4.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (border_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      border_4.setAutoDraw(false);
+    }
+    
+    // *radialEye_BR* updates
+    if (t >= 0.0 && radialEye_BR.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      radialEye_BR.tStart = t;  // (not accounting for frame time here)
+      radialEye_BR.frameNStart = frameN;  // exact frame index
+      
+      radialEye_BR.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (radialEye_BR.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      radialEye_BR.setAutoDraw(false);
+    }
+    
+    // *bullsEye_BR* updates
+    if (t >= 0.0 && bullsEye_BR.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      bullsEye_BR.tStart = t;  // (not accounting for frame time here)
+      bullsEye_BR.frameNStart = frameN;  // exact frame index
+      
+      bullsEye_BR.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (bullsEye_BR.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      bullsEye_BR.setAutoDraw(false);
+    }
+    
+    // *fixation_5* updates
+    if (t >= 0.0 && fixation_5.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      fixation_5.tStart = t;  // (not accounting for frame time here)
+      fixation_5.frameNStart = frameN;  // exact frame index
+      
+      fixation_5.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (fixation_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      fixation_5.setAutoDraw(false);
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of binRivComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine && routineTimer.getTime() > 0) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function binRivRoutineEnd() {
+  return async function () {
+    //------Ending Routine 'binRiv'-------
+    for (const thisComponent of binRivComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    psychoJS.experiment.addData('key_resp_BR.keys', key_resp_BR.keys);
+    if (typeof key_resp_BR.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_BR.rt', key_resp_BR.rt);
+        }
+    
+    key_resp_BR.stop();
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
 function endLoopIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
   return async function () {
@@ -3677,6 +4311,8 @@ async function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
   
   
   
