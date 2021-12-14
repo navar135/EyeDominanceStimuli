@@ -3798,7 +3798,7 @@ function finalContRoutineBegin(snapshot) {
     txtVar = ("Your contrast number is " + txtContB.toString());
     psychoJS.experiment.addData("contrastRange", contrastRange);
     
-    displayContNum.setText(txtVar);
+    displayContNum.setText(contB);
     key_resp_2.keys = undefined;
     key_resp_2.rt = undefined;
     _key_resp_2_allKeys = [];
