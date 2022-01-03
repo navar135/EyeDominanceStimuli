@@ -3065,9 +3065,9 @@
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
         <Param name="lineWidth" updates="constant" val="1" valType="num"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="tallMarker" valType="code"/>
@@ -3091,9 +3091,9 @@
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
         <Param name="lineWidth" updates="constant" val="1" valType="num"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="wideMarker" valType="code"/>
@@ -3117,9 +3117,9 @@
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueColor" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueColor" valType="color"/>
         <Param name="lineWidth" updates="constant" val="1" valType="num"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="noChangeMarker" valType="code"/>
@@ -3143,16 +3143,16 @@
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="green" valType="color"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="green" valType="color"/>
-        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val=".05" valType="num"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="currChange" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="set every frame" val="(currPos, -.2)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="shape" updates="None" val="cross" valType="str"/>
         <Param name="size" updates="constant" val="(0.03, 0.03)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
@@ -3167,19 +3167,63 @@
       <CodeComponent name="moveCursor">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="currPos = 0&amp;#10;change = 20" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="currPos = 0;&amp;#10;change = 20;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="currPos = 0&amp;#10;change = .2&amp;#10;currRatio = ''&amp;#10;cueColor = 'black'&amp;#10;cueChngColor = 'black'" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="currPos = 0;&amp;#10;change = 0.2;&amp;#10;currRatio = &quot;&quot;;&amp;#10;cueColor = &quot;black&quot;;&amp;#10;cueChngColor = &quot;black&quot;;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="#check for any key press&amp;#10;keys=event.getKeys()&amp;#10;&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        currPos = currPos + change&amp;#10;    elif 'left' in keys:&amp;#10;        currPos = currPos - change &amp;#10;" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        currPos = (currPos + change);&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            currPos = (currPos - change);&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="#check for any key press&amp;#10;keys=event.getKeys()&amp;#10;&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        currPos = currPos + change&amp;#10;    elif 'left' in keys:&amp;#10;        currPos = currPos - change &amp;#10;    if 'space' in keys:&amp;#10;        if currPos &gt;0:&amp;#10;            currRatio = 'wide'&amp;#10;        elif currPos &lt;0:&amp;#10;            currRatio = 'tall'&amp;#10;        else:&amp;#10;            currRatio = 'noChange'" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        currPos = (currPos + change);&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            currPos = (currPos - change);&amp;#10;        }&amp;#10;    }&amp;#10;    if (_pj.in_es6(&quot;space&quot;, keys)) {&amp;#10;        if ((currPos &gt; 0)) {&amp;#10;            currRatio = &quot;wide&quot;;&amp;#10;        } else {&amp;#10;            if ((currPos &lt; 0)) {&amp;#10;                currRatio = &quot;tall&quot;;&amp;#10;            } else {&amp;#10;                currRatio = &quot;noChange&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="moveCursor" valType="code"/>
+      </CodeComponent>
+      <TextComponent name="dispOrNot">
+        <Param name="color" updates="constant" val="white" valType="color"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="num"/>
+        <Param name="flip" updates="constant" val="None" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.03" valType="num"/>
+        <Param name="name" updates="None" val="dispOrNot" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, .3)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="num"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="num"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="num"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="set every repeat" val="$cueTxt" valType="str"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="colorCode">
+      <CodeComponent name="cueTrigger">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="cueColor = 'black'&amp;#10;cueChngColor = 'black'" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="cueColor = &quot;black&quot;;&amp;#10;cueChngColor = &quot;black&quot;;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="cueTime = Math.random();&amp;#10;while ((cueTime === 0.5)) {&amp;#10;    cueTime = Math.random();&amp;#10;}&amp;#10;cueTxt = cueTime.toString();&amp;#10;if ((cueTime &lt; 0.5)) {&amp;#10;    cueColor = &quot;black&quot;;&amp;#10;    cueChngColor = &quot;black&quot;;&amp;#10;} else {&amp;#10;    cueColor = &quot;white&quot;;&amp;#10;    cueChngColor = &quot;green&quot;;&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="#flip a coin if 0 then don't display response cues&amp;#10;#if 1 then display the response cues&amp;#10;cueTime = random()&amp;#10;while cueTime ==0.5:&amp;#10;    cueTime = random()&amp;#10;&amp;#10;cueTxt = str(cueTime)&amp;#10;&amp;#10;if cueTime &lt; 0.5:&amp;#10;    cueColor = 'black'&amp;#10;    cueChngColor = 'black'&amp;#10;else:&amp;#10;    cueColor = 'white'&amp;#10;    cueChngColor ='green'" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="cueTrigger" valType="code"/>
       </CodeComponent>
     </Routine>
   </Routines>
@@ -3345,6 +3389,18 @@
     <LoopTerminator name="drift_BR_sess1"/>
     <LoopTerminator name="binRiv_trials_sess1"/>
     <LoopTerminator name="defineEye"/>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="200" valType="num"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="colorCode"/>
     <LoopInitiator loopType="TrialHandler" name="driftTest">
       <Param name="Selected rows" updates="None" val="$driftrows" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -3358,5 +3414,6 @@
     </LoopInitiator>
     <Routine name="testCursor"/>
     <LoopTerminator name="driftTest"/>
+    <LoopTerminator name="trials"/>
   </Flow>
 </PsychoPy2experiment>
