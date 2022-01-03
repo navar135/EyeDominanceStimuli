@@ -58,6 +58,10 @@ const defineEyeLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(defineEyeLoopBegin(defineEyeLoopScheduler));
 flowScheduler.add(defineEyeLoopScheduler);
 flowScheduler.add(defineEyeLoopEnd);
+const driftTestLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(driftTestLoopBegin(driftTestLoopScheduler));
+flowScheduler.add(driftTestLoopScheduler);
+flowScheduler.add(driftTestLoopEnd);
 flowScheduler.add(quitPsychoJS, '', true);
 
 // quit if user presses Cancel in dialog box:
@@ -67,44 +71,44 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
-    {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
-    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
-    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
-    {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
-    {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
-    {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
-    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
-    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
-    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
-    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
-    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
-    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
-    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
-    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
-    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
-    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
-    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
-    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
-    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
-    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
-    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
-    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
-    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
-    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
-    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
-    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
     {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
-    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
-    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
-    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
-    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
-    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
-    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
-    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
+    {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
+    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
     {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
-    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'}
+    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
+    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
+    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
+    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
+    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
+    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
+    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
+    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
+    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
+    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
+    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
+    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
+    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
+    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
+    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
+    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
+    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
+    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
+    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
+    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
+    {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
+    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
+    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
+    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
+    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
+    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
+    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'}
   ]
 });
 
@@ -214,6 +218,7 @@ var instruct2;
 var keyToMoveOn;
 var contrastRange;
 var contR;
+var contb;
 var instContrastClock;
 var instructions;
 var key_start;
@@ -262,6 +267,18 @@ var border_4;
 var radialEye_BR;
 var bullsEye_BR;
 var fixation_5;
+var testCursorClock;
+var gradDecResp_2;
+var radialEye_change_2;
+var bullsEye_gradChange_2;
+var fixation_2;
+var Instruction_2;
+var tallMarker;
+var wideMarker;
+var noChangeMarker;
+var currChange;
+var currPos;
+var change;
 var globalClock;
 var routineTimer;
 async function experimentInit() {
@@ -718,7 +735,8 @@ async function experimentInit() {
   keyToMoveOn = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   contrastRange = [];
-  contR = 1.0;
+  contR = 0.5;
+  contb = 0.5;
   
   // Initialize components for Routine "instContrast"
   instContrastClock = new util.Clock();
@@ -1027,6 +1045,89 @@ async function experimentInit() {
     color: new util.Color('white'),  opacity: 1,
     depth: -5.0 
   });
+  
+  // Initialize components for Routine "testCursor"
+  testCursorClock = new util.Clock();
+  gradDecResp_2 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  radialEye_change_2 = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'radialEye_change_2', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : 1.0,
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -1.0 
+  });
+  bullsEye_gradChange_2 = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'bullsEye_gradChange_2', units : 'pix', 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : 1.0,
+    color : new util.Color([1, 1, 1]), opacity : 1.0,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -2.0 
+  });
+  fixation_2 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'fixation_2',
+    text: '+',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0, 0], height: 0.025,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -3.0 
+  });
+  
+  Instruction_2 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'Instruction_2',
+    text: 'Remember: \n\nPress ‘Left’ =Taller \nPress ‘Right’ = Wider ',
+    font: 'Arial',
+    units: 'height', 
+    pos: [0.3, 0.3], height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -4.0 
+  });
+  
+  tallMarker = new visual.Polygon ({
+    win: psychoJS.window, name: 'tallMarker', units : 'height', 
+    edges: 4, size:[0.01, 0.05],
+    ori: 0.0, pos: [(- 0.2), (- 0.2)],
+    lineWidth: 1.0, lineColor: new util.Color('white'),
+    fillColor: new util.Color('white'),
+    opacity: undefined, depth: -5, interpolate: true,
+  });
+  
+  wideMarker = new visual.Polygon ({
+    win: psychoJS.window, name: 'wideMarker', units : 'height', 
+    edges: 4, size:[0.05, 0.01],
+    ori: 0.0, pos: [0.2, (- 0.2)],
+    lineWidth: 1.0, lineColor: new util.Color('white'),
+    fillColor: new util.Color('white'),
+    opacity: undefined, depth: -6, interpolate: true,
+  });
+  
+  noChangeMarker = new visual.Polygon ({
+    win: psychoJS.window, name: 'noChangeMarker', units : 'height', 
+    edges: 4, size:[0.03, 0.03],
+    ori: 0.0, pos: [0, (- 0.2)],
+    lineWidth: 1.0, lineColor: new util.Color('white'),
+    fillColor: new util.Color('white'),
+    opacity: undefined, depth: -7, interpolate: true,
+  });
+  
+  currChange = new visual.ShapeStim ({
+    win: psychoJS.window, name: 'currChange', units : 'height', 
+    vertices: 'cross', size:[0.03, 0.03],
+    ori: 0.0, pos: [0, 0],
+    lineWidth: 1.0, lineColor: new util.Color('green'),
+    fillColor: new util.Color('green'),
+    opacity: undefined, depth: -8, interpolate: true,
+  });
+  
+  currPos = 0;
+  change = 20;
   
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
@@ -1903,6 +2004,45 @@ async function binRiv_trials_sess1LoopEnd() {
 
 async function defineEyeLoopEnd() {
   psychoJS.experiment.removeLoop(defineEye);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var driftTest;
+function driftTestLoopBegin(driftTestLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    driftTest = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 10, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: TrialHandler.importConditions(psychoJS.serverManager, fileCSV, driftrows),
+      seed: undefined, name: 'driftTest'
+    });
+    psychoJS.experiment.addLoop(driftTest); // add the loop to the experiment
+    currentLoop = driftTest;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    driftTest.forEach(function() {
+      const snapshot = driftTest.getSnapshot();
+    
+      driftTestLoopScheduler.add(importConditions(snapshot));
+      driftTestLoopScheduler.add(testCursorRoutineBegin(snapshot));
+      driftTestLoopScheduler.add(testCursorRoutineEachFrame());
+      driftTestLoopScheduler.add(testCursorRoutineEnd());
+      driftTestLoopScheduler.add(endLoopIteration(driftTestLoopScheduler, snapshot));
+    });
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function driftTestLoopEnd() {
+  psychoJS.experiment.removeLoop(driftTest);
 
   return Scheduler.Event.NEXT;
 }
@@ -3017,7 +3157,7 @@ function goodJob_prepForExpRoutineBegin(snapshot) {
     constSize = (imgSizeCm * pxPerCm);
     
     if ((expInfo["session"] === "practice")) {
-        eyeDom = 0;
+        eyeDom = 1;
         binRivRun = 0;
         trialReps = 30;
         blockReps = 1;
@@ -3816,7 +3956,6 @@ function finalContRoutineBegin(snapshot) {
     txtVar = ("Your contrast number is " + txtContB.toString());
     psychoJS.experiment.addData("contrastRange", contrastRange);
     
-    displayContNum.setText(contB);
     key_resp_2.keys = undefined;
     key_resp_2.rt = undefined;
     _key_resp_2_allKeys = [];
@@ -3862,6 +4001,10 @@ function finalContRoutineEachFrame() {
       displayContNum.setAutoDraw(true);
     }
 
+    
+    if (displayContNum.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      displayContNum.setText(txtContB, false);
+    }
     
     // *key_resp_2* updates
     if (t >= 0.0 && key_resp_2.status === PsychoJS.Status.NOT_STARTED) {
@@ -3931,6 +4074,9 @@ function finalContRoutineEnd() {
 
 
 var _key_resp_3_allKeys;
+var minVal;
+var maxVal;
+var brd;
 var binRivInst_sess1Components;
 function binRivInst_sess1RoutineBegin(snapshot) {
   return async function () {
@@ -3950,6 +4096,11 @@ function binRivInst_sess1RoutineBegin(snapshot) {
     radialEye_2.setImage(image_radialEye);
     bullseye_2.setOpacity(contB);
     bullseye_2.setImage(image_bullsEye);
+    constSize = (imgSizeCm * pxPerCm);
+    minVal = constSize;
+    maxVal = (constSize + 30);
+    brd = ((constSize + 45) + 40);
+    
     // keep track of which components have finished
     binRivInst_sess1Components = [];
     binRivInst_sess1Components.push(warning_2);
@@ -4294,6 +4445,273 @@ function binRivRoutineEnd() {
 }
 
 
+var _gradDecResp_2_allKeys;
+var testCursorComponents;
+function testCursorRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //------Prepare to start Routine 'testCursor'-------
+    t = 0;
+    testCursorClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    routineTimer.add(0.125000);
+    // update component parameters for each repeat
+    gradDecResp_2.keys = undefined;
+    gradDecResp_2.rt = undefined;
+    _gradDecResp_2_allKeys = [];
+    radialEye_change_2.setOpacity(0.5);
+    radialEye_change_2.setSize([80, 80]);
+    radialEye_change_2.setImage(image_radialEye);
+    bullsEye_gradChange_2.setOpacity(0.5);
+    bullsEye_gradChange_2.setSize([80, 80]);
+    bullsEye_gradChange_2.setImage(image_bullsEye);
+    // keep track of which components have finished
+    testCursorComponents = [];
+    testCursorComponents.push(gradDecResp_2);
+    testCursorComponents.push(radialEye_change_2);
+    testCursorComponents.push(bullsEye_gradChange_2);
+    testCursorComponents.push(fixation_2);
+    testCursorComponents.push(Instruction_2);
+    testCursorComponents.push(tallMarker);
+    testCursorComponents.push(wideMarker);
+    testCursorComponents.push(noChangeMarker);
+    testCursorComponents.push(currChange);
+    
+    testCursorComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function testCursorRoutineEachFrame() {
+  return async function () {
+    //------Loop for each frame of Routine 'testCursor'-------
+    // get current time
+    t = testCursorClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *gradDecResp_2* updates
+    if (t >= 0.0 && gradDecResp_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      gradDecResp_2.tStart = t;  // (not accounting for frame time here)
+      gradDecResp_2.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { gradDecResp_2.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { gradDecResp_2.start(); }); // start on screen flip
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (gradDecResp_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      gradDecResp_2.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (gradDecResp_2.status === PsychoJS.Status.STARTED) {
+      let theseKeys = gradDecResp_2.getKeys({keyList: ['right', 'left'], waitRelease: false});
+      _gradDecResp_2_allKeys = _gradDecResp_2_allKeys.concat(theseKeys);
+      if (_gradDecResp_2_allKeys.length > 0) {
+        gradDecResp_2.keys = _gradDecResp_2_allKeys[_gradDecResp_2_allKeys.length - 1].name;  // just the last key pressed
+        gradDecResp_2.rt = _gradDecResp_2_allKeys[_gradDecResp_2_allKeys.length - 1].rt;
+      }
+    }
+    
+    
+    // *radialEye_change_2* updates
+    if (t >= 0.0 && radialEye_change_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      radialEye_change_2.tStart = t;  // (not accounting for frame time here)
+      radialEye_change_2.frameNStart = frameN;  // exact frame index
+      
+      radialEye_change_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (radialEye_change_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      radialEye_change_2.setAutoDraw(false);
+    }
+    
+    // *bullsEye_gradChange_2* updates
+    if (t >= 0.0 && bullsEye_gradChange_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      bullsEye_gradChange_2.tStart = t;  // (not accounting for frame time here)
+      bullsEye_gradChange_2.frameNStart = frameN;  // exact frame index
+      
+      bullsEye_gradChange_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (bullsEye_gradChange_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      bullsEye_gradChange_2.setAutoDraw(false);
+    }
+    
+    // *fixation_2* updates
+    if (t >= 0.0 && fixation_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      fixation_2.tStart = t;  // (not accounting for frame time here)
+      fixation_2.frameNStart = frameN;  // exact frame index
+      
+      fixation_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (fixation_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      fixation_2.setAutoDraw(false);
+    }
+    
+    // *Instruction_2* updates
+    if (t >= 0.0 && Instruction_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      Instruction_2.tStart = t;  // (not accounting for frame time here)
+      Instruction_2.frameNStart = frameN;  // exact frame index
+      
+      Instruction_2.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (Instruction_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      Instruction_2.setAutoDraw(false);
+    }
+    
+    // *tallMarker* updates
+    if (t >= 0.0 && tallMarker.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      tallMarker.tStart = t;  // (not accounting for frame time here)
+      tallMarker.frameNStart = frameN;  // exact frame index
+      
+      tallMarker.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (tallMarker.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      tallMarker.setAutoDraw(false);
+    }
+    
+    // *wideMarker* updates
+    if (t >= 0.0 && wideMarker.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      wideMarker.tStart = t;  // (not accounting for frame time here)
+      wideMarker.frameNStart = frameN;  // exact frame index
+      
+      wideMarker.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (wideMarker.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      wideMarker.setAutoDraw(false);
+    }
+    
+    // *noChangeMarker* updates
+    if (t >= 0.0 && noChangeMarker.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      noChangeMarker.tStart = t;  // (not accounting for frame time here)
+      noChangeMarker.frameNStart = frameN;  // exact frame index
+      
+      noChangeMarker.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (noChangeMarker.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      noChangeMarker.setAutoDraw(false);
+    }
+    
+    // *currChange* updates
+    if (t >= 0.0 && currChange.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      currChange.tStart = t;  // (not accounting for frame time here)
+      currChange.frameNStart = frameN;  // exact frame index
+      
+      currChange.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (currChange.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      currChange.setAutoDraw(false);
+    }
+    
+    if (currChange.status === PsychoJS.Status.STARTED){ // only update if being drawn
+      currChange.setPos([currPos, (- 0.2)], false);
+    }
+    var _pj;
+    function _pj_snippets(container) {
+        function in_es6(left, right) {
+            if (((right instanceof Array) || ((typeof right) === "string"))) {
+                return (right.indexOf(left) > (- 1));
+            } else {
+                if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {
+                    return right.has(left);
+                } else {
+                    return (left in right);
+                }
+            }
+        }
+        container["in_es6"] = in_es6;
+        return container;
+    }
+    _pj = {};
+    _pj_snippets(_pj);
+    keys = psychoJS.eventManager.getKeys();
+    if (keys.length) {
+        if (_pj.in_es6("right", keys)) {
+            currPos = (currPos + change);
+        } else {
+            if (_pj.in_es6("left", keys)) {
+                currPos = (currPos - change);
+            }
+        }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    testCursorComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine && routineTimer.getTime() > 0) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function testCursorRoutineEnd() {
+  return async function () {
+    //------Ending Routine 'testCursor'-------
+    testCursorComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    psychoJS.experiment.addData('gradDecResp_2.keys', gradDecResp_2.keys);
+    if (typeof gradDecResp_2.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('gradDecResp_2.rt', gradDecResp_2.rt);
+        }
+    
+    gradDecResp_2.stop();
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
 function endLoopIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
   return async function () {
@@ -4330,6 +4748,18 @@ async function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
