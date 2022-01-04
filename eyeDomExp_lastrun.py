@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Mon Jan  3 15:56:15 2022
+    on Tue Jan  4 12:52:16 2022
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -402,7 +402,7 @@ instruct2 = visual.TextStim(win=win, name='instruct2',
 keyToMoveOn = keyboard.Keyboard()
 contrastRange = []
 contR=0.5
-contb=0.5
+contB=0.5
 
 # Initialize components for Routine "instContrast"
 instContrastClock = core.Clock()
@@ -711,6 +711,234 @@ dispOrNot = visual.TextStim(win=win, name='dispOrNot',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-10.0);
+
+# Initialize components for Routine "blockSetUp"
+blockSetUpClock = core.Clock()
+# initialize parameters 
+corrAns  = 'none' #correct answer
+whichTrial = "" #tracks if the current trial is tall/wide
+indWrng = 0 #initialize the index for wrong responses to stop weird pavlovia glitch
+totTrialCount = 0 #Count number of trials
+corrCount =0 #counter of correct answers
+gradDur = 3 #how many images for grad change to occur over
+findx=0 #set current index we are at in the staircase
+thisInd = 0
+blkCount=0
+brd = 148 #size of border in pix
+maxVal = 80
+minVal = maxVal
+this_AR = maxVal
+initStep = 4 # initial change in px
+finChanges = [] #empty list for final sizes displayed
+stairSteps =[] #empty list for the changes in size
+##Make the list of the staircase steps
+#multiply each by a set change to create a list of size changes that 
+#get smaller and smaller in the difference
+stairSteps.append(initStep) #add initial step
+for i in range(14):
+    initStep = initStep*0.87
+    stairSteps.append(initStep)
+
+
+# Initialize components for Routine "trial1Const"
+trial1ConstClock = core.Clock()
+key_resp_const_trial1 = keyboard.Keyboard()
+border = visual.ImageStim(
+    win=win,
+    name='border', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-1.0)
+radialEye_stim_const_trial1 = visual.ImageStim(
+    win=win,
+    name='radialEye_stim_const_trial1', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-2.0)
+bullseye_stim_const_trial1 = visual.ImageStim(
+    win=win,
+    name='bullseye_stim_const_trial1', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-3.0)
+fixation_6 = visual.TextStim(win=win, name='fixation_6',
+    text='+',
+    font='Arial',
+    units='height', pos=(0, 0), height=0.025, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-4.0);
+Instruction_4 = visual.TextStim(win=win, name='Instruction_4',
+    text='Remember: \n\nPress ‘Up’ =Taller \nPress ‘Right’ = Wider ',
+    font='Arial',
+    units='height', pos=(.3, .3), height=0.03, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
+tallResp = visual.ShapeStim(
+    win=win, name='tallResp',
+    size=(0.05, 0.1), vertices='circle',
+    ori=0.0, pos=(-.3, -.3),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-6.0, interpolate=True)
+wideResp = visual.ShapeStim(
+    win=win, name='wideResp',
+    size=(0.1, 0.05), vertices='circle',
+    ori=0.0, pos=(.3, -.3),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-7.0, interpolate=True)
+
+# Initialize components for Routine "trialSetUp"
+trialSetUpClock = core.Clock()
+thisBlkTrialCount = 0
+
+# Initialize components for Routine "gradDec"
+gradDecClock = core.Clock()
+tcount_1=0 #increase count with each image 
+                    #loop.thisN doesn't work in pavlovia 
+
+gradDecResp = keyboard.Keyboard()
+border_2 = visual.ImageStim(
+    win=win,
+    name='border_2', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-2.0)
+radialEye_change = visual.ImageStim(
+    win=win,
+    name='radialEye_change', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-3.0)
+bullsEye_gradChange = visual.ImageStim(
+    win=win,
+    name='bullsEye_gradChange', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-4.0)
+fixation = visual.TextStim(win=win, name='fixation',
+    text='+',
+    font='Arial',
+    units='height', pos=(0, 0), height=0.025, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-5.0);
+Instruction = visual.TextStim(win=win, name='Instruction',
+    text='Remember: \n\nPress ‘Up’ =Taller \nPress ‘Right’ = Wider ',
+    font='Arial',
+    units='height', pos=(.3, .3), height=0.03, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-6.0);
+
+# Initialize components for Routine "gradInc"
+gradIncClock = core.Clock()
+tcount_2=0 #increase count with each image 
+                    #loop.thisN doesn't work in pavlovia 
+
+gradIncResp = keyboard.Keyboard()
+border_3 = visual.ImageStim(
+    win=win,
+    name='border_3', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-2.0)
+radialEye_change_3 = visual.ImageStim(
+    win=win,
+    name='radialEye_change_3', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-3.0)
+bullsEye_gradChange_3 = visual.ImageStim(
+    win=win,
+    name='bullsEye_gradChange_3', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-4.0)
+fixation_3 = visual.TextStim(win=win, name='fixation_3',
+    text='+',
+    font='Arial',
+    units='height', pos=(0, 0), height=0.025, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-5.0);
+Instruction_3 = visual.TextStim(win=win, name='Instruction_3',
+    text='Remember: \n\nPress ‘Up’ =Taller \nPress ‘Right’ = Wider ',
+    font='Arial',
+    units='height', pos=(.3, .3), height=0.03, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-6.0);
+
+# Initialize components for Routine "changeDir"
+changeDirClock = core.Clock()
+
+# Initialize components for Routine "trialConst"
+trialConstClock = core.Clock()
+tcount_3=0 #increase count with each image 
+                    #loop.thisN doesn't work in pavlovia 
+col = 'lime' #change color of fix-cross to initialize when to respond
+hght= .025 #change size of fix-cross to initialize when to respond
+constResp = keyboard.Keyboard()
+border_6 = visual.ImageStim(
+    win=win,
+    name='border_6', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-2.0)
+radialEye_stim_const = visual.ImageStim(
+    win=win,
+    name='radialEye_stim_const', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-3.0)
+bullsEye_stim_const = visual.ImageStim(
+    win=win,
+    name='bullsEye_stim_const', units='pix', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1.0,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-4.0)
+fixation_4 = visual.TextStim(win=win, name='fixation_4',
+    text='+',
+    font='Arial',
+    units='height', pos=(0, 0), height=1.0, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-5.0);
+Instruction_5 = visual.TextStim(win=win, name='Instruction_5',
+    text='Remember: \n\nPress ‘Up’ =Taller \nPress ‘Right’ = Wider ',
+    font='Arial',
+    units='height', pos=(.3, .3), height=0.03, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-6.0);
+
+# Initialize components for Routine "nextTrial"
+nextTrialClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -2018,6 +2246,8 @@ else:
     finalTrialDur =10 #at most 10s 
     contrastTrials = 0 #skip contrast 
     skipContrast = 0#skip contrast 
+    contB= expInfo['previous contrast']
+    contB= float(contB)
 # keep track of which components have finished
 goodJob_prepForExpComponents = [instruct2, keyToMoveOn]
 for thisComponent in goodJob_prepForExpComponents:
@@ -3239,23 +3469,23 @@ for thisDefineEye in defineEye:
 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=200.0, method='random', 
+test_2 = data.TrialHandler(nReps=2.0, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
-    seed=None, name='trials')
-thisExp.addLoop(trials)  # add the loop to the experiment
-thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
-# abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
-if thisTrial != None:
-    for paramName in thisTrial:
-        exec('{} = thisTrial[paramName]'.format(paramName))
+    seed=None, name='test_2')
+thisExp.addLoop(test_2)  # add the loop to the experiment
+thisTest_2 = test_2.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisTest_2.rgb)
+if thisTest_2 != None:
+    for paramName in thisTest_2:
+        exec('{} = thisTest_2[paramName]'.format(paramName))
 
-for thisTrial in trials:
-    currentLoop = trials
-    # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
-    if thisTrial != None:
-        for paramName in thisTrial:
-            exec('{} = thisTrial[paramName]'.format(paramName))
+for thisTest_2 in test_2:
+    currentLoop = test_2
+    # abbreviate parameter names if possible (e.g. rgb = thisTest_2.rgb)
+    if thisTest_2 != None:
+        for paramName in thisTest_2:
+            exec('{} = thisTest_2[paramName]'.format(paramName))
     
     # ------Prepare to start Routine "colorCode"-------
     continueRoutine = True
@@ -3625,7 +3855,1313 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 200.0 repeats of 'trials'
+# completed 2.0 repeats of 'test_2'
+
+
+# ------Prepare to start Routine "blockSetUp"-------
+continueRoutine = True
+# update component parameters for each repeat
+imgSizeCm = 2 * dist2screen * tan(.5*desiredVisAngl)
+#set at beginning of routine since this is calculated in prev routines
+
+
+
+constSize=imgSizeCm*pxPerCm #set the calculated size to a new varibale 
+#WARNING: when the images are generated the actual aespect ratio we want 
+#is 20 px, but b/c we need background so the opacity is consistent when the image is 
+# stretch we will add another 20 px to both images 
+minVal =constSize#maximum aspect ratio
+maxVal = constSize+30 #minimum aspect ratio
+finChanges = [] #empty list for final sizes displayed
+#reset staircase every 4 blocks
+#if blkCount%3==0:
+#    thisInd = 0
+#   this_AR=minVal #current size of changing stim in staircase
+                            #this is manipulated in the staircase
+#simulate np.zeros()
+for i in range(len(stairSteps)): 
+    finChanges.append(0)
+# create a list of the final sizes which takes the actual size 
+#of the stimuli and adds the changes created in stairSteps
+for i in range(len(stairSteps)):
+    #so there is no index error, for the first value add the maxVal
+    if i == 0:  
+        finChanges[i] = minVal
+    else:  #for all other values take the previous value and add the size change
+              #i.e the second value is (maxVal + stairSteps[0])
+        finChanges[i] = finChanges[i-1] + stairSteps[i-1]
+#set the initial size and index
+if thisInd == 0:
+    currSize = finChanges[0] #the current size based on where i the final list we are 
+#finalize border size
+brd = (constSize+45) + 40 #the max the image can stretch + extra pix to avoid overlap
+
+
+# keep track of which components have finished
+blockSetUpComponents = []
+for thisComponent in blockSetUpComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+blockSetUpClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "blockSetUp"-------
+while continueRoutine:
+    # get current time
+    t = blockSetUpClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=blockSetUpClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in blockSetUpComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "blockSetUp"-------
+for thisComponent in blockSetUpComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# the Routine "blockSetUp" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+trials = data.TrialHandler(nReps=trialReps, method='sequential', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=[None],
+    seed=None, name='trials')
+thisExp.addLoop(trials)  # add the loop to the experiment
+thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+if thisTrial != None:
+    for paramName in thisTrial:
+        exec('{} = thisTrial[paramName]'.format(paramName))
+
+for thisTrial in trials:
+    currentLoop = trials
+    # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+    if thisTrial != None:
+        for paramName in thisTrial:
+            exec('{} = thisTrial[paramName]'.format(paramName))
+    
+    # set up handler to look after randomisation of conditions etc
+    t1Drift = data.TrialHandler(nReps=1.0, method='sequential', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=data.importConditions(fileCSV, selection=driftrows),
+        seed=None, name='t1Drift')
+    thisExp.addLoop(t1Drift)  # add the loop to the experiment
+    thisT1Drift = t1Drift.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisT1Drift.rgb)
+    if thisT1Drift != None:
+        for paramName in thisT1Drift:
+            exec('{} = thisT1Drift[paramName]'.format(paramName))
+    
+    for thisT1Drift in t1Drift:
+        currentLoop = t1Drift
+        # abbreviate parameter names if possible (e.g. rgb = thisT1Drift.rgb)
+        if thisT1Drift != None:
+            for paramName in thisT1Drift:
+                exec('{} = thisT1Drift[paramName]'.format(paramName))
+        
+        # ------Prepare to start Routine "trial1Const"-------
+        continueRoutine = True
+        routineTimer.add(0.125000)
+        # update component parameters for each repeat
+        key_resp_const_trial1.keys = []
+        key_resp_const_trial1.rt = []
+        _key_resp_const_trial1_allKeys = []
+        border.setSize((brd,brd))
+        border.setImage(checkBorder)
+        radialEye_stim_const_trial1.setOpacity(contR)
+        radialEye_stim_const_trial1.setSize((imgSizeCm*pxPerCm+30,imgSizeCm*pxPerCm+30))
+        radialEye_stim_const_trial1.setImage(image_radialEye)
+        bullseye_stim_const_trial1.setOpacity(contB)
+        bullseye_stim_const_trial1.setSize((imgSizeCm*pxPerCm+30,imgSizeCm*pxPerCm+30))
+        bullseye_stim_const_trial1.setImage(image_bullsEye)
+        # keep track of which components have finished
+        trial1ConstComponents = [key_resp_const_trial1, border, radialEye_stim_const_trial1, bullseye_stim_const_trial1, fixation_6, Instruction_4, tallResp, wideResp]
+        for thisComponent in trial1ConstComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        trial1ConstClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "trial1Const"-------
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = trial1ConstClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=trial1ConstClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *key_resp_const_trial1* updates
+            waitOnFlip = False
+            if key_resp_const_trial1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                key_resp_const_trial1.frameNStart = frameN  # exact frame index
+                key_resp_const_trial1.tStart = t  # local t and not account for scr refresh
+                key_resp_const_trial1.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(key_resp_const_trial1, 'tStartRefresh')  # time at next scr refresh
+                key_resp_const_trial1.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(key_resp_const_trial1.clock.reset)  # t=0 on next screen flip
+            if key_resp_const_trial1.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > key_resp_const_trial1.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    key_resp_const_trial1.tStop = t  # not accounting for scr refresh
+                    key_resp_const_trial1.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(key_resp_const_trial1, 'tStopRefresh')  # time at next scr refresh
+                    key_resp_const_trial1.status = FINISHED
+            if key_resp_const_trial1.status == STARTED and not waitOnFlip:
+                theseKeys = key_resp_const_trial1.getKeys(keyList=['up', 'right'], waitRelease=False)
+                _key_resp_const_trial1_allKeys.extend(theseKeys)
+                if len(_key_resp_const_trial1_allKeys):
+                    key_resp_const_trial1.keys = _key_resp_const_trial1_allKeys[-1].name  # just the last key pressed
+                    key_resp_const_trial1.rt = _key_resp_const_trial1_allKeys[-1].rt
+            
+            # *border* updates
+            if border.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                border.frameNStart = frameN  # exact frame index
+                border.tStart = t  # local t and not account for scr refresh
+                border.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(border, 'tStartRefresh')  # time at next scr refresh
+                border.setAutoDraw(True)
+            if border.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > border.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    border.tStop = t  # not accounting for scr refresh
+                    border.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(border, 'tStopRefresh')  # time at next scr refresh
+                    border.setAutoDraw(False)
+            
+            # *radialEye_stim_const_trial1* updates
+            if radialEye_stim_const_trial1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                radialEye_stim_const_trial1.frameNStart = frameN  # exact frame index
+                radialEye_stim_const_trial1.tStart = t  # local t and not account for scr refresh
+                radialEye_stim_const_trial1.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(radialEye_stim_const_trial1, 'tStartRefresh')  # time at next scr refresh
+                radialEye_stim_const_trial1.setAutoDraw(True)
+            if radialEye_stim_const_trial1.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > radialEye_stim_const_trial1.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    radialEye_stim_const_trial1.tStop = t  # not accounting for scr refresh
+                    radialEye_stim_const_trial1.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(radialEye_stim_const_trial1, 'tStopRefresh')  # time at next scr refresh
+                    radialEye_stim_const_trial1.setAutoDraw(False)
+            
+            # *bullseye_stim_const_trial1* updates
+            if bullseye_stim_const_trial1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                bullseye_stim_const_trial1.frameNStart = frameN  # exact frame index
+                bullseye_stim_const_trial1.tStart = t  # local t and not account for scr refresh
+                bullseye_stim_const_trial1.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(bullseye_stim_const_trial1, 'tStartRefresh')  # time at next scr refresh
+                bullseye_stim_const_trial1.setAutoDraw(True)
+            if bullseye_stim_const_trial1.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > bullseye_stim_const_trial1.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    bullseye_stim_const_trial1.tStop = t  # not accounting for scr refresh
+                    bullseye_stim_const_trial1.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(bullseye_stim_const_trial1, 'tStopRefresh')  # time at next scr refresh
+                    bullseye_stim_const_trial1.setAutoDraw(False)
+            
+            # *fixation_6* updates
+            if fixation_6.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fixation_6.frameNStart = frameN  # exact frame index
+                fixation_6.tStart = t  # local t and not account for scr refresh
+                fixation_6.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fixation_6, 'tStartRefresh')  # time at next scr refresh
+                fixation_6.setAutoDraw(True)
+            if fixation_6.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > fixation_6.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    fixation_6.tStop = t  # not accounting for scr refresh
+                    fixation_6.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(fixation_6, 'tStopRefresh')  # time at next scr refresh
+                    fixation_6.setAutoDraw(False)
+            
+            # *Instruction_4* updates
+            if Instruction_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                Instruction_4.frameNStart = frameN  # exact frame index
+                Instruction_4.tStart = t  # local t and not account for scr refresh
+                Instruction_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Instruction_4, 'tStartRefresh')  # time at next scr refresh
+                Instruction_4.setAutoDraw(True)
+            if Instruction_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > Instruction_4.tStartRefresh + 0.125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    Instruction_4.tStop = t  # not accounting for scr refresh
+                    Instruction_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(Instruction_4, 'tStopRefresh')  # time at next scr refresh
+                    Instruction_4.setAutoDraw(False)
+            
+            # *tallResp* updates
+            if tallResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                tallResp.frameNStart = frameN  # exact frame index
+                tallResp.tStart = t  # local t and not account for scr refresh
+                tallResp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(tallResp, 'tStartRefresh')  # time at next scr refresh
+                tallResp.setAutoDraw(True)
+            if tallResp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > tallResp.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    tallResp.tStop = t  # not accounting for scr refresh
+                    tallResp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(tallResp, 'tStopRefresh')  # time at next scr refresh
+                    tallResp.setAutoDraw(False)
+            
+            # *wideResp* updates
+            if wideResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                wideResp.frameNStart = frameN  # exact frame index
+                wideResp.tStart = t  # local t and not account for scr refresh
+                wideResp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(wideResp, 'tStartRefresh')  # time at next scr refresh
+                wideResp.setAutoDraw(True)
+            if wideResp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > wideResp.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    wideResp.tStop = t  # not accounting for scr refresh
+                    wideResp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(wideResp, 'tStopRefresh')  # time at next scr refresh
+                    wideResp.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in trial1ConstComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "trial1Const"-------
+        for thisComponent in trial1ConstComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # check responses
+        if key_resp_const_trial1.keys in ['', [], None]:  # No response was made
+            key_resp_const_trial1.keys = None
+        t1Drift.addData('key_resp_const_trial1.keys',key_resp_const_trial1.keys)
+        if key_resp_const_trial1.keys != None:  # we had a response
+            t1Drift.addData('key_resp_const_trial1.rt', key_resp_const_trial1.rt)
+        t1Drift.addData('key_resp_const_trial1.started', key_resp_const_trial1.tStartRefresh)
+        t1Drift.addData('key_resp_const_trial1.stopped', key_resp_const_trial1.tStopRefresh)
+        t1Drift.addData('radialEye_stim_const_trial1.started', radialEye_stim_const_trial1.tStartRefresh)
+        t1Drift.addData('radialEye_stim_const_trial1.stopped', radialEye_stim_const_trial1.tStopRefresh)
+        t1Drift.addData('bullseye_stim_const_trial1.started', bullseye_stim_const_trial1.tStartRefresh)
+        t1Drift.addData('bullseye_stim_const_trial1.stopped', bullseye_stim_const_trial1.tStopRefresh)
+        t1Drift.addData('Instruction_4.started', Instruction_4.tStartRefresh)
+        t1Drift.addData('Instruction_4.stopped', Instruction_4.tStopRefresh)
+        t1Drift.addData('tallResp.started', tallResp.tStartRefresh)
+        t1Drift.addData('tallResp.stopped', tallResp.tStopRefresh)
+        t1Drift.addData('wideResp.started', wideResp.tStartRefresh)
+        t1Drift.addData('wideResp.stopped', wideResp.tStopRefresh)
+    # completed 1.0 repeats of 't1Drift'
+    
+    
+    # ------Prepare to start Routine "trialSetUp"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    #flip a coin to see if  trial will be tall_wide
+    #if > 0.5 it will be a tall trial if <0.5 it will be a wide trial
+    tall_wide = random()
+    while tall_wide ==0.5:
+        tall_wide = random()
+    #set new trial type 
+    if tall_wide >0.5: #tall trial
+        newW = finChanges[thisInd] #shrink width for illusion of vertical oval
+        newH=maxVal
+        currSize = newW
+    else: #wide trial
+        newH =  finChanges[thisInd] #shrink height for illusion of vertical oval
+        newW=maxVal
+        currSize = newH
+    # set up the correct answer based on the trial type
+    if newW<maxVal: #tall trial
+        corrAns = 'up'
+        wrongAns ='right'
+    elif newH<maxVal: #wide trial
+        corrAns = 'right'
+        wrongAns ='up'
+    #set up parameters that reset every trial 
+    keypresses=[] #empty list that will store every key press
+    rtList =[]#empty list for reaction times
+    resp = '' #empty string set to the key press used
+    
+    #set up the size of the gradual change based on the 
+    #number of images in image_list.csv
+    gradH = maxVal #reset gradual variables
+    gradW=gradH
+    gradSize=0 #initilize varible that will determine the absolute difference between 
+                        #the minVal and the current size 
+    if newH <maxVal: #if its a wide trial 
+        gradSize= abs(newH-maxVal)/gradDur
+    if newW < maxVal: #if its a tall trial
+         gradSize= abs(newW-maxVal)/gradDur
+    
+    #set up a random number of repetition for the 
+    #constant trial so a tall/wide trial occurs randomly 
+    #between 3s to 10 s. Used in the loop of constTrial
+    reps = randint(3, finalTrialDur) #make sure it is at least 3s or 
+                                        #it will not record the responses 
+                                        #set in constTrial
+    
+    #record what type of trial we are in 
+    if newH <maxVal: 
+        whichTrial = "wide trial"
+    if newW< maxVal: 
+        whichTrial = "tall trial"
+    
+    #record the total trial count 
+    totTrialCount += 1
+    
+    
+    # keep track of which components have finished
+    trialSetUpComponents = []
+    for thisComponent in trialSetUpComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    trialSetUpClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "trialSetUp"-------
+    while continueRoutine:
+        # get current time
+        t = trialSetUpClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=trialSetUpClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in trialSetUpComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "trialSetUp"-------
+    for thisComponent in trialSetUpComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "trialSetUp" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # set up handler to look after randomisation of conditions etc
+    decDrift = data.TrialHandler(nReps=1.0, method='sequential', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=data.importConditions(fileCSV, selection=driftrows),
+        seed=None, name='decDrift')
+    thisExp.addLoop(decDrift)  # add the loop to the experiment
+    thisDecDrift = decDrift.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisDecDrift.rgb)
+    if thisDecDrift != None:
+        for paramName in thisDecDrift:
+            exec('{} = thisDecDrift[paramName]'.format(paramName))
+    
+    for thisDecDrift in decDrift:
+        currentLoop = decDrift
+        # abbreviate parameter names if possible (e.g. rgb = thisDecDrift.rgb)
+        if thisDecDrift != None:
+            for paramName in thisDecDrift:
+                exec('{} = thisDecDrift[paramName]'.format(paramName))
+        
+        # ------Prepare to start Routine "gradDec"-------
+        continueRoutine = True
+        routineTimer.add(0.125000)
+        # update component parameters for each repeat
+        #change height/width after each image 
+        #start to gradually change the middle 3 images
+        # so that the last 3 images are the final size change 
+        if tcount_1 > (nFrames-(gradDur*2)): #starting on 4th frame
+            if newH <maxVal: #if its a wide trial 
+                gradH -=gradSize
+                if tcount_1 > nFrames-(gradDur):
+                    gradH=newH
+            if newW<maxVal: #if its a tall trial
+                 gradW-= gradSize
+                 if tcount_1 > nFrames-(gradDur):
+                    gradW=newW
+        gradDecResp.keys = []
+        gradDecResp.rt = []
+        _gradDecResp_allKeys = []
+        border_2.setSize((brd,brd))
+        border_2.setImage(checkBorder)
+        radialEye_change.setOpacity(contR)
+        radialEye_change.setSize((maxVal, maxVal))
+        radialEye_change.setImage(image_radialEye)
+        bullsEye_gradChange.setOpacity(contB)
+        bullsEye_gradChange.setSize((gradW, gradH))
+        bullsEye_gradChange.setImage(image_bullsEye)
+        # keep track of which components have finished
+        gradDecComponents = [gradDecResp, border_2, radialEye_change, bullsEye_gradChange, fixation, Instruction]
+        for thisComponent in gradDecComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        gradDecClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "gradDec"-------
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = gradDecClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=gradDecClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *gradDecResp* updates
+            waitOnFlip = False
+            if gradDecResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                gradDecResp.frameNStart = frameN  # exact frame index
+                gradDecResp.tStart = t  # local t and not account for scr refresh
+                gradDecResp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(gradDecResp, 'tStartRefresh')  # time at next scr refresh
+                gradDecResp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(gradDecResp.clock.reset)  # t=0 on next screen flip
+            if gradDecResp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > gradDecResp.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    gradDecResp.tStop = t  # not accounting for scr refresh
+                    gradDecResp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(gradDecResp, 'tStopRefresh')  # time at next scr refresh
+                    gradDecResp.status = FINISHED
+            if gradDecResp.status == STARTED and not waitOnFlip:
+                theseKeys = gradDecResp.getKeys(keyList=['right', 'up'], waitRelease=False)
+                _gradDecResp_allKeys.extend(theseKeys)
+                if len(_gradDecResp_allKeys):
+                    gradDecResp.keys = _gradDecResp_allKeys[-1].name  # just the last key pressed
+                    gradDecResp.rt = _gradDecResp_allKeys[-1].rt
+            
+            # *border_2* updates
+            if border_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                border_2.frameNStart = frameN  # exact frame index
+                border_2.tStart = t  # local t and not account for scr refresh
+                border_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(border_2, 'tStartRefresh')  # time at next scr refresh
+                border_2.setAutoDraw(True)
+            if border_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > border_2.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    border_2.tStop = t  # not accounting for scr refresh
+                    border_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(border_2, 'tStopRefresh')  # time at next scr refresh
+                    border_2.setAutoDraw(False)
+            
+            # *radialEye_change* updates
+            if radialEye_change.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                radialEye_change.frameNStart = frameN  # exact frame index
+                radialEye_change.tStart = t  # local t and not account for scr refresh
+                radialEye_change.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(radialEye_change, 'tStartRefresh')  # time at next scr refresh
+                radialEye_change.setAutoDraw(True)
+            if radialEye_change.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > radialEye_change.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    radialEye_change.tStop = t  # not accounting for scr refresh
+                    radialEye_change.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(radialEye_change, 'tStopRefresh')  # time at next scr refresh
+                    radialEye_change.setAutoDraw(False)
+            
+            # *bullsEye_gradChange* updates
+            if bullsEye_gradChange.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                bullsEye_gradChange.frameNStart = frameN  # exact frame index
+                bullsEye_gradChange.tStart = t  # local t and not account for scr refresh
+                bullsEye_gradChange.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(bullsEye_gradChange, 'tStartRefresh')  # time at next scr refresh
+                bullsEye_gradChange.setAutoDraw(True)
+            if bullsEye_gradChange.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > bullsEye_gradChange.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    bullsEye_gradChange.tStop = t  # not accounting for scr refresh
+                    bullsEye_gradChange.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(bullsEye_gradChange, 'tStopRefresh')  # time at next scr refresh
+                    bullsEye_gradChange.setAutoDraw(False)
+            
+            # *fixation* updates
+            if fixation.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fixation.frameNStart = frameN  # exact frame index
+                fixation.tStart = t  # local t and not account for scr refresh
+                fixation.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fixation, 'tStartRefresh')  # time at next scr refresh
+                fixation.setAutoDraw(True)
+            if fixation.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > fixation.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    fixation.tStop = t  # not accounting for scr refresh
+                    fixation.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(fixation, 'tStopRefresh')  # time at next scr refresh
+                    fixation.setAutoDraw(False)
+            
+            # *Instruction* updates
+            if Instruction.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                Instruction.frameNStart = frameN  # exact frame index
+                Instruction.tStart = t  # local t and not account for scr refresh
+                Instruction.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Instruction, 'tStartRefresh')  # time at next scr refresh
+                Instruction.setAutoDraw(True)
+            if Instruction.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > Instruction.tStartRefresh + 0.125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    Instruction.tStop = t  # not accounting for scr refresh
+                    Instruction.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(Instruction, 'tStopRefresh')  # time at next scr refresh
+                    Instruction.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in gradDecComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "gradDec"-------
+        for thisComponent in gradDecComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        tcount_1+=1 
+        #store everything
+        if tcount_1 > (nFrames-(gradDur*2)):
+            #store all key presses in list
+            keypresses.append(gradDecResp.keys) 
+            #store the reaction time for those keypresses
+            rtList.append(gradDecResp.rt)
+        # check responses
+        if gradDecResp.keys in ['', [], None]:  # No response was made
+            gradDecResp.keys = None
+        decDrift.addData('gradDecResp.keys',gradDecResp.keys)
+        if gradDecResp.keys != None:  # we had a response
+            decDrift.addData('gradDecResp.rt', gradDecResp.rt)
+        decDrift.addData('gradDecResp.started', gradDecResp.tStartRefresh)
+        decDrift.addData('gradDecResp.stopped', gradDecResp.tStopRefresh)
+        decDrift.addData('Instruction.started', Instruction.tStartRefresh)
+        decDrift.addData('Instruction.stopped', Instruction.tStopRefresh)
+    # completed 1.0 repeats of 'decDrift'
+    
+    
+    # set up handler to look after randomisation of conditions etc
+    incDrift = data.TrialHandler(nReps=1.0, method='sequential', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=data.importConditions(fileCSV, selection=driftrows),
+        seed=None, name='incDrift')
+    thisExp.addLoop(incDrift)  # add the loop to the experiment
+    thisIncDrift = incDrift.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisIncDrift.rgb)
+    if thisIncDrift != None:
+        for paramName in thisIncDrift:
+            exec('{} = thisIncDrift[paramName]'.format(paramName))
+    
+    for thisIncDrift in incDrift:
+        currentLoop = incDrift
+        # abbreviate parameter names if possible (e.g. rgb = thisIncDrift.rgb)
+        if thisIncDrift != None:
+            for paramName in thisIncDrift:
+                exec('{} = thisIncDrift[paramName]'.format(paramName))
+        
+        # ------Prepare to start Routine "gradInc"-------
+        continueRoutine = True
+        routineTimer.add(0.125000)
+        # update component parameters for each repeat
+        #change height/width, gradually change the last 3 images
+        # so that the first images are the final change size
+        if tcount_2 > (nFrames-gradDur):
+            if newH <maxVal:#if its a wide trial 
+                gradH +=gradSize
+                if gradH >maxVal: 
+                        gradH=maxVal
+            if newW <maxVal: #if its a tall trial
+                 gradW+=gradSize
+                 if gradW > maxVal: 
+                        gradW=maxVal
+        
+        gradIncResp.keys = []
+        gradIncResp.rt = []
+        _gradIncResp_allKeys = []
+        border_3.setSize((brd,brd))
+        border_3.setImage(checkBorder)
+        radialEye_change_3.setOpacity(contR)
+        radialEye_change_3.setSize((maxVal, maxVal))
+        radialEye_change_3.setImage(image_radialEye)
+        bullsEye_gradChange_3.setOpacity(contB)
+        bullsEye_gradChange_3.setSize((gradW, gradH))
+        bullsEye_gradChange_3.setImage(image_bullsEye)
+        # keep track of which components have finished
+        gradIncComponents = [gradIncResp, border_3, radialEye_change_3, bullsEye_gradChange_3, fixation_3, Instruction_3]
+        for thisComponent in gradIncComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        gradIncClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "gradInc"-------
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = gradIncClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=gradIncClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *gradIncResp* updates
+            waitOnFlip = False
+            if gradIncResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                gradIncResp.frameNStart = frameN  # exact frame index
+                gradIncResp.tStart = t  # local t and not account for scr refresh
+                gradIncResp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(gradIncResp, 'tStartRefresh')  # time at next scr refresh
+                gradIncResp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(gradIncResp.clock.reset)  # t=0 on next screen flip
+            if gradIncResp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > gradIncResp.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    gradIncResp.tStop = t  # not accounting for scr refresh
+                    gradIncResp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(gradIncResp, 'tStopRefresh')  # time at next scr refresh
+                    gradIncResp.status = FINISHED
+            if gradIncResp.status == STARTED and not waitOnFlip:
+                theseKeys = gradIncResp.getKeys(keyList=['right', 'up'], waitRelease=False)
+                _gradIncResp_allKeys.extend(theseKeys)
+                if len(_gradIncResp_allKeys):
+                    gradIncResp.keys = _gradIncResp_allKeys[-1].name  # just the last key pressed
+                    gradIncResp.rt = _gradIncResp_allKeys[-1].rt
+            
+            # *border_3* updates
+            if border_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                border_3.frameNStart = frameN  # exact frame index
+                border_3.tStart = t  # local t and not account for scr refresh
+                border_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(border_3, 'tStartRefresh')  # time at next scr refresh
+                border_3.setAutoDraw(True)
+            if border_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > border_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    border_3.tStop = t  # not accounting for scr refresh
+                    border_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(border_3, 'tStopRefresh')  # time at next scr refresh
+                    border_3.setAutoDraw(False)
+            
+            # *radialEye_change_3* updates
+            if radialEye_change_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                radialEye_change_3.frameNStart = frameN  # exact frame index
+                radialEye_change_3.tStart = t  # local t and not account for scr refresh
+                radialEye_change_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(radialEye_change_3, 'tStartRefresh')  # time at next scr refresh
+                radialEye_change_3.setAutoDraw(True)
+            if radialEye_change_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > radialEye_change_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    radialEye_change_3.tStop = t  # not accounting for scr refresh
+                    radialEye_change_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(radialEye_change_3, 'tStopRefresh')  # time at next scr refresh
+                    radialEye_change_3.setAutoDraw(False)
+            
+            # *bullsEye_gradChange_3* updates
+            if bullsEye_gradChange_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                bullsEye_gradChange_3.frameNStart = frameN  # exact frame index
+                bullsEye_gradChange_3.tStart = t  # local t and not account for scr refresh
+                bullsEye_gradChange_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(bullsEye_gradChange_3, 'tStartRefresh')  # time at next scr refresh
+                bullsEye_gradChange_3.setAutoDraw(True)
+            if bullsEye_gradChange_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > bullsEye_gradChange_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    bullsEye_gradChange_3.tStop = t  # not accounting for scr refresh
+                    bullsEye_gradChange_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(bullsEye_gradChange_3, 'tStopRefresh')  # time at next scr refresh
+                    bullsEye_gradChange_3.setAutoDraw(False)
+            
+            # *fixation_3* updates
+            if fixation_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fixation_3.frameNStart = frameN  # exact frame index
+                fixation_3.tStart = t  # local t and not account for scr refresh
+                fixation_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fixation_3, 'tStartRefresh')  # time at next scr refresh
+                fixation_3.setAutoDraw(True)
+            if fixation_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > fixation_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    fixation_3.tStop = t  # not accounting for scr refresh
+                    fixation_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(fixation_3, 'tStopRefresh')  # time at next scr refresh
+                    fixation_3.setAutoDraw(False)
+            
+            # *Instruction_3* updates
+            if Instruction_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                Instruction_3.frameNStart = frameN  # exact frame index
+                Instruction_3.tStart = t  # local t and not account for scr refresh
+                Instruction_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Instruction_3, 'tStartRefresh')  # time at next scr refresh
+                Instruction_3.setAutoDraw(True)
+            if Instruction_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > Instruction_3.tStartRefresh + 0.125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    Instruction_3.tStop = t  # not accounting for scr refresh
+                    Instruction_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(Instruction_3, 'tStopRefresh')  # time at next scr refresh
+                    Instruction_3.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in gradIncComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "gradInc"-------
+        for thisComponent in gradIncComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        tcount_2+=1
+        #store key presses in list
+        keypresses.append(gradIncResp.keys)
+        #store reaction times in list
+        rtList.append(gradIncResp.rt)
+        
+        # check responses
+        if gradIncResp.keys in ['', [], None]:  # No response was made
+            gradIncResp.keys = None
+        incDrift.addData('gradIncResp.keys',gradIncResp.keys)
+        if gradIncResp.keys != None:  # we had a response
+            incDrift.addData('gradIncResp.rt', gradIncResp.rt)
+        incDrift.addData('gradIncResp.started', gradIncResp.tStartRefresh)
+        incDrift.addData('gradIncResp.stopped', gradIncResp.tStopRefresh)
+        incDrift.addData('Instruction_3.started', Instruction_3.tStartRefresh)
+        incDrift.addData('Instruction_3.stopped', Instruction_3.tStopRefresh)
+    # completed 1.0 repeats of 'incDrift'
+    
+    
+    # ------Prepare to start Routine "changeDir"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    #change direction of drift
+    direction = random()
+    driftLs = list(range((nFrames+1)*2))
+    if direction >0.5: 
+        driftrows= driftLs[:(nFrames+1)] 
+    else:
+        driftrows = driftLs[(nFrames+1):]
+    # keep track of which components have finished
+    changeDirComponents = []
+    for thisComponent in changeDirComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    changeDirClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "changeDir"-------
+    while continueRoutine:
+        # get current time
+        t = changeDirClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=changeDirClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in changeDirComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "changeDir"-------
+    for thisComponent in changeDirComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "changeDir" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # set up handler to look after randomisation of conditions etc
+    constDrift = data.TrialHandler(nReps=1.0, method='sequential', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=data.importConditions(fileCSV, selection=driftrows),
+        seed=None, name='constDrift')
+    thisExp.addLoop(constDrift)  # add the loop to the experiment
+    thisConstDrift = constDrift.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisConstDrift.rgb)
+    if thisConstDrift != None:
+        for paramName in thisConstDrift:
+            exec('{} = thisConstDrift[paramName]'.format(paramName))
+    
+    for thisConstDrift in constDrift:
+        currentLoop = constDrift
+        # abbreviate parameter names if possible (e.g. rgb = thisConstDrift.rgb)
+        if thisConstDrift != None:
+            for paramName in thisConstDrift:
+                exec('{} = thisConstDrift[paramName]'.format(paramName))
+        
+        # ------Prepare to start Routine "trialConst"-------
+        continueRoutine = True
+        routineTimer.add(0.125000)
+        # update component parameters for each repeat
+        constResp.keys = []
+        constResp.rt = []
+        _constResp_allKeys = []
+        border_6.setSize((brd,brd))
+        border_6.setImage(checkBorder)
+        radialEye_stim_const.setOpacity(contR)
+        radialEye_stim_const.setSize((maxVal, maxVal))
+        radialEye_stim_const.setImage(image_radialEye)
+        bullsEye_stim_const.setOpacity(contB)
+        bullsEye_stim_const.setSize((maxVal, maxVal))
+        bullsEye_stim_const.setImage(image_bullsEye)
+        fixation_4.setColor(col, colorSpace='rgb')
+        fixation_4.setHeight(hght)
+        # keep track of which components have finished
+        trialConstComponents = [constResp, border_6, radialEye_stim_const, bullsEye_stim_const, fixation_4, Instruction_5]
+        for thisComponent in trialConstComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        trialConstClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "trialConst"-------
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = trialConstClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=trialConstClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *constResp* updates
+            waitOnFlip = False
+            if constResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                constResp.frameNStart = frameN  # exact frame index
+                constResp.tStart = t  # local t and not account for scr refresh
+                constResp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(constResp, 'tStartRefresh')  # time at next scr refresh
+                constResp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(constResp.clock.reset)  # t=0 on next screen flip
+            if constResp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > constResp.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    constResp.tStop = t  # not accounting for scr refresh
+                    constResp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(constResp, 'tStopRefresh')  # time at next scr refresh
+                    constResp.status = FINISHED
+            if constResp.status == STARTED and not waitOnFlip:
+                theseKeys = constResp.getKeys(keyList=['up', 'right'], waitRelease=False)
+                _constResp_allKeys.extend(theseKeys)
+                if len(_constResp_allKeys):
+                    constResp.keys = _constResp_allKeys[-1].name  # just the last key pressed
+                    constResp.rt = _constResp_allKeys[-1].rt
+            
+            # *border_6* updates
+            if border_6.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                border_6.frameNStart = frameN  # exact frame index
+                border_6.tStart = t  # local t and not account for scr refresh
+                border_6.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(border_6, 'tStartRefresh')  # time at next scr refresh
+                border_6.setAutoDraw(True)
+            if border_6.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > border_6.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    border_6.tStop = t  # not accounting for scr refresh
+                    border_6.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(border_6, 'tStopRefresh')  # time at next scr refresh
+                    border_6.setAutoDraw(False)
+            
+            # *radialEye_stim_const* updates
+            if radialEye_stim_const.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                radialEye_stim_const.frameNStart = frameN  # exact frame index
+                radialEye_stim_const.tStart = t  # local t and not account for scr refresh
+                radialEye_stim_const.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(radialEye_stim_const, 'tStartRefresh')  # time at next scr refresh
+                radialEye_stim_const.setAutoDraw(True)
+            if radialEye_stim_const.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > radialEye_stim_const.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    radialEye_stim_const.tStop = t  # not accounting for scr refresh
+                    radialEye_stim_const.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(radialEye_stim_const, 'tStopRefresh')  # time at next scr refresh
+                    radialEye_stim_const.setAutoDraw(False)
+            
+            # *bullsEye_stim_const* updates
+            if bullsEye_stim_const.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                bullsEye_stim_const.frameNStart = frameN  # exact frame index
+                bullsEye_stim_const.tStart = t  # local t and not account for scr refresh
+                bullsEye_stim_const.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(bullsEye_stim_const, 'tStartRefresh')  # time at next scr refresh
+                bullsEye_stim_const.setAutoDraw(True)
+            if bullsEye_stim_const.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > bullsEye_stim_const.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    bullsEye_stim_const.tStop = t  # not accounting for scr refresh
+                    bullsEye_stim_const.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(bullsEye_stim_const, 'tStopRefresh')  # time at next scr refresh
+                    bullsEye_stim_const.setAutoDraw(False)
+            
+            # *fixation_4* updates
+            if fixation_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fixation_4.frameNStart = frameN  # exact frame index
+                fixation_4.tStart = t  # local t and not account for scr refresh
+                fixation_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fixation_4, 'tStartRefresh')  # time at next scr refresh
+                fixation_4.setAutoDraw(True)
+            if fixation_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > fixation_4.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    fixation_4.tStop = t  # not accounting for scr refresh
+                    fixation_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(fixation_4, 'tStopRefresh')  # time at next scr refresh
+                    fixation_4.setAutoDraw(False)
+            
+            # *Instruction_5* updates
+            if Instruction_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                Instruction_5.frameNStart = frameN  # exact frame index
+                Instruction_5.tStart = t  # local t and not account for scr refresh
+                Instruction_5.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Instruction_5, 'tStartRefresh')  # time at next scr refresh
+                Instruction_5.setAutoDraw(True)
+            if Instruction_5.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > Instruction_5.tStartRefresh + 0.125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    Instruction_5.tStop = t  # not accounting for scr refresh
+                    Instruction_5.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(Instruction_5, 'tStopRefresh')  # time at next scr refresh
+                    Instruction_5.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in trialConstComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "trialConst"-------
+        for thisComponent in trialConstComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        tcount_3+=1
+        #only record if in two seconds of const trial
+        if tcount_3 <((nFrames+1)*2):
+            #store key press in list
+            keypresses.append(constResp.keys)
+            rtList.append(constResp.rt)
+        if tcount_3<=5:
+            col = 'lime' 
+            hght= .035
+        else: 
+            col = 'white'
+            hght= .025
+        # check responses
+        if constResp.keys in ['', [], None]:  # No response was made
+            constResp.keys = None
+        constDrift.addData('constResp.keys',constResp.keys)
+        if constResp.keys != None:  # we had a response
+            constDrift.addData('constResp.rt', constResp.rt)
+        constDrift.addData('constResp.started', constResp.tStartRefresh)
+        constDrift.addData('constResp.stopped', constResp.tStopRefresh)
+        constDrift.addData('Instruction_5.started', Instruction_5.tStartRefresh)
+        constDrift.addData('Instruction_5.stopped', Instruction_5.tStopRefresh)
+    # completed 1.0 repeats of 'constDrift'
+    
+    
+    # ------Prepare to start Routine "nextTrial"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    #if the wrongAns is in the list of keypresses then define the index of the wrongAns
+    if wrongAns in keypresses:
+        indWrng = keypresses.index(wrongAns)
+    # keep track of which components have finished
+    nextTrialComponents = []
+    for thisComponent in nextTrialComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    nextTrialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "nextTrial"-------
+    while continueRoutine:
+        # get current time
+        t = nextTrialClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=nextTrialClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in nextTrialComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "nextTrial"-------
+    for thisComponent in nextTrialComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # save information to output file 
+    trials.addData('corrAns', corrAns)
+    trials.addData('allKeyResp', keypresses)
+    trials.addData('bullsContrast', contB)
+    trials.addData('radialContrast', contR)
+    trials.addData('allKeyRT', rtList)
+    trials.addData('whichTrial', whichTrial)
+    trials.addData('tall_wide', tall_wide)
+    trials.addData('totalTrialCount',totTrialCount)
+    
+    ####START STAIRCASE####
+    #find where in the size array we are currently
+    findx =finChanges.index(currSize) 
+    #check if the response is correct and the wrongAns is not in keypresses
+    if corrAns in keypresses and wrongAns not in keypresses:
+        currAns = corrAns #current answer is correct
+        indCorr = keypresses.index(corrAns) #index of correct keypress
+        currRT = rtList[indCorr] #RT for that keypress
+    #check if both keys were pressed
+    elif wrongAns and corrAns in keypresses: 
+        #find index of correct and wrong ans
+        indCorr = keypresses.index(corrAns)
+        indWrng = keypresses.index(wrongAns)
+        #if the wrong key was pressed before the right key
+        #and there was less than 300ms difference in presses 
+        #mark the response as correct
+        if indWrng <indCorr and (indCorr-indWrng)<4: 
+            currAns=corrAns
+            currRT = rtList[indCorr]
+    #check if press is a wrong answer
+    else:
+        if wrongAns not in keypresses: #if nothing was pressed for this trial
+            currAns='none'
+            currRT = 0
+        else: #if the wrongAns was pressed for this trial
+            currAns=wrongAns
+            indWrng = keypresses.index(wrongAns)
+            currRT = rtList[indWrng]
+    # use the currAns to manipulate the staircase
+    if currAns == corrAns:  
+        corrCount +=1 #increase counter
+        if corrCount%2==0: #if there were two corrAns make staircase harder 
+            #if you are at the end of the array stay there 
+            if currSize == finChanges[-1]:
+                this_AR = currSize
+                thisInd = (len(finChanges)-1)
+            else: 
+                #move down to the next step size
+                currSize = finChanges[findx+1]
+                this_AR = currSize
+                thisInd = findx+1
+    else: #make staircase easier 
+        corrCount = 0 #reset the counter since the answer was wrong
+        #if at the beginning of the array stay there
+        if currSize == finChanges[0]:
+            this_AR = currSize
+            thisInd = 0 
+        else: 
+            #move down to the next step size
+            currSize = finChanges[findx-1]
+            this_AR = currSize
+            thisInd = findx-1
+    ####PREPARE FOR NEXT TRIAL####
+    tcount_1=tcount_2=tcount_3=0
+    #record the staircase behavior for easier analysis 
+    trials.addData('resp', currAns)
+    trials.addData('rt', currRT)
+    trials.addData('thisInd',thisInd)
+    trials.addData('currSize', currSize)
+    
+    # the Routine "nextTrial" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed trialReps repeats of 'trials'
 
 
 # Flip one final time so any remaining win.callOnFlip() 
