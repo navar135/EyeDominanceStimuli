@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Tue Jan  4 12:52:16 2022
+    on Tue Jan  4 15:52:35 2022
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -738,7 +738,12 @@ stairSteps.append(initStep) #add initial step
 for i in range(14):
     initStep = initStep*0.87
     stairSteps.append(initStep)
-
+#define params for moving cue icons
+currPos = 0
+change = .2
+currRatio = ''
+cueColor = 'black'
+cueChngColor = 'black'
 
 # Initialize components for Routine "trial1Const"
 trial1ConstClock = core.Clock()
@@ -797,6 +802,8 @@ wideResp = visual.ShapeStim(
 # Initialize components for Routine "trialSetUp"
 trialSetUpClock = core.Clock()
 thisBlkTrialCount = 0
+cueColor = 'black'
+cueChngColor = 'black'
 
 # Initialize components for Routine "gradDec"
 gradDecClock = core.Clock()
@@ -842,6 +849,30 @@ Instruction = visual.TextStim(win=win, name='Instruction',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-6.0);
+tallMarker_2 = visual.ShapeStim(
+    win=win, name='tallMarker_2',units='height', 
+    size=(0.01, 0.05), vertices='circle',
+    ori=0.0, pos=(-.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-7.0, interpolate=True)
+wideMarker_2 = visual.ShapeStim(
+    win=win, name='wideMarker_2',units='height', 
+    size=(0.05, 0.01), vertices='circle',
+    ori=0.0, pos=(.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-8.0, interpolate=True)
+noChangeMarker_2 = visual.ShapeStim(
+    win=win, name='noChangeMarker_2',units='height', 
+    size=(0.03, 0.03), vertices='circle',
+    ori=0.0, pos=(0,-.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-9.0, interpolate=True)
+currChange_2 = visual.ShapeStim(
+    win=win, name='currChange_2', vertices='cross',units='height', 
+    size=(0.02, 0.02),
+    ori=0.0, pos=[0,0],
+    lineWidth=0.05,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-10.0, interpolate=True)
 
 # Initialize components for Routine "gradInc"
 gradIncClock = core.Clock()
@@ -887,6 +918,30 @@ Instruction_3 = visual.TextStim(win=win, name='Instruction_3',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-6.0);
+tallMarker_3 = visual.ShapeStim(
+    win=win, name='tallMarker_3',units='height', 
+    size=(0.01, 0.05), vertices='circle',
+    ori=0.0, pos=(-.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-7.0, interpolate=True)
+wideMarker_3 = visual.ShapeStim(
+    win=win, name='wideMarker_3',units='height', 
+    size=(0.05, 0.01), vertices='circle',
+    ori=0.0, pos=(.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-8.0, interpolate=True)
+noChangeMarker_3 = visual.ShapeStim(
+    win=win, name='noChangeMarker_3',units='height', 
+    size=(0.03, 0.03), vertices='circle',
+    ori=0.0, pos=(0,-.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-9.0, interpolate=True)
+currChange_3 = visual.ShapeStim(
+    win=win, name='currChange_3', vertices='cross',units='height', 
+    size=(0.02, 0.02),
+    ori=0.0, pos=[0,0],
+    lineWidth=0.05,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-10.0, interpolate=True)
 
 # Initialize components for Routine "changeDir"
 changeDirClock = core.Clock()
@@ -895,7 +950,7 @@ changeDirClock = core.Clock()
 trialConstClock = core.Clock()
 tcount_3=0 #increase count with each image 
                     #loop.thisN doesn't work in pavlovia 
-col = 'lime' #change color of fix-cross to initialize when to respond
+col = 'white' #change color of fix-cross to initialize when to respond
 hght= .025 #change size of fix-cross to initialize when to respond
 constResp = keyboard.Keyboard()
 border_6 = visual.ImageStim(
@@ -936,6 +991,30 @@ Instruction_5 = visual.TextStim(win=win, name='Instruction_5',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-6.0);
+tallMarker_4 = visual.ShapeStim(
+    win=win, name='tallMarker_4',units='height', 
+    size=(0.01, 0.05), vertices='circle',
+    ori=0.0, pos=(-.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-7.0, interpolate=True)
+wideMarker_4 = visual.ShapeStim(
+    win=win, name='wideMarker_4',units='height', 
+    size=(0.05, 0.01), vertices='circle',
+    ori=0.0, pos=(.2, -.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-8.0, interpolate=True)
+noChangeMarker_4 = visual.ShapeStim(
+    win=win, name='noChangeMarker_4',units='height', 
+    size=(0.03, 0.03), vertices='circle',
+    ori=0.0, pos=(0,-.2),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-9.0, interpolate=True)
+currChange_4 = visual.ShapeStim(
+    win=win, name='currChange_4', vertices='cross',units='height', 
+    size=(0.02, 0.02),
+    ori=0.0, pos=[0,0],
+    lineWidth=0.05,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-10.0, interpolate=True)
 
 # Initialize components for Routine "nextTrial"
 nextTrialClock = core.Clock()
@@ -3553,7 +3632,7 @@ for thisTest_2 in test_2:
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
-    driftTest = data.TrialHandler(nReps=10.0, method='sequential', 
+    driftTest = data.TrialHandler(nReps=5.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=data.importConditions(fileCSV, selection=driftrows),
         seed=None, name='driftTest')
@@ -3851,7 +3930,7 @@ for thisTest_2 in test_2:
         driftTest.addData('dispOrNot.stopped', dispOrNot.tStopRefresh)
         thisExp.nextEntry()
         
-    # completed 10.0 repeats of 'driftTest'
+    # completed 5.0 repeats of 'driftTest'
     
     thisExp.nextEntry()
     
@@ -4267,6 +4346,21 @@ for thisTrial in trials:
     totTrialCount += 1
     
     
+    #flip a coin if 0 then don't display response cues
+    #if 1 then display the response cues
+    currPos = 0 
+    cueTime = random()
+    while cueTime ==0.5:
+        cueTime = random()
+    
+    cueTxt = str(cueTime)
+    
+    if cueTime < 0.5:
+        cueColor = 'black'
+        cueChngColor = 'black'
+    else:
+        cueColor = 'white'
+        cueChngColor ='green'
     # keep track of which components have finished
     trialSetUpComponents = []
     for thisComponent in trialSetUpComponents:
@@ -4361,8 +4455,12 @@ for thisTrial in trials:
         bullsEye_gradChange.setOpacity(contB)
         bullsEye_gradChange.setSize((gradW, gradH))
         bullsEye_gradChange.setImage(image_bullsEye)
+        noChangeMarker_2.setFillColor(cueColor)
+        noChangeMarker_2.setLineColor(cueColor)
+        currChange_2.setFillColor(cueChngColor)
+        currChange_2.setLineColor(cueChngColor)
         # keep track of which components have finished
-        gradDecComponents = [gradDecResp, border_2, radialEye_change, bullsEye_gradChange, fixation, Instruction]
+        gradDecComponents = [gradDecResp, border_2, radialEye_change, bullsEye_gradChange, fixation, Instruction, tallMarker_2, wideMarker_2, noChangeMarker_2, currChange_2]
         for thisComponent in gradDecComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -4384,6 +4482,25 @@ for thisTrial in trials:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            #check for any key press
+            keys=event.getKeys()
+            
+            if len(keys):
+                if 'right' in keys:
+                    currPos = currPos + change
+                    if currPos > 0.2:
+                       currPos=0.2 
+                elif 'left' in keys:
+                    currPos = currPos - change 
+                    if currPos < - 0.2:
+                       currPos= - 0.2 
+                if 'space' in keys:
+                    if currPos >0:
+                        currRatio = 'wide'
+                    elif currPos <0:
+                        currRatio = 'tall'
+                    else:
+                        currRatio = 'noChange'
             
             # *gradDecResp* updates
             waitOnFlip = False
@@ -4497,6 +4614,82 @@ for thisTrial in trials:
                     win.timeOnFlip(Instruction, 'tStopRefresh')  # time at next scr refresh
                     Instruction.setAutoDraw(False)
             
+            # *tallMarker_2* updates
+            if tallMarker_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                tallMarker_2.frameNStart = frameN  # exact frame index
+                tallMarker_2.tStart = t  # local t and not account for scr refresh
+                tallMarker_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(tallMarker_2, 'tStartRefresh')  # time at next scr refresh
+                tallMarker_2.setAutoDraw(True)
+            if tallMarker_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > tallMarker_2.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    tallMarker_2.tStop = t  # not accounting for scr refresh
+                    tallMarker_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(tallMarker_2, 'tStopRefresh')  # time at next scr refresh
+                    tallMarker_2.setAutoDraw(False)
+            if tallMarker_2.status == STARTED:  # only update if drawing
+                tallMarker_2.setFillColor(cueColor, log=False)
+                tallMarker_2.setLineColor(cueColor, log=False)
+            
+            # *wideMarker_2* updates
+            if wideMarker_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                wideMarker_2.frameNStart = frameN  # exact frame index
+                wideMarker_2.tStart = t  # local t and not account for scr refresh
+                wideMarker_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(wideMarker_2, 'tStartRefresh')  # time at next scr refresh
+                wideMarker_2.setAutoDraw(True)
+            if wideMarker_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > wideMarker_2.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    wideMarker_2.tStop = t  # not accounting for scr refresh
+                    wideMarker_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(wideMarker_2, 'tStopRefresh')  # time at next scr refresh
+                    wideMarker_2.setAutoDraw(False)
+            if wideMarker_2.status == STARTED:  # only update if drawing
+                wideMarker_2.setFillColor(cueColor, log=False)
+                wideMarker_2.setLineColor(cueColor, log=False)
+            
+            # *noChangeMarker_2* updates
+            if noChangeMarker_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                noChangeMarker_2.frameNStart = frameN  # exact frame index
+                noChangeMarker_2.tStart = t  # local t and not account for scr refresh
+                noChangeMarker_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(noChangeMarker_2, 'tStartRefresh')  # time at next scr refresh
+                noChangeMarker_2.setAutoDraw(True)
+            if noChangeMarker_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > noChangeMarker_2.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    noChangeMarker_2.tStop = t  # not accounting for scr refresh
+                    noChangeMarker_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(noChangeMarker_2, 'tStopRefresh')  # time at next scr refresh
+                    noChangeMarker_2.setAutoDraw(False)
+            
+            # *currChange_2* updates
+            if currChange_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                currChange_2.frameNStart = frameN  # exact frame index
+                currChange_2.tStart = t  # local t and not account for scr refresh
+                currChange_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(currChange_2, 'tStartRefresh')  # time at next scr refresh
+                currChange_2.setAutoDraw(True)
+            if currChange_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > currChange_2.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    currChange_2.tStop = t  # not accounting for scr refresh
+                    currChange_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(currChange_2, 'tStopRefresh')  # time at next scr refresh
+                    currChange_2.setAutoDraw(False)
+            if currChange_2.status == STARTED:  # only update if drawing
+                currChange_2.setPos((currPos, -.2), log=False)
+            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -4584,8 +4777,12 @@ for thisTrial in trials:
         bullsEye_gradChange_3.setOpacity(contB)
         bullsEye_gradChange_3.setSize((gradW, gradH))
         bullsEye_gradChange_3.setImage(image_bullsEye)
+        noChangeMarker_3.setFillColor(cueColor)
+        noChangeMarker_3.setLineColor(cueColor)
+        currChange_3.setFillColor(cueChngColor)
+        currChange_3.setLineColor(cueChngColor)
         # keep track of which components have finished
-        gradIncComponents = [gradIncResp, border_3, radialEye_change_3, bullsEye_gradChange_3, fixation_3, Instruction_3]
+        gradIncComponents = [gradIncResp, border_3, radialEye_change_3, bullsEye_gradChange_3, fixation_3, Instruction_3, tallMarker_3, wideMarker_3, noChangeMarker_3, currChange_3]
         for thisComponent in gradIncComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -4607,6 +4804,25 @@ for thisTrial in trials:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            #check for any key press
+            keys=event.getKeys()
+            
+            if len(keys):
+                if 'right' in keys:
+                    currPos = currPos + change
+                    if currPos > 0.2:
+                       currPos=0.2 
+                elif 'left' in keys:
+                    currPos = currPos - change 
+                    if currPos < - 0.2:
+                       currPos= - 0.2 
+                if 'space' in keys:
+                    if currPos >0:
+                        currRatio = 'wide'
+                    elif currPos <0:
+                        currRatio = 'tall'
+                    else:
+                        currRatio = 'noChange'
             
             # *gradIncResp* updates
             waitOnFlip = False
@@ -4719,6 +4935,82 @@ for thisTrial in trials:
                     Instruction_3.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(Instruction_3, 'tStopRefresh')  # time at next scr refresh
                     Instruction_3.setAutoDraw(False)
+            
+            # *tallMarker_3* updates
+            if tallMarker_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                tallMarker_3.frameNStart = frameN  # exact frame index
+                tallMarker_3.tStart = t  # local t and not account for scr refresh
+                tallMarker_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(tallMarker_3, 'tStartRefresh')  # time at next scr refresh
+                tallMarker_3.setAutoDraw(True)
+            if tallMarker_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > tallMarker_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    tallMarker_3.tStop = t  # not accounting for scr refresh
+                    tallMarker_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(tallMarker_3, 'tStopRefresh')  # time at next scr refresh
+                    tallMarker_3.setAutoDraw(False)
+            if tallMarker_3.status == STARTED:  # only update if drawing
+                tallMarker_3.setFillColor(cueColor, log=False)
+                tallMarker_3.setLineColor(cueColor, log=False)
+            
+            # *wideMarker_3* updates
+            if wideMarker_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                wideMarker_3.frameNStart = frameN  # exact frame index
+                wideMarker_3.tStart = t  # local t and not account for scr refresh
+                wideMarker_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(wideMarker_3, 'tStartRefresh')  # time at next scr refresh
+                wideMarker_3.setAutoDraw(True)
+            if wideMarker_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > wideMarker_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    wideMarker_3.tStop = t  # not accounting for scr refresh
+                    wideMarker_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(wideMarker_3, 'tStopRefresh')  # time at next scr refresh
+                    wideMarker_3.setAutoDraw(False)
+            if wideMarker_3.status == STARTED:  # only update if drawing
+                wideMarker_3.setFillColor(cueColor, log=False)
+                wideMarker_3.setLineColor(cueColor, log=False)
+            
+            # *noChangeMarker_3* updates
+            if noChangeMarker_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                noChangeMarker_3.frameNStart = frameN  # exact frame index
+                noChangeMarker_3.tStart = t  # local t and not account for scr refresh
+                noChangeMarker_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(noChangeMarker_3, 'tStartRefresh')  # time at next scr refresh
+                noChangeMarker_3.setAutoDraw(True)
+            if noChangeMarker_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > noChangeMarker_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    noChangeMarker_3.tStop = t  # not accounting for scr refresh
+                    noChangeMarker_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(noChangeMarker_3, 'tStopRefresh')  # time at next scr refresh
+                    noChangeMarker_3.setAutoDraw(False)
+            
+            # *currChange_3* updates
+            if currChange_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                currChange_3.frameNStart = frameN  # exact frame index
+                currChange_3.tStart = t  # local t and not account for scr refresh
+                currChange_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(currChange_3, 'tStartRefresh')  # time at next scr refresh
+                currChange_3.setAutoDraw(True)
+            if currChange_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > currChange_3.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    currChange_3.tStop = t  # not accounting for scr refresh
+                    currChange_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(currChange_3, 'tStopRefresh')  # time at next scr refresh
+                    currChange_3.setAutoDraw(False)
+            if currChange_3.status == STARTED:  # only update if drawing
+                currChange_3.setPos((currPos, -.2), log=False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -4854,8 +5146,12 @@ for thisTrial in trials:
         bullsEye_stim_const.setImage(image_bullsEye)
         fixation_4.setColor(col, colorSpace='rgb')
         fixation_4.setHeight(hght)
+        noChangeMarker_4.setFillColor(cueColor)
+        noChangeMarker_4.setLineColor(cueColor)
+        currChange_4.setFillColor(cueChngColor)
+        currChange_4.setLineColor(cueChngColor)
         # keep track of which components have finished
-        trialConstComponents = [constResp, border_6, radialEye_stim_const, bullsEye_stim_const, fixation_4, Instruction_5]
+        trialConstComponents = [constResp, border_6, radialEye_stim_const, bullsEye_stim_const, fixation_4, Instruction_5, tallMarker_4, wideMarker_4, noChangeMarker_4, currChange_4]
         for thisComponent in trialConstComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -4877,6 +5173,25 @@ for thisTrial in trials:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            #check for any key press
+            keys=event.getKeys()
+            
+            if len(keys):
+                if 'right' in keys:
+                    currPos = currPos + change
+                    if currPos > 0.2:
+                       currPos=0.2 
+                elif 'left' in keys:
+                    currPos = currPos - change 
+                    if currPos < - 0.2:
+                       currPos= - 0.2 
+                if 'space' in keys:
+                    if currPos >0:
+                        currRatio = 'wide'
+                    elif currPos <0:
+                        currRatio = 'tall'
+                    else:
+                        currRatio = 'noChange'
             
             # *constResp* updates
             waitOnFlip = False
@@ -4989,6 +5304,82 @@ for thisTrial in trials:
                     Instruction_5.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(Instruction_5, 'tStopRefresh')  # time at next scr refresh
                     Instruction_5.setAutoDraw(False)
+            
+            # *tallMarker_4* updates
+            if tallMarker_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                tallMarker_4.frameNStart = frameN  # exact frame index
+                tallMarker_4.tStart = t  # local t and not account for scr refresh
+                tallMarker_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(tallMarker_4, 'tStartRefresh')  # time at next scr refresh
+                tallMarker_4.setAutoDraw(True)
+            if tallMarker_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > tallMarker_4.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    tallMarker_4.tStop = t  # not accounting for scr refresh
+                    tallMarker_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(tallMarker_4, 'tStopRefresh')  # time at next scr refresh
+                    tallMarker_4.setAutoDraw(False)
+            if tallMarker_4.status == STARTED:  # only update if drawing
+                tallMarker_4.setFillColor(cueColor, log=False)
+                tallMarker_4.setLineColor(cueColor, log=False)
+            
+            # *wideMarker_4* updates
+            if wideMarker_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                wideMarker_4.frameNStart = frameN  # exact frame index
+                wideMarker_4.tStart = t  # local t and not account for scr refresh
+                wideMarker_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(wideMarker_4, 'tStartRefresh')  # time at next scr refresh
+                wideMarker_4.setAutoDraw(True)
+            if wideMarker_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > wideMarker_4.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    wideMarker_4.tStop = t  # not accounting for scr refresh
+                    wideMarker_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(wideMarker_4, 'tStopRefresh')  # time at next scr refresh
+                    wideMarker_4.setAutoDraw(False)
+            if wideMarker_4.status == STARTED:  # only update if drawing
+                wideMarker_4.setFillColor(cueColor, log=False)
+                wideMarker_4.setLineColor(cueColor, log=False)
+            
+            # *noChangeMarker_4* updates
+            if noChangeMarker_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                noChangeMarker_4.frameNStart = frameN  # exact frame index
+                noChangeMarker_4.tStart = t  # local t and not account for scr refresh
+                noChangeMarker_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(noChangeMarker_4, 'tStartRefresh')  # time at next scr refresh
+                noChangeMarker_4.setAutoDraw(True)
+            if noChangeMarker_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > noChangeMarker_4.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    noChangeMarker_4.tStop = t  # not accounting for scr refresh
+                    noChangeMarker_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(noChangeMarker_4, 'tStopRefresh')  # time at next scr refresh
+                    noChangeMarker_4.setAutoDraw(False)
+            
+            # *currChange_4* updates
+            if currChange_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                currChange_4.frameNStart = frameN  # exact frame index
+                currChange_4.tStart = t  # local t and not account for scr refresh
+                currChange_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(currChange_4, 'tStartRefresh')  # time at next scr refresh
+                currChange_4.setAutoDraw(True)
+            if currChange_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > currChange_4.tStartRefresh + .125-frameTolerance:
+                    # keep track of stop time/frame for later
+                    currChange_4.tStop = t  # not accounting for scr refresh
+                    currChange_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(currChange_4, 'tStopRefresh')  # time at next scr refresh
+                    currChange_4.setAutoDraw(False)
+            if currChange_4.status == STARTED:  # only update if drawing
+                currChange_4.setPos((currPos, -.2), log=False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):

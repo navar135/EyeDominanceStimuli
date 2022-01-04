@@ -2540,8 +2540,8 @@
       <CodeComponent name="initParams">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="# initialize parameters &amp;#10;corrAns  = 'none' #correct answer&amp;#10;whichTrial = &quot;&quot; #tracks if the current trial is tall/wide&amp;#10;indWrng = 0 #initialize the index for wrong responses to stop weird pavlovia glitch&amp;#10;totTrialCount = 0 #Count number of trials&amp;#10;corrCount =0 #counter of correct answers&amp;#10;gradDur = 3 #how many images for grad change to occur over&amp;#10;findx=0 #set current index we are at in the staircase&amp;#10;thisInd = 0&amp;#10;blkCount=0&amp;#10;brd = 148 #size of border in pix&amp;#10;maxVal = 80&amp;#10;minVal = maxVal&amp;#10;this_AR = maxVal&amp;#10;initStep = 4 # initial change in px&amp;#10;finChanges = [] #empty list for final sizes displayed&amp;#10;stairSteps =[] #empty list for the changes in size&amp;#10;##Make the list of the staircase steps&amp;#10;#multiply each by a set change to create a list of size changes that &amp;#10;#get smaller and smaller in the difference&amp;#10;stairSteps.append(initStep) #add initial step&amp;#10;for i in range(14):&amp;#10;    initStep = initStep*0.87&amp;#10;    stairSteps.append(initStep)&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="corrAns = &quot;none&quot;;&amp;#10;whichTrial = &quot;&quot;;&amp;#10;indWrng = 0;&amp;#10;totTrialCount = 0;&amp;#10;corrCount = 0;&amp;#10;gradDur = 3;&amp;#10;findx = 0;&amp;#10;thisInd = 0;&amp;#10;blkCount = 0;&amp;#10;brd = 148;&amp;#10;maxVal = 80;&amp;#10;minVal = maxVal;&amp;#10;this_AR = maxVal;&amp;#10;initStep = 4;&amp;#10;finChanges = [];&amp;#10;stairSteps = [];&amp;#10;stairSteps.append(initStep);&amp;#10;for (var i = 0, _pj_a = 14; (i &lt; _pj_a); i += 1) {&amp;#10;    initStep = (initStep * 0.87);&amp;#10;    stairSteps.append(initStep);&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# initialize parameters &amp;#10;corrAns  = 'none' #correct answer&amp;#10;whichTrial = &quot;&quot; #tracks if the current trial is tall/wide&amp;#10;indWrng = 0 #initialize the index for wrong responses to stop weird pavlovia glitch&amp;#10;totTrialCount = 0 #Count number of trials&amp;#10;corrCount =0 #counter of correct answers&amp;#10;gradDur = 3 #how many images for grad change to occur over&amp;#10;findx=0 #set current index we are at in the staircase&amp;#10;thisInd = 0&amp;#10;blkCount=0&amp;#10;brd = 148 #size of border in pix&amp;#10;maxVal = 80&amp;#10;minVal = maxVal&amp;#10;this_AR = maxVal&amp;#10;initStep = 4 # initial change in px&amp;#10;finChanges = [] #empty list for final sizes displayed&amp;#10;stairSteps =[] #empty list for the changes in size&amp;#10;##Make the list of the staircase steps&amp;#10;#multiply each by a set change to create a list of size changes that &amp;#10;#get smaller and smaller in the difference&amp;#10;stairSteps.append(initStep) #add initial step&amp;#10;for i in range(14):&amp;#10;    initStep = initStep*0.87&amp;#10;    stairSteps.append(initStep)&amp;#10;#define params for moving cue icons&amp;#10;currPos = 0&amp;#10;change = .2&amp;#10;currRatio = ''&amp;#10;cueColor = 'black'&amp;#10;cueChngColor = 'black'" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="corrAns = &quot;none&quot;;&amp;#10;whichTrial = &quot;&quot;;&amp;#10;indWrng = 0;&amp;#10;totTrialCount = 0;&amp;#10;corrCount = 0;&amp;#10;gradDur = 3;&amp;#10;findx = 0;&amp;#10;thisInd = 0;&amp;#10;blkCount = 0;&amp;#10;brd = 148;&amp;#10;maxVal = 80;&amp;#10;minVal = maxVal;&amp;#10;this_AR = maxVal;&amp;#10;initStep = 4;&amp;#10;finChanges = [];&amp;#10;stairSteps = [];&amp;#10;stairSteps.push(initStep);&amp;#10;for (var i, _pj_c = 0, _pj_a = util.range(14), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    i = _pj_a[_pj_c];&amp;#10;    initStep = (initStep * 0.87);&amp;#10;    stairSteps.push(initStep);&amp;#10;}&amp;#10;currPos = 0;&amp;#10;change = 0.2;&amp;#10;currRatio = &quot;&quot;;&amp;#10;cueColor = &quot;black&quot;;&amp;#10;cueChngColor = &quot;black&quot;;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="constSize = (imgSizeCm * pxPerCm);&amp;#10;minVal = constSize;&amp;#10;maxVal = (constSize + 30);&amp;#10;finChanges = [];&amp;#10;for (var i = 0, _pj_a = stairSteps.length; (i &lt; _pj_a); i += 1) {&amp;#10;    finChanges.append(0);&amp;#10;}&amp;#10;for (var i = 0, _pj_a = stairSteps.length; (i &lt; _pj_a); i += 1) {&amp;#10;    if ((i === 0)) {&amp;#10;        finChanges[i] = minVal;&amp;#10;    } else {&amp;#10;        finChanges[i] = (finChanges[(i - 1)] + stairSteps[(i - 1)]);&amp;#10;    }&amp;#10;}&amp;#10;if ((thisInd === 0)) {&amp;#10;    currSize = finChanges[0];&amp;#10;}&amp;#10;brd = ((constSize + 45) + 40);&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="constSize=imgSizeCm*pxPerCm #set the calculated size to a new varibale &amp;#10;#WARNING: when the images are generated the actual aespect ratio we want &amp;#10;#is 20 px, but b/c we need background so the opacity is consistent when the image is &amp;#10;# stretch we will add another 20 px to both images &amp;#10;minVal =constSize#maximum aspect ratio&amp;#10;maxVal = constSize+30 #minimum aspect ratio&amp;#10;finChanges = [] #empty list for final sizes displayed&amp;#10;#reset staircase every 4 blocks&amp;#10;#if blkCount%3==0:&amp;#10;#    thisInd = 0&amp;#10;#   this_AR=minVal #current size of changing stim in staircase&amp;#10;                            #this is manipulated in the staircase&amp;#10;#simulate np.zeros()&amp;#10;for i in range(len(stairSteps)): &amp;#10;    finChanges.append(0)&amp;#10;# create a list of the final sizes which takes the actual size &amp;#10;#of the stimuli and adds the changes created in stairSteps&amp;#10;for i in range(len(stairSteps)):&amp;#10;    #so there is no index error, for the first value add the maxVal&amp;#10;    if i == 0:  &amp;#10;        finChanges[i] = minVal&amp;#10;    else:  #for all other values take the previous value and add the size change&amp;#10;              #i.e the second value is (maxVal + stairSteps[0])&amp;#10;        finChanges[i] = finChanges[i-1] + stairSteps[i-1]&amp;#10;#set the initial size and index&amp;#10;if thisInd == 0:&amp;#10;    currSize = finChanges[0] #the current size based on where i the final list we are &amp;#10;#finalize border size&amp;#10;brd = (constSize+45) + 40 #the max the image can stretch + extra pix to avoid overlap&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
@@ -2773,6 +2773,23 @@
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="setUp" valType="code"/>
       </CodeComponent>
+      <CodeComponent name="defCueCol">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="cueColor = 'black'&amp;#10;cueChngColor = 'black'" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="cueColor = &quot;black&quot;;&amp;#10;cueChngColor = &quot;black&quot;;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="currPos = 0;&amp;#10;cueTime = Math.random();&amp;#10;while ((cueTime === 0.5)) {&amp;#10;    cueTime = Math.random();&amp;#10;}&amp;#10;cueTxt = cueTime.toString();&amp;#10;if ((cueTime &lt; 0.5)) {&amp;#10;    cueColor = &quot;black&quot;;&amp;#10;    cueChngColor = &quot;black&quot;;&amp;#10;} else {&amp;#10;    cueColor = &quot;white&quot;;&amp;#10;    cueChngColor = &quot;green&quot;;&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="#flip a coin if 0 then don't display response cues&amp;#10;#if 1 then display the response cues&amp;#10;currPos = 0 &amp;#10;cueTime = random()&amp;#10;while cueTime ==0.5:&amp;#10;    cueTime = random()&amp;#10;&amp;#10;cueTxt = str(cueTime)&amp;#10;&amp;#10;if cueTime &lt; 0.5:&amp;#10;    cueColor = 'black'&amp;#10;    cueChngColor = 'black'&amp;#10;else:&amp;#10;    cueColor = 'white'&amp;#10;    cueChngColor ='green'" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="defCueCol" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="gradDec">
       <CodeComponent name="gradDecHorW">
@@ -2783,8 +2800,8 @@
         <Param name="Begin JS Routine" updates="constant" val="if ((tcount_1 &gt; (nFrames - (gradDur * 2)))) {&amp;#10;    if ((newH &lt; maxVal)) {&amp;#10;        gradH -= gradSize;&amp;#10;        if ((tcount_1 &gt; (nFrames - gradDur))) {&amp;#10;            gradH = newH;&amp;#10;        }&amp;#10;    }&amp;#10;    if ((newW &lt; maxVal)) {&amp;#10;        gradW -= gradSize;&amp;#10;        if ((tcount_1 &gt; (nFrames - gradDur))) {&amp;#10;            gradW = newW;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="#change height/width after each image &amp;#10;#start to gradually change the middle 3 images&amp;#10;# so that the last 3 images are the final size change &amp;#10;if tcount_1 &gt; (nFrames-(gradDur*2)): #starting on 4th frame&amp;#10;    if newH &lt;maxVal: #if its a wide trial &amp;#10;        gradH -=gradSize&amp;#10;        if tcount_1 &gt; nFrames-(gradDur):&amp;#10;            gradH=newH&amp;#10;    if newW&lt;maxVal: #if its a tall trial&amp;#10;         gradW-= gradSize&amp;#10;         if tcount_1 &gt; nFrames-(gradDur):&amp;#10;            gradW=newW" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="#check for any key press&amp;#10;keys=event.getKeys()&amp;#10;&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        currPos = currPos + change&amp;#10;        if currPos &gt; 0.2:&amp;#10;           currPos=0.2 &amp;#10;    elif 'left' in keys:&amp;#10;        currPos = currPos - change &amp;#10;        if currPos &lt; - 0.2:&amp;#10;           currPos= - 0.2 &amp;#10;    if 'space' in keys:&amp;#10;        if currPos &gt;0:&amp;#10;            currRatio = 'wide'&amp;#10;        elif currPos &lt;0:&amp;#10;            currRatio = 'tall'&amp;#10;        else:&amp;#10;            currRatio = 'noChange'" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        currPos = (currPos + change);&amp;#10;        if ((currPos &gt; 0.2)) {&amp;#10;            currPos = 0.2;&amp;#10;        }&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            currPos = (currPos - change);&amp;#10;            if ((currPos &lt; (- 0.2))) {&amp;#10;                currPos = (- 0.2);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    if (_pj.in_es6(&quot;space&quot;, keys)) {&amp;#10;        if ((currPos &gt; 0)) {&amp;#10;            currRatio = &quot;wide&quot;;&amp;#10;        } else {&amp;#10;            if ((currPos &lt; 0)) {&amp;#10;                currRatio = &quot;tall&quot;;&amp;#10;            } else {&amp;#10;                currRatio = &quot;noChange&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="tcount_1 += 1;&amp;#10;if ((tcount_1 &gt; (nFrames - (gradDur * 2)))) {&amp;#10;    keypresses.append(gradDecResp.keys);&amp;#10;    rtList.append(gradDecResp.rt);&amp;#10;}&amp;#10;" valType="extendedCode"/>
@@ -2938,6 +2955,110 @@
         <Param name="units" updates="None" val="height" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <PolygonComponent name="tallMarker_2">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="tallMarker_2" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(-.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.01, 0.05)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="wideMarker_2">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="wideMarker_2" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.05, 0.01)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="noChangeMarker_2">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="noChangeMarker_2" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0,-.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.03, 0.03)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="currChange_2">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val=".05" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="currChange_2" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="set every frame" val="(currPos, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.02, 0.02)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="testCursor">
       <KeyboardComponent name="gradDecResp_2">
@@ -3235,8 +3356,8 @@
         <Param name="Begin JS Routine" updates="constant" val="if ((tcount_2 &gt; (nFrames - gradDur))) {&amp;#10;    if ((newH &lt; maxVal)) {&amp;#10;        gradH += gradSize;&amp;#10;        if ((gradH &gt; maxVal)) {&amp;#10;            gradH = maxVal;&amp;#10;        }&amp;#10;    }&amp;#10;    if ((newW &lt; maxVal)) {&amp;#10;        gradW += gradSize;&amp;#10;        if ((gradW &gt; maxVal)) {&amp;#10;            gradW = maxVal;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="#change height/width, gradually change the last 3 images&amp;#10;# so that the first images are the final change size&amp;#10;if tcount_2 &gt; (nFrames-gradDur):&amp;#10;    if newH &lt;maxVal:#if its a wide trial &amp;#10;        gradH +=gradSize&amp;#10;        if gradH &gt;maxVal: &amp;#10;                gradH=maxVal&amp;#10;    if newW &lt;maxVal: #if its a tall trial&amp;#10;         gradW+=gradSize&amp;#10;         if gradW &gt; maxVal: &amp;#10;                gradW=maxVal&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="#check for any key press&amp;#10;keys=event.getKeys()&amp;#10;&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        currPos = currPos + change&amp;#10;        if currPos &gt; 0.2:&amp;#10;           currPos=0.2 &amp;#10;    elif 'left' in keys:&amp;#10;        currPos = currPos - change &amp;#10;        if currPos &lt; - 0.2:&amp;#10;           currPos= - 0.2 &amp;#10;    if 'space' in keys:&amp;#10;        if currPos &gt;0:&amp;#10;            currRatio = 'wide'&amp;#10;        elif currPos &lt;0:&amp;#10;            currRatio = 'tall'&amp;#10;        else:&amp;#10;            currRatio = 'noChange'" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        currPos = (currPos + change);&amp;#10;        if ((currPos &gt; 0.2)) {&amp;#10;            currPos = 0.2;&amp;#10;        }&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            currPos = (currPos - change);&amp;#10;            if ((currPos &lt; (- 0.2))) {&amp;#10;                currPos = (- 0.2);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    if (_pj.in_es6(&quot;space&quot;, keys)) {&amp;#10;        if ((currPos &gt; 0)) {&amp;#10;            currRatio = &quot;wide&quot;;&amp;#10;        } else {&amp;#10;            if ((currPos &lt; 0)) {&amp;#10;                currRatio = &quot;tall&quot;;&amp;#10;            } else {&amp;#10;                currRatio = &quot;noChange&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="tcount_2 += 1;&amp;#10;keypresses.append(gradIncResp.keys);&amp;#10;rtList.append(gradIncResp.rt);&amp;#10;" valType="extendedCode"/>
@@ -3390,6 +3511,110 @@
         <Param name="units" updates="None" val="height" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <PolygonComponent name="tallMarker_3">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="tallMarker_3" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(-.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.01, 0.05)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="wideMarker_3">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="wideMarker_3" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.05, 0.01)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="noChangeMarker_3">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="noChangeMarker_3" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0,-.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.03, 0.03)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="currChange_3">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val=".05" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="currChange_3" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="set every frame" val="(currPos, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.02, 0.02)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="changeDir">
       <CodeComponent name="chageDir">
@@ -3414,16 +3639,16 @@
       <CodeComponent name="storeResp">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="tcount_3=0 #increase count with each image &amp;#10;                    #loop.thisN doesn't work in pavlovia &amp;#10;col = 'lime' #change color of fix-cross to initialize when to respond&amp;#10;hght= .025 #change size of fix-cross to initialize when to respond" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="tcount_3 = 0;&amp;#10;col = &quot;lime&quot;;&amp;#10;hght = 0.025;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="tcount_3=0 #increase count with each image &amp;#10;                    #loop.thisN doesn't work in pavlovia &amp;#10;col = 'white' #change color of fix-cross to initialize when to respond&amp;#10;hght= .025 #change size of fix-cross to initialize when to respond" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="tcount_3 = 0;&amp;#10;col = &quot;white&quot;;&amp;#10;hght = 0.025;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="#check for any key press&amp;#10;keys=event.getKeys()&amp;#10;&amp;#10;if len(keys):&amp;#10;    if 'right' in keys:&amp;#10;        currPos = currPos + change&amp;#10;        if currPos &gt; 0.2:&amp;#10;           currPos=0.2 &amp;#10;    elif 'left' in keys:&amp;#10;        currPos = currPos - change &amp;#10;        if currPos &lt; - 0.2:&amp;#10;           currPos= - 0.2 &amp;#10;    if 'space' in keys:&amp;#10;        if currPos &gt;0:&amp;#10;            currRatio = 'wide'&amp;#10;        elif currPos &lt;0:&amp;#10;            currRatio = 'tall'&amp;#10;        else:&amp;#10;            currRatio = 'noChange'" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;keys = psychoJS.eventManager.getKeys();&amp;#10;if (keys.length) {&amp;#10;    if (_pj.in_es6(&quot;right&quot;, keys)) {&amp;#10;        currPos = (currPos + change);&amp;#10;        if ((currPos &gt; 0.2)) {&amp;#10;            currPos = 0.2;&amp;#10;        }&amp;#10;    } else {&amp;#10;        if (_pj.in_es6(&quot;left&quot;, keys)) {&amp;#10;            currPos = (currPos - change);&amp;#10;            if ((currPos &lt; (- 0.2))) {&amp;#10;                currPos = (- 0.2);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    if (_pj.in_es6(&quot;space&quot;, keys)) {&amp;#10;        if ((currPos &gt; 0)) {&amp;#10;            currRatio = &quot;wide&quot;;&amp;#10;        } else {&amp;#10;            if ((currPos &lt; 0)) {&amp;#10;                currRatio = &quot;tall&quot;;&amp;#10;            } else {&amp;#10;                currRatio = &quot;noChange&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="tcount_3 += 1;&amp;#10;if ((tcount_3 &lt; ((nFrames + 1) * 2))) {&amp;#10;    keypresses.append(constResp.keys);&amp;#10;    rtList.append(constResp.rt);&amp;#10;}&amp;#10;if ((tcount_3 &lt;= 5)) {&amp;#10;    col = &quot;lime&quot;;&amp;#10;    hght = 0.035;&amp;#10;} else {&amp;#10;    col = &quot;white&quot;;&amp;#10;    hght = 0.025;&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="tcount_3 += 1;&amp;#10;if ((tcount_3 &lt; ((nFrames + 1) * 2))) {&amp;#10;    keypresses.push(constResp.keys);&amp;#10;    rtList.push(constResp.rt);&amp;#10;}&amp;#10;if ((tcount_3 &lt;= 5)) {&amp;#10;    col = &quot;lime&quot;;&amp;#10;    hght = 0.035;&amp;#10;} else {&amp;#10;    col = &quot;white&quot;;&amp;#10;    hght = 0.025;&amp;#10;}&amp;#10;" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="tcount_3+=1&amp;#10;#only record if in two seconds of const trial&amp;#10;if tcount_3 &lt;((nFrames+1)*2):&amp;#10;    #store key press in list&amp;#10;    keypresses.append(constResp.keys)&amp;#10;    rtList.append(constResp.rt)&amp;#10;if tcount_3&lt;=5:&amp;#10;    col = 'lime' &amp;#10;    hght= .035&amp;#10;else: &amp;#10;    col = 'white'&amp;#10;    hght= .025" valType="extendedCode"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="storeResp" valType="code"/>
@@ -3574,6 +3799,110 @@
         <Param name="units" updates="None" val="height" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <PolygonComponent name="tallMarker_4">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="tallMarker_4" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(-.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.01, 0.05)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="wideMarker_4">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="wideMarker_4" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(.2, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.05, 0.01)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="noChangeMarker_4">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="noChangeMarker_4" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0,-.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="circle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.03, 0.03)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="currChange_4">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every repeat" val="$cueChngColor" valType="color"/>
+        <Param name="lineWidth" updates="constant" val=".05" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="currChange_4" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="set every frame" val="(currPos, -.2)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.02, 0.02)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".125" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="height" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="nextTrial">
       <CodeComponent name="staircase">
@@ -3776,7 +4105,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="10" valType="num"/>
+      <Param name="nReps" updates="None" val="5" valType="num"/>
       <Param name="name" updates="None" val="driftTest" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
