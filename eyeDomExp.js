@@ -25,7 +25,7 @@ const psychoJS = new PsychoJS({
 psychoJS.openWindow({
   fullscr: false,
   color: new util.Color('black'),
-  units: 'pix',
+  units: 'height',
   waitBlanking: true
 });
 // schedule the experiment:
@@ -89,44 +89,45 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
+    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
+    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
+    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
+    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
+    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
+    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
+    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
+    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
+    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
+    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
+    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
+    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
+    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
+    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
+    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
+    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
+    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
+    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
+    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
+    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
     {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
     {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
-    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
-    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
-    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
-    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
-    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
-    {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
-    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
-    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
-    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
-    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
-    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
-    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
-    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
-    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
-    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
-    {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
     {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
-    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
+    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
+    {'name': 'images/checkbrdBorder.png', 'path': 'images/checkbrdBorder.png'},
+    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
+    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
     {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
     {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
-    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
-    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
-    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
-    {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
-    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
-    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
-    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
-    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
-    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
-    {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
-    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
-    {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
-    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
-    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
-    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'}
+    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
+    {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
+    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'}
   ]
 });
 
@@ -315,8 +316,6 @@ var radialEye_stim_const_trial1;
 var bullseye_stim_const_trial1;
 var fixation_6;
 var Instruction_4;
-var tallResp;
-var wideResp;
 var trialSetUpClock;
 var thisBlkTrialCount;
 var gradDecClock;
@@ -1213,24 +1212,6 @@ async function experimentInit() {
     pos: [0.3, 0.3], height: 0.03,  wrapWidth: undefined, ori: 0.0,
     color: new util.Color('white'),  opacity: undefined,
     depth: -5.0 
-  });
-  
-  tallResp = new visual.Polygon ({
-    win: psychoJS.window, name: 'tallResp', 
-    edges: 4, size:[0.05, 0.1],
-    ori: 0.0, pos: [(- 0.3), (- 0.3)],
-    lineWidth: 1.0, lineColor: new util.Color('white'),
-    fillColor: new util.Color('white'),
-    opacity: undefined, depth: -6, interpolate: true,
-  });
-  
-  wideResp = new visual.Polygon ({
-    win: psychoJS.window, name: 'wideResp', 
-    edges: 4, size:[0.1, 0.05],
-    ori: 0.0, pos: [0.3, (- 0.3)],
-    lineWidth: 1.0, lineColor: new util.Color('white'),
-    fillColor: new util.Color('white'),
-    opacity: undefined, depth: -7, interpolate: true,
   });
   
   // Initialize components for Routine "trialSetUp"
@@ -5126,8 +5107,6 @@ function trial1ConstRoutineBegin(snapshot) {
     trial1ConstComponents.push(bullseye_stim_const_trial1);
     trial1ConstComponents.push(fixation_6);
     trial1ConstComponents.push(Instruction_4);
-    trial1ConstComponents.push(tallResp);
-    trial1ConstComponents.push(wideResp);
     
     for (const thisComponent of trial1ConstComponents)
       if ('status' in thisComponent)
@@ -5239,34 +5218,6 @@ function trial1ConstRoutineEachFrame() {
     frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (Instruction_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       Instruction_4.setAutoDraw(false);
-    }
-    
-    // *tallResp* updates
-    if (t >= 0.0 && tallResp.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      tallResp.tStart = t;  // (not accounting for frame time here)
-      tallResp.frameNStart = frameN;  // exact frame index
-      
-      tallResp.setAutoDraw(true);
-    }
-
-    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (tallResp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      tallResp.setAutoDraw(false);
-    }
-    
-    // *wideResp* updates
-    if (t >= 0.0 && wideResp.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      wideResp.tStart = t;  // (not accounting for frame time here)
-      wideResp.frameNStart = frameN;  // exact frame index
-      
-      wideResp.setAutoDraw(true);
-    }
-
-    frameRemains = 0.0 + 0.125 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (wideResp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      wideResp.setAutoDraw(false);
     }
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
