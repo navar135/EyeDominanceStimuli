@@ -89,45 +89,45 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
-    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
-    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
-    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
     {'name': 'images/radialEye_blue_05.png', 'path': 'images/radialEye_blue_05.png'},
-    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
-    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
-    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
-    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
-    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
-    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
-    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
-    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
-    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
-    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
-    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
-    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
-    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
+    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
+    {'name': 'images/radialEye_blue_06.png', 'path': 'images/radialEye_blue_06.png'},
     {'name': 'images/radialEye_red_02.png', 'path': 'images/radialEye_red_02.png'},
     {'name': 'images/bullsEye_blue_07.png', 'path': 'images/bullsEye_blue_07.png'},
-    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'},
-    {'name': 'images/bullsEye_blue_01.png', 'path': 'images/bullsEye_blue_01.png'},
-    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
+    {'name': 'image_list_left_left.csv', 'path': 'image_list_left_left.csv'},
+    {'name': 'images/radialEye_blue_04.png', 'path': 'images/radialEye_blue_04.png'},
+    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
+    {'name': 'images/bullsEye_red_06.png', 'path': 'images/bullsEye_red_06.png'},
+    {'name': 'image_list_left_right.csv', 'path': 'image_list_left_right.csv'},
     {'name': 'image_list_right_right.csv', 'path': 'image_list_right_right.csv'},
-    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
-    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
-    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
-    {'name': 'images/radialEye_red_05.png', 'path': 'images/radialEye_red_05.png'},
-    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
-    {'name': 'images/bullsEye_blue_05.png', 'path': 'images/bullsEye_blue_05.png'},
+    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'},
     {'name': 'images/bullsEye_blue_03.png', 'path': 'images/bullsEye_blue_03.png'},
     {'name': 'images/checkbrdBorder.png', 'path': 'images/checkbrdBorder.png'},
-    {'name': 'images/radialEye_blue_03.png', 'path': 'images/radialEye_blue_03.png'},
-    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
-    {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
+    {'name': 'images/radialEye_red_01.png', 'path': 'images/radialEye_red_01.png'},
+    {'name': 'images/radialEye_red_00.png', 'path': 'images/radialEye_red_00.png'},
     {'name': 'images/radialEye_blue_00.png', 'path': 'images/radialEye_blue_00.png'},
-    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
     {'name': 'images/bullsEye_red_02.png', 'path': 'images/bullsEye_red_02.png'},
-    {'name': 'images/bullsEye_blue_04.png', 'path': 'images/bullsEye_blue_04.png'}
+    {'name': 'images/radialEye_red_03.png', 'path': 'images/radialEye_red_03.png'},
+    {'name': 'images/bullsEye_blue_00.png', 'path': 'images/bullsEye_blue_00.png'},
+    {'name': 'images/bullsEye_red_07.png', 'path': 'images/bullsEye_red_07.png'},
+    {'name': 'images/radialEye_blue_02.png', 'path': 'images/radialEye_blue_02.png'},
+    {'name': 'images/bullsEye_red_05.png', 'path': 'images/bullsEye_red_05.png'},
+    {'name': 'images/bullsEye_red_04.png', 'path': 'images/bullsEye_red_04.png'},
+    {'name': 'image_list_right_left.csv', 'path': 'image_list_right_left.csv'},
+    {'name': 'images/radialEye_blue_01.png', 'path': 'images/radialEye_blue_01.png'},
+    {'name': 'images/bullsEye_blue_06.png', 'path': 'images/bullsEye_blue_06.png'},
+    {'name': 'images/radialEye_red_04.png', 'path': 'images/radialEye_red_04.png'},
+    {'name': 'images/instruct1.png', 'path': 'images/instruct1.png'},
+    {'name': 'images/bullsEye_red_01.png', 'path': 'images/bullsEye_red_01.png'},
+    {'name': 'images/radialEye_blue_07.png', 'path': 'images/radialEye_blue_07.png'},
+    {'name': 'images/bankImage.png', 'path': 'images/bankImage.png'},
+    {'name': 'images/bullsEye_red_00.png', 'path': 'images/bullsEye_red_00.png'},
+    {'name': 'images/bullsEye_red_03.png', 'path': 'images/bullsEye_red_03.png'},
+    {'name': 'images/bullsEye_blue_02.png', 'path': 'images/bullsEye_blue_02.png'},
+    {'name': 'images/radialEye_red_07.png', 'path': 'images/radialEye_red_07.png'},
+    {'name': 'images/radialEye_red_06.png', 'path': 'images/radialEye_red_06.png'}
   ]
 });
 
@@ -317,7 +317,7 @@ var bullseye_stim_const_trial1;
 var fixation_6;
 var Instruction_4;
 var trialSetUpClock;
-var thisBlkTrialCount;
+var cueType;
 var gradDecClock;
 var tcount_1;
 var gradDecResp;
@@ -1216,10 +1216,9 @@ async function experimentInit() {
   
   // Initialize components for Routine "trialSetUp"
   trialSetUpClock = new util.Clock();
-  thisBlkTrialCount = 0;
-  
   cueColor = "black";
   cueChngColor = "black";
+  cueType = "";
   
   // Initialize components for Routine "gradDec"
   gradDecClock = new util.Clock();
@@ -5289,9 +5288,9 @@ function trialSetUpRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
-    tall_wide = random();
+    tall_wide = Math.random();
     while ((tall_wide === 0.5)) {
-        tall_wide = random();
+        tall_wide = Math.random();
     }
     if ((tall_wide > 0.5)) {
         newW = finChanges[thisInd];
@@ -5318,12 +5317,12 @@ function trialSetUpRoutineBegin(snapshot) {
     gradW = gradH;
     gradSize = 0;
     if ((newH < maxVal)) {
-        gradSize = (abs((newH - maxVal)) / gradDur);
+        gradSize = (Math.abs((newH - maxVal)) / gradDur);
     }
     if ((newW < maxVal)) {
-        gradSize = (abs((newW - maxVal)) / gradDur);
+        gradSize = (Math.abs((newW - maxVal)) / gradDur);
     }
-    reps = randint(3, finalTrialDur);
+    reps = util.randint(3, finalTrialDur);
     if ((newH < maxVal)) {
         whichTrial = "wide trial";
     }
@@ -5334,6 +5333,7 @@ function trialSetUpRoutineBegin(snapshot) {
     
     currPos = 0;
     cueTime = Math.random();
+    currRatio = "";
     while ((cueTime === 0.5)) {
         cueTime = Math.random();
     }
@@ -5341,9 +5341,11 @@ function trialSetUpRoutineBegin(snapshot) {
     if ((cueTime < 0.5)) {
         cueColor = "black";
         cueChngColor = "black";
+        cueType = "notDisp";
     } else {
         cueColor = "white";
         cueChngColor = "green";
+        cueType = "disp";
     }
     
     // keep track of which components have finished
@@ -5510,18 +5512,6 @@ function gradDecRoutineEachFrame() {
                     currPos = (- 0.2);
                 }
             }
-        }
-        if (_pj.in_es6("space", keys)) {
-            if ((currPos > 0)) {
-                currRatio = "wide";
-            } else {
-                if ((currPos < 0)) {
-                    currRatio = "tall";
-                } else {
-                    currRatio = "noChange";
-                }
-            }
-            respList.push(currRatio);
         }
     }
     
@@ -5731,6 +5721,21 @@ function gradDecRoutineEnd() {
         keypresses.push(gradDecResp.keys);
         rtList.push(gradDecResp.rt);
     }
+    if ((cueType === "disp")) {
+        if ((currPos > 0)) {
+            currRatio = "wide";
+        } else {
+            if ((currPos < 0)) {
+                currRatio = "tall";
+            } else {
+                currRatio = "noChange";
+            }
+        }
+    } else {
+        if ((cueType === "notDisp")) {
+            currRatio = "noTrial";
+        }
+    }
     
     psychoJS.experiment.addData('gradDecResp.keys', gradDecResp.keys);
     if (typeof gradDecResp.keys !== 'undefined') {  // we had a response
@@ -5846,18 +5851,6 @@ function gradIncRoutineEachFrame() {
                     currPos = (- 0.2);
                 }
             }
-        }
-        if (_pj.in_es6("space", keys)) {
-            if ((currPos > 0)) {
-                currRatio = "wide";
-            } else {
-                if ((currPos < 0)) {
-                    currRatio = "tall";
-                } else {
-                    currRatio = "noChange";
-                }
-            }
-            respList.push(currRatio);
         }
     }
     
@@ -6063,8 +6056,23 @@ function gradIncRoutineEnd() {
       }
     }
     tcount_2 += 1;
-    keypresses.append(gradIncResp.keys);
-    rtList.append(gradIncResp.rt);
+    keypresses.push(gradIncResp.keys);
+    rtList.push(gradIncResp.rt);
+    if ((cueType === "disp")) {
+        if ((currPos > 0)) {
+            currRatio = "wide";
+        } else {
+            if ((currPos < 0)) {
+                currRatio = "tall";
+            } else {
+                currRatio = "noChange";
+            }
+        }
+    } else {
+        if ((cueType === "notDisp")) {
+            currRatio = "noTrial";
+        }
+    }
     
     psychoJS.experiment.addData('gradIncResp.keys', gradIncResp.keys);
     if (typeof gradIncResp.keys !== 'undefined') {  // we had a response
@@ -6258,18 +6266,6 @@ function trialConstRoutineEachFrame() {
                     currPos = (- 0.2);
                 }
             }
-        }
-        if (_pj.in_es6("space", keys)) {
-            if ((currPos > 0)) {
-                currRatio = "wide";
-            } else {
-                if ((currPos < 0)) {
-                    currRatio = "tall";
-                } else {
-                    currRatio = "noChange";
-                }
-            }
-            respList.push(currRatio);
         }
     }
     
@@ -6479,6 +6475,21 @@ function trialConstRoutineEnd() {
         keypresses.push(constResp.keys);
         rtList.push(constResp.rt);
     }
+    if ((cueType === "disp")) {
+        if ((currPos > 0)) {
+            currRatio = "wide";
+        } else {
+            if ((currPos < 0)) {
+                currRatio = "tall";
+            } else {
+                currRatio = "noChange";
+            }
+        }
+    } else {
+        if ((cueType === "notDisp")) {
+            currRatio = "noTrial";
+        }
+    }
     
     psychoJS.experiment.addData('constResp.keys', constResp.keys);
     if (typeof constResp.keys !== 'undefined') {  // we had a response
@@ -6606,7 +6617,8 @@ function nextTrialRoutineEnd() {
     trials.addData("whichTrial", whichTrial);
     trials.addData("tall_wide", tall_wide);
     trials.addData("totalTrialCount", totTrialCount);
-    trials.addData("respList", respList);
+    trials.addData("currRatio", currRatio);
+    trials.addData("cueType", cueType);
     findx = util.index(finChanges, currSize);
     if ((_pj.in_es6(corrAns, keypresses) && (! _pj.in_es6(wrongAns, keypresses)))) {
         currAns = corrAns;

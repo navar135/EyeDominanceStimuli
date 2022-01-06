@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Tue Jan  4 16:18:17 2022
+    on Thu Jan  6 11:09:34 2022
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -69,7 +69,7 @@ win = visual.Window(
     winType='pyglet', allowGUI=True, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True, 
-    units='pix')
+    units='height')
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -712,24 +712,14 @@ Instruction_4 = visual.TextStim(win=win, name='Instruction_4',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-5.0);
-tallResp = visual.ShapeStim(
-    win=win, name='tallResp',
-    size=(0.05, 0.1), vertices='circle',
-    ori=0.0, pos=(-.3, -.3),
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-6.0, interpolate=True)
-wideResp = visual.ShapeStim(
-    win=win, name='wideResp',
-    size=(0.1, 0.05), vertices='circle',
-    ori=0.0, pos=(.3, -.3),
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-7.0, interpolate=True)
 
 # Initialize components for Routine "trialSetUp"
 trialSetUpClock = core.Clock()
-thisBlkTrialCount = 0
+#initiate color of all icons
 cueColor = 'black'
 cueChngColor = 'black'
+#store whether trial occured
+cueType ='' 
 
 # Initialize components for Routine "gradDec"
 gradDecClock = core.Clock()
@@ -3614,7 +3604,7 @@ for thisT1Drift in t1Drift:
     bullseye_stim_const_trial1.setSize((imgSizeCm*pxPerCm+30,imgSizeCm*pxPerCm+30))
     bullseye_stim_const_trial1.setImage(image_bullsEye)
     # keep track of which components have finished
-    trial1ConstComponents = [key_resp_const_trial1, border, radialEye_stim_const_trial1, bullseye_stim_const_trial1, fixation_6, Instruction_4, tallResp, wideResp]
+    trial1ConstComponents = [key_resp_const_trial1, border, radialEye_stim_const_trial1, bullseye_stim_const_trial1, fixation_6, Instruction_4]
     for thisComponent in trial1ConstComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -3749,40 +3739,6 @@ for thisT1Drift in t1Drift:
                 win.timeOnFlip(Instruction_4, 'tStopRefresh')  # time at next scr refresh
                 Instruction_4.setAutoDraw(False)
         
-        # *tallResp* updates
-        if tallResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            tallResp.frameNStart = frameN  # exact frame index
-            tallResp.tStart = t  # local t and not account for scr refresh
-            tallResp.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(tallResp, 'tStartRefresh')  # time at next scr refresh
-            tallResp.setAutoDraw(True)
-        if tallResp.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > tallResp.tStartRefresh + .125-frameTolerance:
-                # keep track of stop time/frame for later
-                tallResp.tStop = t  # not accounting for scr refresh
-                tallResp.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(tallResp, 'tStopRefresh')  # time at next scr refresh
-                tallResp.setAutoDraw(False)
-        
-        # *wideResp* updates
-        if wideResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            wideResp.frameNStart = frameN  # exact frame index
-            wideResp.tStart = t  # local t and not account for scr refresh
-            wideResp.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(wideResp, 'tStartRefresh')  # time at next scr refresh
-            wideResp.setAutoDraw(True)
-        if wideResp.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > wideResp.tStartRefresh + .125-frameTolerance:
-                # keep track of stop time/frame for later
-                wideResp.tStop = t  # not accounting for scr refresh
-                wideResp.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(wideResp, 'tStopRefresh')  # time at next scr refresh
-                wideResp.setAutoDraw(False)
-        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -3818,10 +3774,6 @@ for thisT1Drift in t1Drift:
     t1Drift.addData('bullseye_stim_const_trial1.stopped', bullseye_stim_const_trial1.tStopRefresh)
     t1Drift.addData('Instruction_4.started', Instruction_4.tStartRefresh)
     t1Drift.addData('Instruction_4.stopped', Instruction_4.tStopRefresh)
-    t1Drift.addData('tallResp.started', tallResp.tStartRefresh)
-    t1Drift.addData('tallResp.stopped', tallResp.tStopRefresh)
-    t1Drift.addData('wideResp.started', wideResp.tStartRefresh)
-    t1Drift.addData('wideResp.stopped', wideResp.tStopRefresh)
 # completed 1.0 repeats of 't1Drift'
 
 
@@ -3905,17 +3857,20 @@ for thisTrial in trials:
     #if 1 then display the response cues
     currPos = 0 
     cueTime = random()
+    currRatio = ''
     while cueTime ==0.5:
         cueTime = random()
     
     cueTxt = str(cueTime)
     
-    if cueTime < 0.5:
+    if cueTime < 0.5: #do not show icons
         cueColor = 'black'
         cueChngColor = 'black'
-    else:
+        cueType = 'notDisp'
+    else: #show icons
         cueColor = 'white'
         cueChngColor ='green'
+        cueType = 'disp'
     # keep track of which components have finished
     trialSetUpComponents = []
     for thisComponent in trialSetUpComponents:
@@ -4049,14 +4004,7 @@ for thisTrial in trials:
                     currPos = currPos - change 
                     if currPos < - 0.2:
                        currPos= - 0.2 
-                if 'space' in keys:
-                    if currPos >0:
-                        currRatio = 'wide'
-                    elif currPos <0:
-                        currRatio = 'tall'
-                    else:
-                        currRatio = 'noChange'
-                    respList.append(currRatio)
+            
             
             # *gradDecResp* updates
             waitOnFlip = False
@@ -4274,6 +4222,16 @@ for thisTrial in trials:
             keypresses.append(gradDecResp.keys) 
             #store the reaction time for those keypresses
             rtList.append(gradDecResp.rt)
+        #store participants responses
+        if cueType == 'disp': #when cue was presented
+            if currPos >0: #if cursor to the right
+                currRatio = 'wide'
+            elif currPos <0: #if cursor to the left
+                currRatio = 'tall'
+            else: #if cursor unchanged 
+                currRatio = 'noChange'
+        elif cueType == 'notDisp': #when cue was not presented
+            currRatio = 'noTrial'
         # check responses
         if gradDecResp.keys in ['', [], None]:  # No response was made
             gradDecResp.keys = None
@@ -4372,13 +4330,7 @@ for thisTrial in trials:
                     currPos = currPos - change 
                     if currPos < - 0.2:
                        currPos= - 0.2 
-                if 'space' in keys:
-                    if currPos >0:
-                        currRatio = 'wide'
-                    elif currPos <0:
-                        currRatio = 'tall'
-                    else:
-                        currRatio = 'noChange'
+            
             
             # *gradIncResp* updates
             waitOnFlip = False
@@ -4594,7 +4546,16 @@ for thisTrial in trials:
         keypresses.append(gradIncResp.keys)
         #store reaction times in list
         rtList.append(gradIncResp.rt)
-        
+        #store participants responses
+        if cueType == 'disp': #when cue was presented
+            if currPos >0: #if cursor to the right
+                currRatio = 'wide'
+            elif currPos <0: #if cursor to the left
+                currRatio = 'tall'
+            else: #if cursor unchanged 
+                currRatio = 'noChange'
+        elif cueType == 'notDisp': #when cue was not presented
+            currRatio = 'noTrial'
         # check responses
         if gradIncResp.keys in ['', [], None]:  # No response was made
             gradIncResp.keys = None
@@ -4741,13 +4702,7 @@ for thisTrial in trials:
                     currPos = currPos - change 
                     if currPos < - 0.2:
                        currPos= - 0.2 
-                if 'space' in keys:
-                    if currPos >0:
-                        currRatio = 'wide'
-                    elif currPos <0:
-                        currRatio = 'tall'
-                    else:
-                        currRatio = 'noChange'
+            
             
             # *constResp* updates
             waitOnFlip = False
@@ -4964,7 +4919,16 @@ for thisTrial in trials:
             #store key press in list
             keypresses.append(constResp.keys)
             rtList.append(constResp.rt)
-        
+        #store participants responses
+        if cueType == 'disp': #when cue was presented
+            if currPos >0: #if cursor to the right
+                currRatio = 'wide'
+            elif currPos <0: #if cursor to the left
+                currRatio = 'tall'
+            else: #if cursor unchanged 
+                currRatio = 'noChange'
+        elif cueType == 'notDisp': #when cue was not presented
+            currRatio = 'noTrial'
         # check responses
         if constResp.keys in ['', [], None]:  # No response was made
             constResp.keys = None
@@ -5038,7 +5002,9 @@ for thisTrial in trials:
     trials.addData('whichTrial', whichTrial)
     trials.addData('tall_wide', tall_wide)
     trials.addData('totalTrialCount',totTrialCount)
-    trials.addData('respList',respList)
+    trials.addData('currRatio',currRatio)
+    trials.addData('cueType',cueType)
+    
     ####START STAIRCASE####
     #find where in the size array we are currently
     findx =finChanges.index(currSize) 
