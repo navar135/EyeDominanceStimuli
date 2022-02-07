@@ -18,13 +18,13 @@
 
 ## Technologies Used
 - Python 
- * Numpy
- * SciPy
- * Matplotlib
- * Random
+  * Numpy
+  * SciPy
+  * Matplotlib
+  * Random
 - R 
- * ggplot 
- * dplyr
+  * Ggplot 
+  * Dplyr
 - [PsychoPy](https://www.psychopy.org/) 
 - [Pavlovia](https://pavlovia.org/)
 
